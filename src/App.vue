@@ -71,7 +71,14 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin: 15px auto 60px auto;
-        padding: 0 10px;
+        margin: 0 auto 60px auto;
+        padding-top: 20px;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
     }
 </style>

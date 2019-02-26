@@ -2,28 +2,32 @@
     <ul class="a-main-menu">
         <li>
           <router-link to="/">
-            <div>
+            <div class="menu_a">
               <icon name="home"></icon>
+                <span>Главная</span>
             </div>
           </router-link>
         </li>
         <li><router-link to="/">
-          <div>
+          <div class="menu_a">
             <icon name="envelope"></icon>
+              <span>Сообщения</span>
           </div>
           </router-link>
         </li>
         <li>
           <router-link to="/customer-cabinet">
-            <div>
+            <div class="menu_a">
               <icon name="user"></icon>
+                <span>Кабинет</span>
             </div>
           </router-link>
         </li>
         <li>
           <router-link to="/">
-            <div>
-              <icon name="cog"></icon>
+            <div class="menu_a">
+              <icon name="trash"></icon>
+                <span>Заказы</span>
             </div>
           </router-link>
         </li>
@@ -50,14 +54,14 @@ import Icon from 'vue-awesome/components/Icon'
         left: 0;
         right: 0;
         bottom: 0;
-        padding: 10px 5px 3px 5px;
+        padding: 0 5px 3px 5px;
         background: #4192e8;
         border-top: solid 1px #fff;
     }
 
     .a-main-menu li {
         list-style: none;
-        padding: 10px 20px;
+        padding: 10px 10px;
         border-radius: 3px;
         transition: .2s;
         cursor: pointer;
@@ -78,5 +82,9 @@ import Icon from 'vue-awesome/components/Icon'
     .a-main-menu a svg {
         width: 30px;
         height: 30px;
+    }
+
+    .menu_a {
+        font-size: 12px;
     }
 </style>

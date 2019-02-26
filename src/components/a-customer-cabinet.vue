@@ -53,7 +53,6 @@ export default {
 </script>
 
 <style scoped>
-
   .no-favorite {
     padding-top: 50px;
   }

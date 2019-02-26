@@ -1,5 +1,5 @@
 <template>
-    <div class="a-sellers__list">
+    <div>
         <div class="a-seller__list-header">
             <div class="a-category-select-input__wrapper">
                 <label for="category-select">
@@ -20,14 +20,16 @@
                 </div>
             </div>
         </div>
-        <a-sellers-item
-            v-for="item in sellers"
-            :key="item.id"
-            :sellers_data="item"
-            @addToFavorite="addToFavorite"
-        />
-        <div class="a-sellers__list__empty" v-if="emptyFilterResults">
-            <span>No results...</span>
+        <div class="a-sellers__list">
+            <a-sellers-item
+                    v-for="item in sellers"
+                    :key="item.id"
+                    :sellers_data="item"
+                    @addToFavorite="addToFavorite"
+            />
+            <div class="a-sellers__list__empty" v-if="emptyFilterResults">
+                <span>No results...</span>
+            </div>
         </div>
     </div>
 </template>
@@ -91,6 +93,7 @@
         position: sticky;
         top: 0;
         background: #fff;
+        padding: 0 10px;
     }
 
     .a-category-select-input__wrapper label {
@@ -122,7 +125,7 @@
         display: flex;
         justify-content: space-around;
         padding: 20px;
-        margin: 20px -10px 0 -10px;
+        margin: 0 -10px 0 -10px;
         background: #ffb407;
     }
 

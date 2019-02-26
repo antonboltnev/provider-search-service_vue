@@ -13,10 +13,10 @@
           @click="addToFavorite"
          >В избранное
        </div>
-       <div class="item_inFavorite"
+        <div class="item_inFavorite"
             v-if="sellers_data.favorite"
           @click="addToFavorite"
-       >Удалить из избранного
+       >Удалить
        </div>
     </div>
 </template>
@@ -65,7 +65,7 @@
     }
 
     .item_logo img {
-        max-width: 50px;
+        max-width: 30px;
     }
 
     .a-sellers-item a, .a-sellers-item div {
@@ -94,6 +94,7 @@
 
     .a-sellers-item div.item_addToFav, .a-sellers-item div.item_inFavorite {
       background: #4192e8;
+        text-transform: uppercase;
       border-radius: 3px;
       color: #fff;
       padding: 15px 5px;

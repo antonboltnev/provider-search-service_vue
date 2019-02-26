@@ -4,10 +4,11 @@
             <div class="a-seller-cert" @click="showAdvancedInfo">
                 <p class="cert-title">Сертификаты</p>
             </div>
-            <div class="a-seller-about" @click="showAboutText">О поставщике</div>
+            <div class="a-seller-about" @click="showAboutText">Информация</div>
             <div class="a-seller-chat">Написать</div>
         </div>
-        <div class="a-seller-advanced-info certs" v-if="isAdvancesInfoVisible">
+        <transition name="fade">
+            <div class="a-seller-advanced-info certs" v-if="isAdvancesInfoVisible">
             <div class="cert-docs">
                 <img :src="sellerDocuments" alt="">
             </div>
@@ -18,9 +19,12 @@
                 <img :src="sellerDocuments" alt="">
             </div>
         </div>
-        <div class="a-seller-advanced-info about" v-if="isAboutTextVisible">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea in itaque laudantium quisquam voluptate. Corporis cum dolorum ea eum, ex harum iste minus quis quod saepe, sit sunt voluptatem voluptates!
+        </transition>
+        <transition name="fade">
+             <div class="a-seller-advanced-info about" v-if="isAboutTextVisible">
+                 <p>{{ sellerInfo }}</p>
         </div>
+        </transition>
         <h2>Каталог поставщика</h2>
         <div class="a-seller-catalog-wrapper">
             <a-catalog-list
@@ -54,6 +58,13 @@
             }
         },
         computed: {
+            sellerInfo(e) {
+                let vm = this;
+                vm.sellerSelectedIndex = this.$store.state.selectedSeller;
+                e = this.sellerSelectedIndex;
+                return  this.$store.state.sellers[e].about;
+            },
+
             sellerDocuments(e) {
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
@@ -88,6 +99,7 @@
 </script>
 
 <style scoped>
+
     .a-seller-catalog-wrapper {
         display: flex;
         justify-content: space-around;
@@ -105,6 +117,7 @@
         background: #f5b333;
         border-radius: 3px;
         padding: 15px 10px;
+        margin: 0 2px;
         color: #fff;
         font-size: 14px;
         flex: 0 0 25%;
@@ -120,4 +133,6 @@
         max-width: 100px;
     }
 
+</style>
+<style>
 </style>
