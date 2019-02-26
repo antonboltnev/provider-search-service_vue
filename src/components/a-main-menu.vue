@@ -26,7 +26,7 @@
         <li>
           <router-link to="/">
             <div class="menu_a">
-              <icon name="trash"></icon>
+              <icon name="cart-arrow-down"></icon>
                 <span>Заказы</span>
             </div>
           </router-link>
