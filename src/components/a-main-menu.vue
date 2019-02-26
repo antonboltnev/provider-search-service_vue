@@ -52,6 +52,7 @@ import Icon from 'vue-awesome/components/Icon'
         bottom: 0;
         padding: 10px 5px 3px 5px;
         background: #4192e8;
+        border-top: solid 1px #fff;
     }
 
     .a-main-menu li {

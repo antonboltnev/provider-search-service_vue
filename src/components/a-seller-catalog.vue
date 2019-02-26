@@ -4,10 +4,10 @@
             <div class="a-seller-cert" @click="showAdvancedInfo">
                 <p class="cert-title">Сертификаты</p>
             </div>
-            <div class="a-seller-about">О поставщике</div>
+            <div class="a-seller-about" @click="showAboutText">О поставщике</div>
             <div class="a-seller-chat">Написать</div>
         </div>
-        <div class="a-seller-advanced-info" v-if="isAdvancesInfoVisible">
+        <div class="a-seller-advanced-info certs" v-if="isAdvancesInfoVisible">
             <div class="cert-docs">
                 <img :src="sellerDocuments" alt="">
             </div>
@@ -17,6 +17,9 @@
             <div class="cert-docs">
                 <img :src="sellerDocuments" alt="">
             </div>
+        </div>
+        <div class="a-seller-advanced-info about" v-if="isAboutTextVisible">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea in itaque laudantium quisquam voluptate. Corporis cum dolorum ea eum, ex harum iste minus quis quod saepe, sit sunt voluptatem voluptates!
         </div>
         <h2>Каталог поставщика</h2>
         <div class="a-seller-catalog-wrapper">
@@ -47,6 +50,7 @@
             return {
                 sellerSelectedIndex: this.sellerIndex,
                 isAdvancesInfoVisible: false,
+                isAboutTextVisible: false,
             }
         },
         computed: {
@@ -68,6 +72,12 @@
         methods: {
             showAdvancedInfo() {
                 this.isAdvancesInfoVisible = !this.isAdvancesInfoVisible;
+                this.isAboutTextVisible = false;
+            },
+
+            showAboutText() {
+                this.isAboutTextVisible = !this.isAboutTextVisible;
+                this.isAdvancesInfoVisible = false;
             }
         },
 

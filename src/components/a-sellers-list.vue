@@ -1,29 +1,23 @@
 <template>
     <div class="a-sellers__list">
-        <div class="a-category-select-input__wrapper">
-            <label for="category-select">
-                <select name="" id="category-select" v-model="selectedCategory">
-                    <option value="все" selected>Все категории</option>
-                    <option value="Хлебная продукция">Хлебная продукция</option>
-                    <option value="Молочная продукция">Молочная продукция</option>
-                    <option value="Мясная продукция">Мясная продукция</option>
-                </select>
-            </label>
-            <!--<label for="category-input">Или воспользуйтесь поиском:-->
-                <!--<input-->
-                        <!--id="category-input"-->
-                        <!--type="text"-->
-                        <!--placeholder='Искать ...'-->
-                        <!--v-model.trim="categoryFilter"-->
-                <!--/>-->
-            <!--</label>-->
-        </div>
-        <div class="a-sellers__list__title">
-            <div class="title_items">Наименование поставщика:
+        <div class="a-seller__list-header">
+            <div class="a-category-select-input__wrapper">
+                <label for="category-select">
+                    <select name="" id="category-select" v-model="selectedCategory">
+                        <option value="все" selected>Все категории</option>
+                        <option value="Хлебная продукция">Хлебная продукция</option>
+                        <option value="Молочная продукция">Молочная продукция</option>
+                        <option value="Мясная продукция">Мясная продукция</option>
+                    </select>
+                </label>
             </div>
-            <div class="title_items">Категория продукции:
-            </div>
-            <div class="title_items"> Контактный телефон:
+            <div class="a-sellers__list__title">
+                <div class="title_items">Наименование поставщика:
+                </div>
+                <div class="title_items">Категория продукции:
+                </div>
+                <div class="title_items"> Контактный телефон:
+                </div>
             </div>
         </div>
         <a-sellers-item
@@ -91,6 +85,12 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+
+    .a-seller__list-header {
+        position: sticky;
+        top: 0;
+        background: #fff;
     }
 
     .a-category-select-input__wrapper label {
