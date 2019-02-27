@@ -8,12 +8,12 @@
         </div>
         <div class="item_category">{{ sellers_data.category }}</div>
         <div class="item_phone">{{ sellers_data.phone }}</div>
-        <div class="item_addToFav"
+        <div class="item_addToFav btn bg-color2"
           v-if="!sellers_data.favorite"
           @click="addToFavorite"
          >В избранное
        </div>
-        <div class="item_inFavorite"
+        <div class="item_inFavorite btn bg-color"
             v-if="sellers_data.favorite"
           @click="addToFavorite"
        >Удалить
@@ -69,8 +69,7 @@
     }
 
     .a-sellers-item a, .a-sellers-item div {
-        padding: 10px 0;
-        margin: 0 5px;
+        margin: 10px 5px;
         flex: 0 2 20%;
     }
 
@@ -93,15 +92,6 @@
     }
 
     .a-sellers-item div.item_addToFav, .a-sellers-item div.item_inFavorite {
-      background: #4192e8;
-        text-transform: uppercase;
-      border-radius: 3px;
-      color: #fff;
-      padding: 15px 5px;
       min-width: 20%;
-    }
-
-    .a-sellers-item div.item_inFavorite {
-      background: #f5b333;
     }
 </style>

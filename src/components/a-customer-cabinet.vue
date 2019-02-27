@@ -15,7 +15,7 @@
       >
         <p class="no-favorite">У вас нет избранных поставщиков</p>
         <router-link to="/">
-          <p class="add-fav">Добавить</p>
+          <p class="add-fav bg-color">Добавить</p>
         </router-link>
       </div>
     </div>
@@ -59,7 +59,6 @@ export default {
   
   .add-fav {
     margin: 10px auto 0 auto;
-    background: #ffb407;
     border-radius: 3px;
     padding: 15px 10px;
     color: #fff;

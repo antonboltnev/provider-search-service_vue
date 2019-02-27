@@ -1,11 +1,12 @@
 <template>
     <div class="a-seller-catalog">
         <div class="a-seller-info">
-            <div class="a-seller-cert" @click="showAdvancedInfo">
+            <div class="a-seller-cert btn bg-color" @click="showAdvancedInfo">
                 <p class="cert-title">Сертификаты</p>
             </div>
-            <div class="a-seller-about" @click="showAboutText">Информация</div>
-            <div class="a-seller-chat">Написать</div>
+            <div class="a-seller-about btn bg-color" @click="showAboutText">Информация</div>
+            <div class="a-seller-chat btn bg-color">Написать
+            </div>
         </div>
         <transition name="fade">
             <div class="a-seller-advanced-info certs" v-if="isAdvancesInfoVisible">
@@ -38,11 +39,13 @@
 
 <script>
     import aCatalogList from '@/components/a-catalog-list'
+    import Icon from 'vue-awesome/components/Icon'
 
     export default {
         name: "a-seller-catalog",
         components: {
-            aCatalogList
+            aCatalogList,
+            Icon
         },
         props: {
             sellerIndex: {
@@ -114,12 +117,7 @@
     }
     
     .a-seller-cert, .a-seller-about, .a-seller-chat{
-        background: #f5b333;
-        border-radius: 3px;
-        padding: 15px 10px;
         margin: 0 2px;
-        color: #fff;
-        font-size: 14px;
         flex: 0 0 25%;
     }
 

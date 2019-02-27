@@ -10,6 +10,7 @@
 <script>
     import Vue from 'vue';
     import Router  from 'vue-router';
+    import '../public/styles.css'
 
     import 'vue-awesome/icons'
 
@@ -55,30 +56,4 @@
 </script>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin: 0 auto 60px auto;
-        padding-top: 20px;
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
-    }
-    .fade-enter, .fade-leave-to {
-        opacity: 0;
-    }
 </style>

@@ -11,7 +11,7 @@
                     </select>
                 </label>
             </div>
-            <div class="a-sellers__list__title">
+            <div class="a-sellers__list__title bg-color">
                 <div class="title_items">Наименование поставщика:
                 </div>
                 <div class="title_items">Категория продукции:
@@ -126,7 +126,6 @@
         justify-content: space-around;
         padding: 20px;
         margin: 0 -10px 0 -10px;
-        background: #ffb407;
     }
 
     .title_items {

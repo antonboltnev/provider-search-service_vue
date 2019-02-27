@@ -26,9 +26,7 @@ const store = new Vuex.Store({
             { name: 'Веселый молочник', about: 'Информация о поставщике 11', logo: 'userpic.jpg', id: 11, category: 'Молочная продукция', phone: '8-800-334-55-22', favorite: false, },
         ],
         selectedSeller: 0,
-        customer: {
-            favorites: []
-        }
+        cart: [],
     },
     getters: {
         SELLERS: state => {
@@ -36,28 +34,34 @@ const store = new Vuex.Store({
         },
     },
     mutations: {
-        FILTER: (state, payload) => {
+        FILTER: ( state, payload ) => {
             state.sellers = state.sellers.filter(function (i) {
                 return i.category.match(payload);
             });
         },
-        SET_INDEX: (state, payload) => {
+        SET_INDEX: ( state, payload ) => {
             state.selectedSeller = payload;
         },
-        SET_FAV: (state, payload) => {
+        SET_FAV: ( state, payload ) => {
             state.sellers[payload].favorite = !state.sellers[payload].favorite;
+        },
+        ADD_TO_CART: ( state, payload ) => {
+            state.cart.push(payload);
         },
     },
     actions: {
         FILTER_SELLERS: ( context, payload ) => {
             context.commit( 'FILTER', payload );
         },
-        SET_SELLER_INDEX: (context, payload) => {
-            context.commit('SET_INDEX', payload)
+        SET_SELLER_INDEX: ( context, payload ) => {
+            context.commit('SET_INDEX', payload);
         },
         SET_SELLER_TO_FAV: ( context, payload ) => {
-            context.commit('SET_FAV', payload)
+            context.commit('SET_FAV', payload);
         },
+        ADD_PRODUCT_TO_CART: ( context,payload ) => {
+            context.commit('ADD_TO_CART', payload);
+        }
     }
 });
 

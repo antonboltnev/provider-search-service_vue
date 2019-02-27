@@ -1,5 +1,5 @@
 <template>
-    <ul class="a-main-menu">
+    <ul class="a-main-menu bg-color2">
         <li>
           <router-link to="/">
             <div class="menu_a">
@@ -18,8 +18,8 @@
         <li>
           <router-link to="/customer-cabinet">
             <div class="menu_a">
-              <icon name="user"></icon>
-                <span>Кабинет</span>
+              <icon name="star"></icon>
+                <span>Избранное</span>
             </div>
           </router-link>
         </li>
@@ -55,7 +55,6 @@ import Icon from 'vue-awesome/components/Icon'
         right: 0;
         bottom: 0;
         padding: 0 5px 3px 5px;
-        background: #4192e8;
         border-top: solid 1px #fff;
     }
 
