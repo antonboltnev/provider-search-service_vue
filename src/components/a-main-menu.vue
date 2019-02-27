@@ -24,10 +24,13 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/">
+          <router-link to="/customer-order-list">
             <div class="menu_a">
               <icon name="cart-arrow-down"></icon>
-                <span>Заказы</span>
+              <span>Заказы</span>
+                <span class="order_counter bg-color"
+                    v-if="isCounterHidden"
+                >{{ orderCounter }}</span>
             </div>
           </router-link>
         </li>
@@ -41,6 +44,16 @@ import Icon from 'vue-awesome/components/Icon'
         name: "a-main-menu",
         components: {
           Icon
+        },
+        data() {
+           return {
+               isCounterHidden: true,
+           }
+        },
+        computed: {
+            orderCounter() {
+                    return this.$store.state.cart.length;
+            }
         }
     }
 </script>
@@ -59,6 +72,7 @@ import Icon from 'vue-awesome/components/Icon'
     }
 
     .a-main-menu li {
+        position: relative;
         list-style: none;
         padding: 10px 10px;
         border-radius: 3px;
@@ -85,5 +99,14 @@ import Icon from 'vue-awesome/components/Icon'
 
     .menu_a {
         font-size: 12px;
+    }
+
+    .order_counter {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        padding: 4px 8px;
+        border-radius: 50%;
+        font-size: 10px;
     }
 </style>

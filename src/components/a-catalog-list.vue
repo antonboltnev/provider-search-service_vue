@@ -10,14 +10,13 @@
             {{ product_data.price }} руб/{{ product_data.value }}
         </div>
         <div class="product_add-to-cart btn bg-color2"
-             v-if="!isThisAddedToCart"
             @click="addToCart"
         >{{ addToCartText }}
         </div>
-        <div class="product_add-to-cart btn bg-color"
-             v-else
-        >{{ addedToCartText }}
-        </div>
+        <!--<div class="product_add-to-cart btn bg-color"-->
+             <!--v-else-->
+        <!--&gt;{{ addedToCartText }}-->
+        <!--</div>-->
     </div>
 </template>
 
@@ -28,6 +27,10 @@
             product_data: {
                 type: Object,
                 default: {}
+            },
+            sellers_data: {
+                type: Object,
+                default: {}
             }
         },
 
@@ -35,7 +38,6 @@
            return {
                isThisAddedToCart: false,
                addToCartText: 'В корзину',
-               addedToCartText: 'Добавлено'
            }
         },
 
@@ -47,9 +49,13 @@
 
         methods: {
             addToCart() {
+                let sellerIndex = this.sellers_data.id - 1;
+                let productIndex = this.product_data.id -1;
+                let products = this.product_data;
                 this.isThisAddedToCart = !this.isThisAddedToCart;
-                this.$store.dispatch('ADD_PRODUCT_TO_CART', this.product_data);
-                console.log(this.$store.state.cart);
+                this.$store.dispatch('ADD_TO_CART', products);
+                this.$store.dispatch('SET_ORDER_LIST', {productIndex, sellerIndex});
+                // console.log(productIndex, sellerIndex)
             }
         },
     }
@@ -72,6 +78,10 @@
 
     .product_add-to-cart {
         margin-top: 10px;
+    }
+
+    .product_add-to-cart:active {
+        box-shadow: inset 0 0 10px 0 #525252;
     }
 
 </style>

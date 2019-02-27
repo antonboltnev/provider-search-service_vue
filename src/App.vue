@@ -18,6 +18,7 @@
     import aMainPage from '@/components/a-main-page'
     import aSellerCatalog from '@/components/a-seller-catalog'
     import aCustomerCabinet from '@/components/a-customer-cabinet'
+    import aOrderList from '@/components/a-order-list'
 
 
 
@@ -39,6 +40,11 @@
               path: '/customer-cabinet',
               name: 'CustomerCabinet',
               component: aCustomerCabinet
+            },
+            {
+                path: '/customer-order-list',
+                name: 'CustomerOrderList',
+                component: aOrderList
             },
         ] // сокращённая запись для `routes: routes`
     });

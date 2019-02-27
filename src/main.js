@@ -6,14 +6,14 @@ const store = new Vuex.Store({
     state: {
         sellers: [
             { name: 'Мираторг', about: 'Информация о поставщике 1', logo: 'userpic.jpg', docs: 'cert1.jpg', id: 1, category: 'Мясная продукция', phone: '8-800-111-11-11', favorite: false, products: [
-                    { title: 'Мясо', img: 'meat.png', price: '1000', value: 'кг' },
-                    { title: 'Сосиски', img: 'sosiska.jpg', price: '500', value: 'кг' },
-                    { title: 'Колбаса', img: 'kolbasa.jpg', price: '700', value: 'кг' },
+                    { id: 1, title: 'Мясо', img: 'meat.png', price: '1000', value: 'кг', ordered: false },
+                    { id: 2, title: 'Сосиски', img: 'sosiska.jpg', price: '500', value: 'кг', ordered: false },
+                    { id: 3, title: 'Колбаса', img: 'kolbasa.jpg', price: '700', value: 'кг', ordered: false },
                 ] },
             { name: '22 Хлебзавод', about: 'Информация о поставщике 2', logo: 'userpic2.jpeg', docs: 'cert2.jpg', id: 2, category: 'Хлебная продукция', phone: '8-800-222-22-22', favorite: false, products: [
-                    { title: 'Хлеб', img: 'bread.jpg', price: '50', value: 'шт' },
-                    { title: 'Булочка', img: 'bulochka.jpg', price: '70', value: 'шт' },
-                    { title: 'Пряник', img: 'pryanik.jpg', price: '100', value: 'шт' },
+                    { id: 1, title: 'Хлеб', img: 'bread.jpg', price: '50', value: 'шт', ordered: false },
+                    { id: 2, title: 'Булочка', img: 'bulochka.jpg', price: '70', value: 'шт', ordered: false },
+                    { id: 3, title: 'Пряник', img: 'pryanik.jpg', price: '100', value: 'шт', ordered: false },
                 ] },
             { name: 'Домик в деревне', about: 'Информация о поставщике 3', logo: 'userpic.jpg', id: 3, category: 'Молочная продукция', phone: '8-800-333-33-33', favorite: false, },
             { name: 'Мясницкий ряд', about: 'Информация о поставщике 4', logo: 'userpic.jpg', id: 4, category: 'Мясная продукция', phone: '8-800-444-44-44', favorite: false, },
@@ -45,8 +45,14 @@ const store = new Vuex.Store({
         SET_FAV: ( state, payload ) => {
             state.sellers[payload].favorite = !state.sellers[payload].favorite;
         },
-        ADD_TO_CART: ( state, payload ) => {
-            state.cart.push(payload);
+        ADD_TO_CART: ( state,payload ) => {
+           state.cart.push(payload);
+        },
+        SET_ORDER_LIST: ( state, {productIndex, sellerIndex} ) => {
+            state.sellers[sellerIndex].products[productIndex].ordered = !state.sellers[sellerIndex].products[productIndex].ordered;
+        },
+        REMOVE_ITEM: ( state, payload ) => {
+           state.cart.splice(payload, 1);
         },
     },
     actions: {
@@ -59,8 +65,15 @@ const store = new Vuex.Store({
         SET_SELLER_TO_FAV: ( context, payload ) => {
             context.commit('SET_FAV', payload);
         },
-        ADD_PRODUCT_TO_CART: ( context,payload ) => {
-            context.commit('ADD_TO_CART', payload);
+        ADD_TO_CART: ( context, payload ) => {
+           context.commit('ADD_TO_CART', payload);
+        },
+        SET_ORDER_LIST: ( context, {productIndex, sellerIndex} ) => {
+            context.commit('SET_ORDER_LIST', {productIndex, sellerIndex});
+            console.log(productIndex, sellerIndex);
+        },
+        REMOVE_FROM_CART: ( context, payload ) => {
+            context.commit( 'REMOVE_ITEM', payload );
         }
     }
 });

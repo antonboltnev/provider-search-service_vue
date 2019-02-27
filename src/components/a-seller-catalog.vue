@@ -32,6 +32,7 @@
                     v-for="item in products"
                     :key="item.id"
                     :product_data="item"
+                    :sellers_data="sellers_data"
             />
         </div>
     </div>
@@ -80,6 +81,12 @@
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
                 e = this.sellerSelectedIndex;
                 return this.$store.state.sellers[e].products;
+            },
+            sellers_data(e) {
+                let vm = this;
+                vm.sellerSelectedIndex = this.$store.state.selectedSeller;
+                e = this.sellerSelectedIndex;
+                return this.$store.state.sellers[e];
             }
         },
 
