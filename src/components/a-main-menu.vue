@@ -29,7 +29,7 @@
               <icon name="cart-arrow-down"></icon>
               <span>Заказы</span>
                 <span class="order_counter bg-color"
-                    v-if="isCounterHidden"
+                    v-if="isCounterVisible"
                 >{{ orderCounter }}</span>
             </div>
           </router-link>
@@ -47,7 +47,7 @@ import Icon from 'vue-awesome/components/Icon'
         },
         data() {
            return {
-               isCounterHidden: true,
+               isCounterVisible: true,
            }
         },
         computed: {

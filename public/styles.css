@@ -10,7 +10,7 @@
       text-align: center;
       color: #2c3e50;
       margin: 0 auto 60px auto;
-      padding-top: 20px;
+      padding: 20px 10px 0 10px;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -33,10 +33,22 @@ a {
       background: #4192e8;
 }
 
+.text-color1 {
+      color: #ffb407;
+}
+
+.text-color2 {
+      color: #4192e8;
+}
+
 .btn {
       text-transform: uppercase;
       border-radius: 3px;
       color: #fff;
       padding: 15px 5px;
       font-size: 12px;
+}
+
+.text-bold {
+      font-weight: bolder;
 }
