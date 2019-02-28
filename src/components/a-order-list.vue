@@ -22,6 +22,17 @@
                 <p class="btn bg-color">Добавить</p>
             </router-link>
         </div>
+        <transition name="bounce">
+            <div class="thankyou-popup" v-if="orderChecked">
+            <p>Ваш заказ оформлен!</p>
+            <br>
+            <span>Представитель поставщика свяжется с вами в ближайшее время.</span>
+            <br>
+            <br>
+            <br>
+                <div class="ok btn bg-color2" @click="closePopup">OK</div>
+        </div>
+        </transition>
     </div>
 </template>
 
@@ -32,6 +43,11 @@
         name: "a-order-list",
         components: {
             aOrderItem
+        },
+        data() {
+            return {
+                orderChecked: false
+            }
         },
         computed: {
             orders() {
@@ -48,7 +64,12 @@
         },
         methods: {
             checkout() {
+               this.orderChecked = true;
                this.$store.dispatch('CHECKOUT', this.orders);
+            },
+
+            closePopup() {
+                this.orderChecked = false;
             },
 
             removeFromCart(index) {
@@ -62,6 +83,9 @@
             minusQty(index) {
                 this.$store.dispatch('DECREMENT_PRODUCT_QTY', index);
             }
+        },
+        created() {
+            this.orderChecked = false;
         }
     }
 </script>
@@ -112,5 +136,17 @@
 
     .order-total span {
         margin-left: 10px;
+    }
+
+    .thankyou-popup {
+        position: absolute;
+        width: 70%;
+        height: 200px;
+        padding-top: 100px;
+        top: 0;
+        bottom: 0;
+        left: 16%;
+        background: #fff;
+        z-index: 2;
     }
 </style>
