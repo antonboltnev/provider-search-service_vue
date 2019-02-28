@@ -14,7 +14,7 @@
                 <div>Итого:</div>
                 <span>{{ totalSum }} руб.</span>
             </div>
-            <p class="total-sum_confirm btn bg-color2">Оформить заказ</p>
+            <p class="total-sum_confirm btn bg-color2" @click="checkout">Оформить заказ</p>
         </div>
         <div class="empty-order-list" v-if="orders.length < 1">
             <p class="empty-order-list-p">У вас нет активных заказов</p>
@@ -47,6 +47,10 @@
             }
         },
         methods: {
+            checkout() {
+               this.$store.dispatch('CHECKOUT', this.orders);
+            },
+
             removeFromCart(index) {
                 this.$store.dispatch('REMOVE_FROM_CART', index);
             },

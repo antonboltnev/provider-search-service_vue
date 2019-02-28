@@ -27,6 +27,7 @@ const store = new Vuex.Store({
         ],
         selectedSeller: 0,
         cart: [],
+        order: [],
     },
     getters: {
         SELLERS: state => {
@@ -71,6 +72,10 @@ const store = new Vuex.Store({
                 return false;
             }
         },
+        CART_CHECKOUT: ( state, payload ) => {
+            state.order.push(payload);
+            state.cart.splice(0, state.cart.length);
+        }
     },
     actions: {
         FILTER_SELLERS: ( context, payload ) => {
@@ -96,6 +101,9 @@ const store = new Vuex.Store({
         },
         DECREMENT_PRODUCT_QTY: ( context, payload ) => {
             context.commit( 'MINUS_QTY', payload );
+        },
+        CHECKOUT: ( context, payload ) => {
+           context.commit( 'CART_CHECKOUT', payload );
         },
     }
 });
