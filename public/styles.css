@@ -47,16 +47,16 @@ a {
       cursor: pointer;
       text-transform: uppercase;
       border-radius: 3px;
-      padding: 15px;
+      padding: 15px 10px;
       font-size: 12px;
       font-weight: bold;
       box-shadow: 0 1px 7px 0 #d8d8d8;
-      transition: .2s;
+      transition: .3s;
 }
 
 .btn:active {
       box-shadow: inset 0 1px 15px 2px #777777;
-      transition: .2s;
+      transition: .3s;
 }
 
 .text-bold {

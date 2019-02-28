@@ -108,6 +108,6 @@ import Icon from 'vue-awesome/components/Icon'
         right: 2px;
         padding: 4px 8px;
         border-radius: 50%;
-        font-size: 10px;
+        font-size: 13px;
     }
 </style>

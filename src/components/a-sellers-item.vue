@@ -8,6 +8,11 @@
         <div class="item_title" @click="setSellerIndex">
             <router-link to="/seller-catalog">{{ sellers_data.name }}</router-link>
         </div>
+        <div class="item_info">
+            <router-link to="/seller-catalog">
+                <icon name="info"></icon>
+            </router-link>
+        </div>
         <div class="item_category">{{ sellers_data.category }}</div>
         <div class="item_addToFav btn bg-color2"
           v-if="!sellers_data.favorite"
@@ -23,8 +28,13 @@
 </template>
 
 <script>
+    import Icon from 'vue-awesome/components/Icon'
+
     export default {
         name: "a-sellers-item",
+        components: {
+            Icon
+        },
         props: {
            sellers_data: {
                type: Object,

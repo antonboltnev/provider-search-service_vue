@@ -92,7 +92,7 @@
     .item_remove svg {
         width: 30px;
         height: 30px;
-        fill: #4192e8;
+        fill: #F44336;
     }
 
     .item_qty_wrapper {
