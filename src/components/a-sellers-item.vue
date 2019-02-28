@@ -1,13 +1,14 @@
 <template>
     <div class="a-sellers-item">
-        <div class="item_logo">
-            <img :src="sellerImage" alt="">
-        </div>
+        <router-link to="/seller-catalog">
+            <div class="item_logo">
+                <img :src="sellerImage" alt="">
+            </div>
+        </router-link>
         <div class="item_title" @click="setSellerIndex">
             <router-link to="/seller-catalog">{{ sellers_data.name }}</router-link>
         </div>
         <div class="item_category">{{ sellers_data.category }}</div>
-        <div class="item_phone">{{ sellers_data.phone }}</div>
         <div class="item_addToFav btn bg-color2"
           v-if="!sellers_data.favorite"
           @click="addToFavorite"
@@ -61,7 +62,10 @@
         align-items: center;
         display: flex;
         margin: 20px auto;
-        border-bottom: dotted 1px #d7d7d7;
+        border: solid 1px #d6d6d6;
+        border-radius: 6px;
+        padding: 10px 0;
+        box-shadow: 0 1px 7px 0 #d8d8d8;
     }
 
     .item_logo img {

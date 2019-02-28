@@ -6,14 +6,14 @@ const store = new Vuex.Store({
     state: {
         sellers: [
             { name: 'Мираторг', about: 'Информация о поставщике 1', logo: 'userpic.jpg', docs: 'cert1.jpg', id: 1, category: 'Мясная продукция', phone: '8-800-111-11-11', favorite: false, products: [
-                    { id: 1, title: 'Мясо', img: 'meat.png', price: '1000', value: 'кг', ordered: false, qty: 1 },
-                    { id: 2, title: 'Сосиски', img: 'sosiska.jpg', price: '500', value: 'кг', ordered: false, qty: 1 },
-                    { id: 3, title: 'Колбаса', img: 'kolbasa.jpg', price: '700', value: 'кг', ordered: false, qty: 1 },
+                    { title: 'Мясо', img: 'meat.png', price: '1000', value: 'кг', ordered: false, qty: 1, total: 1000 },
+                    { title: 'Сосиски', img: 'sosiska.jpg', price: '500', value: 'кг', ordered: false, qty: 1, total: 500 },
+                    { title: 'Колбаса', img: 'kolbasa.jpg', price: '700', value: 'кг', ordered: false, qty: 1, total: 700 },
                 ] },
             { name: '22 Хлебзавод', about: 'Информация о поставщике 2', logo: 'userpic2.jpeg', docs: 'cert2.jpg', id: 2, category: 'Хлебная продукция', phone: '8-800-222-22-22', favorite: false, products: [
-                    { id: 1, title: 'Хлеб', img: 'bread.jpg', price: '50', value: 'шт', ordered: false, qty: 1 },
-                    { id: 2, title: 'Булочка', img: 'bulochka.jpg', price: '70', value: 'шт', ordered: false, qty: 1 },
-                    { id: 3, title: 'Пряник', img: 'pryanik.jpg', price: '100', value: 'шт', ordered: false, qty: 1 },
+                    { title: 'Хлеб', img: 'bread.jpg', price: '50', value: 'шт', ordered: false, qty: 1, total: 50 },
+                    { title: 'Булочка', img: 'bulochka.jpg', price: '70', value: 'шт', ordered: false, qty: 1, total: 70 },
+                    { title: 'Пряник', img: 'pryanik.jpg', price: '100', value: 'шт', ordered: false, qty: 1, total: 100 },
                 ] },
             { name: 'Домик в деревне', about: 'Информация о поставщике 3', logo: 'userpic.jpg', id: 3, category: 'Молочная продукция', phone: '8-800-333-33-33', favorite: false, },
             { name: 'Мясницкий ряд', about: 'Информация о поставщике 4', logo: 'userpic.jpg', id: 4, category: 'Мясная продукция', phone: '8-800-444-44-44', favorite: false, },
@@ -47,7 +47,7 @@ const store = new Vuex.Store({
         },
         ADD_TO_CART: ( state, products ) => {
             if ( state.cart.includes( products ) ) {
-                console.log('item in cart');
+                return false;
             } else {
                 state.cart.push(products);
             }
@@ -56,14 +56,17 @@ const store = new Vuex.Store({
             state.sellers[sellerIndex].products[productIndex].ordered = !state.sellers[sellerIndex].products[productIndex].ordered;
         },
         REMOVE_ITEM: ( state, payload ) => {
+           state.cart[payload].qty = 0;
            state.cart.splice(payload, 1);
         },
         PLUS_QTY: ( state, payload ) => {
-            state.cart[payload].qty++
+            state.cart[payload].qty++;
+            state.cart[payload].total = state.cart[payload].qty * state.cart[payload].price;
         },
         MINUS_QTY: ( state, payload ) => {
-            if ( state.cart[payload].qty > 0 ) {
+            if ( state.cart[payload].qty > 1 ) {
                 state.cart[payload].qty--;
+                state.cart[payload].total -= state.cart[payload].price;
             } else {
                 return false;
             }

@@ -1,7 +1,7 @@
 <template>
-  <div class="a-castomer-cabinet">
+  <div class="a-customer-cabinet">
     <div class="cabinet__favorites">
-      <div class="" v-if="sellers.length > 0">
+      <div class="favorites-title fixed-top bg-color2">
         Мои избранные поставщики:
       </div>
       <a-sellers-item
@@ -15,7 +15,7 @@
       >
         <p class="no-favorite">У вас нет избранных поставщиков</p>
         <router-link to="/">
-          <p class="add-fav bg-color">Добавить</p>
+          <p class="add-fav btn bg-color">Добавить</p>
         </router-link>
       </div>
     </div>
@@ -53,15 +53,22 @@ export default {
 </script>
 
 <style scoped>
+  .cabinet__favorites {
+    margin-top: 35px;
+  }
+
   .no-favorite {
     padding-top: 50px;
+  }
+
+  .favorites-title {
+    color: #fff;
+    padding: 10px 0;
+    font-size: 25px;
   }
   
   .add-fav {
     margin: 10px auto 0 auto;
-    border-radius: 3px;
-    padding: 15px 10px;
-    color: #fff;
     max-width: 100px;
   }
 

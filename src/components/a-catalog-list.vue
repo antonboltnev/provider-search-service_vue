@@ -36,7 +36,6 @@
 
         data() {
            return {
-               isThisAddedToCart: false,
                addToCartText: 'В корзину',
            }
         },
@@ -49,13 +48,7 @@
 
         methods: {
             addToCart() {
-                let sellerIndex = this.sellers_data.id - 1;
-                let productIndex = this.product_data.id -1;
-                let products = this.product_data;
-                this.isThisAddedToCart = !this.isThisAddedToCart;
-                this.$store.dispatch('ADD_TO_CART', products);
-                this.$store.dispatch('SET_ORDER_LIST', {productIndex, sellerIndex});
-                // console.log(productIndex, sellerIndex)
+                this.$emit('add-to-cart');
             }
         },
     }

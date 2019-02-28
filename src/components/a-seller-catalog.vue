@@ -23,16 +23,17 @@
         </transition>
         <transition name="fade">
              <div class="a-seller-advanced-info about" v-if="isAboutTextVisible">
-                 <p>{{ sellerInfo }}</p>
+                 <p>Телефон: {{ sellers_data.phone }}</p>
         </div>
         </transition>
         <h2>Каталог поставщика</h2>
         <div class="a-seller-catalog-wrapper">
             <a-catalog-list
-                    v-for="item in products"
+                    v-for="(item, index) in products"
                     :key="item.id"
                     :product_data="item"
                     :sellers_data="sellers_data"
+                    @add-to-cart="addToCart(index)"
             />
         </div>
     </div>
@@ -91,6 +92,14 @@
         },
 
         methods: {
+            addToCart(index) {
+                let product = this.products[index];
+                let sellerIndex = this.sellers_data.id - 1;
+                let productIndex = this.products.indexOf(product);
+                this.$store.dispatch('ADD_TO_CART', product);
+                this.$store.dispatch('SET_ORDER_LIST', {productIndex, sellerIndex});
+            },
+
             showAdvancedInfo() {
                 this.isAdvancesInfoVisible = !this.isAdvancesInfoVisible;
                 this.isAboutTextVisible = false;

@@ -29,7 +29,7 @@
               <icon name="cart-arrow-down"></icon>
               <span>Заказы</span>
                 <span class="order_counter bg-color"
-                    v-if="isCounterVisible"
+                    v-if="this.$store.state.cart.length"
                 >{{ orderCounter }}</span>
             </div>
           </router-link>
@@ -47,7 +47,6 @@ import Icon from 'vue-awesome/components/Icon'
         },
         data() {
            return {
-               isCounterVisible: true,
            }
         },
         computed: {
@@ -78,7 +77,6 @@ import Icon from 'vue-awesome/components/Icon'
         border-radius: 3px;
         transition: .2s;
         cursor: pointer;
-        flex: 0 0 10%;
     }
 
     .a-main-menu li:active {
@@ -99,6 +97,9 @@ import Icon from 'vue-awesome/components/Icon'
 
     .menu_a {
         font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .order_counter {

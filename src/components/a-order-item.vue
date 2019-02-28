@@ -9,12 +9,16 @@
             <div class="item_qty_wrapper">
                 <div class="item_change-qty" @click="plusQty">+</div>
                 <div class="item_qty">{{ order_data.qty }}</div>
-                <div class="item_change-qty" @click="minusQty">-</div>
+                <div class="item_change-qty"
+                     @click="minusQty"
+                     :class="{ 'disabled': order_data.qty <= 1}"
+                >-
+                </div>
             </div>
             <div class="item_total text-bold text-color1">Итого: {{ order_data.qty * order_data.price}} руб.</div>
         </div>
         <div class="item_remove" @click="removeItemFromCart">
-            <icon name="trash"></icon>
+            <icon name="times"></icon>
         </div>
     </div>
 </template>
@@ -59,8 +63,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: solid 1px #d6d6d6;
+        border: solid 1px #d6d6d6;
+        border-radius: 6px;
         margin-bottom: 20px;
+        padding: 10px 0;
+        box-shadow: 0 1px 7px 0 #d8d8d8;
     }
 
     .item_img img {
@@ -82,6 +89,12 @@
         flex: 0 0 20%;
     }
 
+    .item_remove svg {
+        width: 30px;
+        height: 30px;
+        fill: #4192e8;
+    }
+
     .item_qty_wrapper {
         display: flex;
         align-items: center;
@@ -92,5 +105,14 @@
 
     .item_qty_wrapper .item_qty{
         padding: 0 24px;
+    }
+
+    .item_change-qty {
+        cursor: pointer;
+    }
+    
+    .item_change-qty.disabled {
+        color: #d7d7d7;
+        pointer-events: none;
     }
 </style>
