@@ -9,7 +9,7 @@
         <div class="product_price">
             {{ product_data.price }} руб/{{ product_data.value }}
         </div>
-        <div class="product_add-to-cart btn bg-color2"
+        <div class="product_add-to-cart btn bg-color"
             @click="addToCart"
         >{{ addToCartText }}
         </div>

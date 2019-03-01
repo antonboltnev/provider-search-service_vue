@@ -1,5 +1,5 @@
 <template>
-    <ul class="a-main-menu bg-color2">
+    <ul class="a-main-menu shadow-border bg-color2">
         <li>
           <router-link to="/">
             <div class="menu_a">
@@ -67,7 +67,6 @@ import Icon from 'vue-awesome/components/Icon'
         right: 0;
         bottom: 0;
         padding: 0 5px 3px 5px;
-        border-top: solid 1px #fff;
     }
 
     .a-main-menu li {
@@ -87,12 +86,13 @@ import Icon from 'vue-awesome/components/Icon'
 
     .a-main-menu a {
         text-decoration: none;
-        color: #fff;
+        color: #797979;
     }
 
     .a-main-menu a svg {
         width: 30px;
         height: 30px;
+        fill: #797979;
     }
 
     .menu_a {

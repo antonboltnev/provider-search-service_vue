@@ -62,7 +62,7 @@ export default {
   }
 
   .favorites-title {
-    color: #fff;
+    color: #797979;
     padding: 10px 0;
     font-size: 25px;
   }

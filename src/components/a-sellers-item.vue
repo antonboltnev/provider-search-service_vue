@@ -71,7 +71,7 @@
         justify-content: space-around;
         align-items: center;
         display: flex;
-        margin: 20px auto;
+        margin: 10px auto 20px auto;
     }
 
     .item_logo img {

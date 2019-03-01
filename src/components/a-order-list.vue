@@ -1,6 +1,6 @@
 <template>
     <div class="a-order-list">
-        <p class="list_title fixed-top bg-color2" v-if="orders.length > 0">Мои активные заказы</p>
+        <p class="list_title fixed-top bg-color2 shadow-border" v-if="orders.length > 0">Мои активные заказы</p>
         <a-order-item
             :order_data="item"
             v-for="(item, index) in orders"
@@ -14,7 +14,7 @@
                 <div>Итого:</div>
                 <span>{{ totalSum }} руб.</span>
             </div>
-            <p class="total-sum_confirm btn bg-color2" @click="checkout">Оформить заказ</p>
+            <p class="total-sum_confirm btn bg-color" @click="checkout">Оформить заказ</p>
         </div>
         <div class="empty-order-list" v-if="orders.length < 1">
             <p class="empty-order-list-p">У вас нет активных заказов</p>
@@ -30,7 +30,7 @@
             <br>
             <br>
             <br>
-                <div class="ok btn bg-color2" @click="closePopup">OK</div>
+                <div class="ok btn bg-color" @click="closePopup">OK</div>
         </div>
         </transition>
     </div>
@@ -97,10 +97,8 @@
 
     .list_title {
         margin: 0 -10px 30px -10px;
-        color: #fff;
         padding: 10px 0;
         font-size: 25px;
-        box-shadow: 0 1px 7px 0 #a2a2a2;
     }
 
     .empty-order-list-p {
@@ -130,8 +128,7 @@
 
     .total-sum_confirm {
         margin-left: 30px;
-        box-shadow: 0 0 6px 0 #616161;
-        background: #ffc02e;
+        box-shadow: 0 0 5px 0 #000000;
     }
 
     .order-total span {
