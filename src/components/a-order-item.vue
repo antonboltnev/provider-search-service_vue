@@ -76,7 +76,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .item_price {

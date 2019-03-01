@@ -5,7 +5,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         sellers: [
-            { name: 'Мираторг', about: 'Информация о поставщике 1', logo: 'userpic.jpg', docs: 'cert1.jpg', id: 1, category: 'Мясная продукция', phone: '8-800-111-11-11', favorite: false, products: [
+            { name: 'Мираторг', about: 'Информация о поставщике 1', logo: 'miratorg.jpg', docs: 'cert1.jpg', id: 1, category: 'Мясная продукция', phone: '8-800-111-11-11', favorite: false, products: [
                     { title: 'Мясо Коровки', img: 'meat.png', price: '1000', value: 'кг', ordered: false, qty: 1, total: 1000, category: 'Мясо' },
                     { title: 'Мясо Барашка', img: 'meat.png', price: '800', value: 'кг', ordered: false, qty: 1, total: 800, category: 'Мясо' },
                     { title: 'Сосиски Такие', img: 'sosiska.jpg', price: '400', value: 'кг', ordered: false, qty: 1, total: 400, category: 'Сосиски' },
@@ -13,7 +13,7 @@ const store = new Vuex.Store({
                     { title: 'Колбаса для Богатых', img: 'kolbasa.jpg', price: '1000', value: 'кг', ordered: false, qty: 1, total: 1000, category: 'Колбаска' },
                     { title: 'Колбаса для Бедных', img: 'kolbasa.jpg', price: '700', value: 'кг', ordered: false, qty: 1, total: 700, category: 'Колбаска' },
                 ] },
-            { name: '22 Хлебзавод', about: 'Информация о поставщике 2', logo: 'userpic2.jpeg', docs: 'cert2.jpg', id: 2, category: 'Хлебная продукция', phone: '8-800-222-22-22', favorite: false, products: [
+            { name: '22 Хлебзавод', about: 'Информация о поставщике 2', logo: '2hleb.jpg', docs: 'cert2.jpg', id: 2, category: 'Хлебная продукция', phone: '8-800-222-22-22', favorite: false, products: [
                     { title: 'Хлеб Белий', img: 'bread.jpg', price: '60', value: 'шт', ordered: false, qty: 1, total: 60, category: 'Хлебушек'  },
                     { title: 'Хлеб Черний', img: 'bread.jpg', price: '50', value: 'шт', ordered: false, qty: 1, total: 50, category: 'Хлебушек'  },
                     { title: 'Булочка Вкусная', img: 'bulochka.jpg', price: '70', value: 'шт', ordered: false, qty: 1, total: 70, category: 'Булочки'  },
@@ -21,15 +21,15 @@ const store = new Vuex.Store({
                     { title: 'Пряник Такой', img: 'pryanik.jpg', price: '100', value: 'шт', ordered: false, qty: 1, total: 100, category: 'Прянички'  },
                     { title: 'Пряник Другой', img: 'pryanik.jpg', price: '110', value: 'шт', ordered: false, qty: 1, total: 110, category: 'Прянички'  },
                 ] },
-            { name: 'Домик в деревне', about: 'Информация о поставщике 3', logo: 'userpic.jpg', id: 3, category: 'Молочная продукция', phone: '8-800-333-33-33', favorite: false, },
-            { name: 'Мясницкий ряд', about: 'Информация о поставщике 4', logo: 'userpic.jpg', id: 4, category: 'Мясная продукция', phone: '8-800-444-44-44', favorite: false, },
-            { name: 'Черемушки', about: 'Информация о поставщике 5', logo: 'userpic.jpg', id: 5, category: 'Хлебная продукция', phone: '8-800-555-55-55', favorite: false, },
-            { name: 'Любятово', about: 'Информация о поставщике 6', logo: 'userpic.jpg', id: 6, category: 'Молочная продукция', phone: '8-800-666-66-66', favorite: false, },
-            { name: 'Рублевский МК', about: 'Информация о поставщике 7', logo: 'userpic.jpg', id: 7, category: 'Мясная продукция', phone: '8-800-777-77-77', favorite: false, },
-            { name: 'МосХлебТорг', about: 'Информация о поставщике 8', logo: 'userpic.jpg', id: 8, category: 'Хлебная продукция', phone: '8-800-888-88-88', favorite: false, },
-            { name: 'Микоян', about: 'Информация о поставщике 9', logo: 'userpic.jpg', id: 9, category: 'Мясная продукция', phone: '8-800-100-10-10', favorite: false, },
-            { name: '28 Хлебзавод', about: 'Информация о поставщике 10', logo: 'userpic.jpg', id: 10, category: 'Хлебная продукция', phone: '8-800-101-01-01', favorite: false, },
-            { name: 'Веселый молочник', about: 'Информация о поставщике 11', logo: 'userpic.jpg', id: 11, category: 'Молочная продукция', phone: '8-800-334-55-22', favorite: false, },
+            { name: 'Домик в деревне', about: 'Информация о поставщике 3', logo: 'domik.jpg', id: 3, category: 'Молочная продукция', phone: '8-800-333-33-33', favorite: false, },
+            { name: 'Мясницкий ряд', about: 'Информация о поставщике 4', logo: 'myasnitskiy.jpg', id: 4, category: 'Мясная продукция', phone: '8-800-444-44-44', favorite: false, },
+            { name: 'Черемушки', about: 'Информация о поставщике 5', logo: 'face-logo.png', id: 5, category: 'Хлебная продукция', phone: '8-800-555-55-55', favorite: false, },
+            { name: 'Любятово', about: 'Информация о поставщике 6', logo: 'face-logo.png', id: 6, category: 'Молочная продукция', phone: '8-800-666-66-66', favorite: false, },
+            { name: 'Рублевский МК', about: 'Информация о поставщике 7', logo: 'face-logo.png', id: 7, category: 'Мясная продукция', phone: '8-800-777-77-77', favorite: false, },
+            { name: 'МосХлебТорг', about: 'Информация о поставщике 8', logo: 'face-logo.png', id: 8, category: 'Хлебная продукция', phone: '8-800-888-88-88', favorite: false, },
+            { name: 'Микоян', about: 'Информация о поставщике 9', logo: 'face-logo.png', id: 9, category: 'Мясная продукция', phone: '8-800-100-10-10', favorite: false, },
+            { name: '28 Хлебзавод', about: 'Информация о поставщике 10', logo: 'face-logo.png', id: 10, category: 'Хлебная продукция', phone: '8-800-101-01-01', favorite: false, },
+            { name: 'Веселый молочник', about: 'Информация о поставщике 11', logo: 'face-logo.png', id: 11, category: 'Молочная продукция', phone: '8-800-334-55-22', favorite: false, },
         ],
         productCategories: [
             { name: 'Все категории', },

@@ -1,29 +1,32 @@
 <template>
     <div class="a-sellers-item shadow-border">
         <router-link to="/seller-catalog">
-            <div class="item_logo">
+            <div class="item_logo" @click="setSellerIndex">
                 <img :src="sellerImage" alt="">
             </div>
+            <div class="item_title" @click="setSellerIndex">
+                <router-link to="/seller-catalog">{{ sellers_data.name }}</router-link>
+            </div>
         </router-link>
-        <div class="item_title" @click="setSellerIndex">
-            <router-link to="/seller-catalog">{{ sellers_data.name }}</router-link>
-        </div>
-        <div class="item_info">
-            <router-link to="/seller-catalog">
-                <icon name="info"></icon>
-            </router-link>
-        </div>
+        <!--<div class="item_info">-->
+            <!--<router-link to="/seller-catalog">-->
+                <!--<icon name="info"></icon>-->
+            <!--</router-link>-->
+        <!--</div>-->
         <div class="item_category">{{ sellers_data.category }}</div>
-        <div class="item_addToFav btn bg-color2"
-          v-if="!sellers_data.favorite"
-          @click="addToFavorite"
-         >В избранное
-       </div>
-        <div class="item_inFavorite btn bg-color"
-            v-if="sellers_data.favorite"
-          @click="addToFavorite"
-       >Удалить
-       </div>
+        <div class="item_fav add"
+             v-if="!sellers_data.favorite"
+             @click="addToFavorite"
+        ><icon name="heart"></icon>
+        </div>
+        <div class="item_fav added"
+             v-if="sellers_data.favorite"
+             @click="addToFavorite"
+        ><icon name="heart" :class="{ 'fav_added': sellers_data.favorite}"></icon>
+        </div>
+        <div class="item_go-ro-catalog btn bg-color" @click="setSellerIndex">
+            <router-link to="/seller-catalog">Каталог</router-link>
+        </div>
     </div>
 </template>
 
@@ -75,11 +78,19 @@
     }
 
     .item_logo img {
-        max-width: 30px;
+        max-width: 70px;
+    }
+
+    .item_fav svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .fav_added {
+        fill: #ff5a5a;
     }
 
     .a-sellers-item a, .a-sellers-item div {
-        margin: 10px 5px;
         flex: 0 2 20%;
     }
 
@@ -93,15 +104,17 @@
         color: #757575;
     }
 
-    .item_phone {
-        font-size: 12px;
+    .item-btns-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .item_category, .item_addToFav, .item_inFavorite {
+    .item_category, .item_fav.add, .item_fav.added {
         font-size: 10px;
     }
 
-    .a-sellers-item div.item_addToFav, .a-sellers-item div.item_inFavorite {
+    .a-sellers-item div.item_fav.add, .a-sellers-item div.item_fav.added {
       min-width: 20%;
     }
 </style>

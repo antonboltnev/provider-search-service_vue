@@ -18,7 +18,7 @@
         <li>
           <router-link to="/customer-cabinet">
             <div class="menu_a">
-              <icon name="star"></icon>
+              <icon name="heart"></icon>
                 <span>Избранное</span>
             </div>
           </router-link>
