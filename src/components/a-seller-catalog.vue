@@ -152,10 +152,11 @@
     }
 
     .a-seller-catalog-wrapper {
+        max-width: 800px;
+        margin: 20px auto 0 auto;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        margin-top: 20px;
     }
 
     .a-seller-info {

@@ -63,7 +63,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        flex: 0 0 20%;
+        flex: 0 0 25%;
         margin: 0 5px 50px 5px;
     }
 

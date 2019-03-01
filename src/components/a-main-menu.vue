@@ -59,6 +59,8 @@ import Icon from 'vue-awesome/components/Icon'
 
 <style scoped>
     .a-main-menu {
+        margin: 0 auto;
+        max-width: 1200px;
         display: flex;
         width: 100%;
         justify-content: space-around;

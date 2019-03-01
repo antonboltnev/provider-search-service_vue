@@ -92,7 +92,8 @@
 
 <style scoped>
     .a-order-list {
-        margin: 50px 0;
+        max-width: 800px;
+        margin: 50px auto;
     }
 
     .list_title {
@@ -111,10 +112,11 @@
     }
     
     .order-total {
+        max-width: 1210px;
         bottom: 67px;
         font-size: 20px;
         padding: 10px 0;
-        margin: 0 -10px;
+        margin: 0 auto;
         color: #fff;
         font-weight: bold;
         display: flex;
@@ -145,5 +147,10 @@
         left: 16%;
         background: #fff;
         z-index: 2;
+    }
+
+    .ok {
+        max-width: 150px;
+        margin: 0 auto;
     }
 </style>
