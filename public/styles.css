@@ -96,3 +96,49 @@ a {
             transform: scale(1);
       }
 }
+
+/*ANIMATION ENDS*/
+
+/*SELECT*/
+.a-category-select-input__wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 -18px;
+}
+
+.a-category-select-input__wrapper label {
+      font-size: 20px;
+      width: 100%;
+      background: #fff;
+}
+
+.a-category-select-input__wrapper input, .a-category-select-input__wrapper select {
+      width: 95%;
+      padding: 10px;
+      background: transparent;
+      border: solid 1px #247ebc;
+      border-radius: 3px;
+      font-size: 16px;
+      margin-top: 10px;
+      color: #247ebc;
+}
+
+.a-category-select-input__wrapper select {
+      width: 100%;
+      margin-bottom: 10px;
+}
+
+/*SELECT ENDS*/
+
+/*SHADOWED ITEMS*/
+
+.shadow-border {
+      border: solid 1px #d6d6d6;
+      border-radius: 6px;
+      padding: 10px 5px;
+      box-shadow: 0 1px 7px 0 #d8d8d8;
+}
+
+/*SHADOWED ITEMS END*/

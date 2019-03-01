@@ -1,5 +1,5 @@
 <template>
-    <div class="a-catalog-list">
+    <div class="a-catalog-list shadow-border">
         <div class="product_img">
             <img :src=productImage alt="">
         </div>
@@ -63,6 +63,8 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        flex: 0 0 20%;
+        margin: 0 5px 50px 5px;
     }
 
     .product_img img {

@@ -10,23 +10,35 @@
         </div>
         <transition name="fade">
             <div class="a-seller-advanced-info certs" v-if="isAdvancesInfoVisible">
-            <div class="cert-docs">
-                <img :src="sellerDocuments" alt="">
+                <div class="cert-docs">
+                    <img :src="sellerDocuments" alt="">
+                </div>
+                <div class="cert-docs">
+                    <img :src="sellerDocuments" alt="">
+                </div>
+                <div class="cert-docs">
+                    <img :src="sellerDocuments" alt="">
+                </div>
             </div>
-            <div class="cert-docs">
-                <img :src="sellerDocuments" alt="">
-            </div>
-            <div class="cert-docs">
-                <img :src="sellerDocuments" alt="">
-            </div>
-        </div>
         </transition>
         <transition name="fade">
-             <div class="a-seller-advanced-info about" v-if="isAboutTextVisible">
-                 <p>Телефон: {{ sellers_data.phone }}</p>
-        </div>
+            <div class="a-seller-advanced-info about" v-if="isAboutTextVisible">
+                <p>Телефон: {{ sellers_data.phone }}</p>
+            </div>
         </transition>
         <h2>Каталог поставщика</h2>
+        <div class="a-category-select-input__wrapper">
+            <label for="category-select">
+                <select name="" id="category-select" v-model="selectedCategory">
+                    <option value="ALL">Все категории</option>
+                    <a-seller-catalog-select-option
+                            v-for="item in showProductCategories"
+                            :key="item.id"
+                            :category_data="item"
+                    />
+                </select>
+            </label>
+        </div>
         <div class="a-seller-catalog-wrapper">
             <a-catalog-list
                     v-for="(item, index) in products"
@@ -41,13 +53,15 @@
 
 <script>
     import aCatalogList from '@/components/a-catalog-list'
+    import aSellerCatalogSelectOption from '@/components/a-seller-catalog-select-option'
     import Icon from 'vue-awesome/components/Icon'
 
     export default {
         name: "a-seller-catalog",
         components: {
             aCatalogList,
-            Icon
+            Icon,
+            aSellerCatalogSelectOption
         },
         props: {
             sellerIndex: {
@@ -60,29 +74,44 @@
                 sellerSelectedIndex: this.sellerIndex,
                 isAdvancesInfoVisible: false,
                 isAboutTextVisible: false,
+                selectedCategory: 'ALL',
             }
         },
         computed: {
-            sellerInfo(e) {
+            showProductCategories(e) {
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
                 e = this.sellerSelectedIndex;
-                return  this.$store.state.sellers[e].about;
+                let categoryArr = [];
+                for ( let item in this.$store.state.sellers[e].products) {
+                    categoryArr.push(this.$store.state.sellers[e].products[item].category);
+                }
+                return Object.values(categoryArr.reduce((acc, cur) => Object.assign(acc,{[cur]:cur}),{} ));
+            },
+
+            products(e) {
+                let vm = this;
+                let selectFiilter = this.selectedCategory;
+                vm.sellerSelectedIndex = this.$store.state.selectedSeller;
+                e = this.sellerSelectedIndex;
+
+                if ( selectFiilter === 'ALL' ) {
+                    return this.$store.state.sellers[e].products;
+                } else {
+                    return this.$store.state.sellers[e].products.filter(function (item) {
+                        vm.emptyFilterResults = false;
+                        return item.category.indexOf(selectFiilter) > -1;
+                    });
+                }
             },
 
             sellerDocuments(e) {
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
                 e = this.sellerSelectedIndex;
-                return  require('../../public/img/' +  this.$store.state.sellers[e].docs);
+                return require('../../public/img/' + this.$store.state.sellers[e].docs);
             },
 
-            products(e) {
-                let vm = this;
-                vm.sellerSelectedIndex = this.$store.state.selectedSeller;
-                e = this.sellerSelectedIndex;
-                return this.$store.state.sellers[e].products;
-            },
             sellers_data(e) {
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
@@ -118,9 +147,13 @@
 </script>
 
 <style scoped>
+    .a-category-select-input__wrapper {
+        margin: 0;
+    }
 
     .a-seller-catalog-wrapper {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-around;
         margin-top: 20px;
     }
@@ -131,8 +164,8 @@
         align-items: center;
         margin-bottom: 30px;
     }
-    
-    .a-seller-cert, .a-seller-about, .a-seller-chat{
+
+    .a-seller-cert, .a-seller-about, .a-seller-chat {
         margin: 0 2px;
         flex: 0 0 25%;
     }

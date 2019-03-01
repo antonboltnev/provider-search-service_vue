@@ -1,5 +1,5 @@
 <template>
-    <div class="a-sellers-item">
+    <div class="a-sellers-item shadow-border">
         <router-link to="/seller-catalog">
             <div class="item_logo">
                 <img :src="sellerImage" alt="">
@@ -72,10 +72,6 @@
         align-items: center;
         display: flex;
         margin: 20px auto;
-        border: solid 1px #d6d6d6;
-        border-radius: 6px;
-        padding: 10px 0;
-        box-shadow: 0 1px 7px 0 #d8d8d8;
     }
 
     .item_logo img {

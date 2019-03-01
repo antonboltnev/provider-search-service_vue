@@ -6,14 +6,20 @@ const store = new Vuex.Store({
     state: {
         sellers: [
             { name: 'Мираторг', about: 'Информация о поставщике 1', logo: 'userpic.jpg', docs: 'cert1.jpg', id: 1, category: 'Мясная продукция', phone: '8-800-111-11-11', favorite: false, products: [
-                    { title: 'Мясо', img: 'meat.png', price: '1000', value: 'кг', ordered: false, qty: 1, total: 1000 },
-                    { title: 'Сосиски', img: 'sosiska.jpg', price: '500', value: 'кг', ordered: false, qty: 1, total: 500 },
-                    { title: 'Колбаса', img: 'kolbasa.jpg', price: '700', value: 'кг', ordered: false, qty: 1, total: 700 },
+                    { title: 'Мясо Коровки', img: 'meat.png', price: '1000', value: 'кг', ordered: false, qty: 1, total: 1000, category: 'Мясо' },
+                    { title: 'Мясо Барашка', img: 'meat.png', price: '800', value: 'кг', ordered: false, qty: 1, total: 800, category: 'Мясо' },
+                    { title: 'Сосиски Такие', img: 'sosiska.jpg', price: '400', value: 'кг', ordered: false, qty: 1, total: 400, category: 'Сосиски' },
+                    { title: 'Сосиски Другие', img: 'sosiska.jpg', price: '500', value: 'кг', ordered: false, qty: 1, total: 500, category: 'Сосиски' },
+                    { title: 'Колбаса для Богатых', img: 'kolbasa.jpg', price: '1000', value: 'кг', ordered: false, qty: 1, total: 1000, category: 'Колбаска' },
+                    { title: 'Колбаса для Бедных', img: 'kolbasa.jpg', price: '700', value: 'кг', ordered: false, qty: 1, total: 700, category: 'Колбаска' },
                 ] },
             { name: '22 Хлебзавод', about: 'Информация о поставщике 2', logo: 'userpic2.jpeg', docs: 'cert2.jpg', id: 2, category: 'Хлебная продукция', phone: '8-800-222-22-22', favorite: false, products: [
-                    { title: 'Хлеб', img: 'bread.jpg', price: '50', value: 'шт', ordered: false, qty: 1, total: 50 },
-                    { title: 'Булочка', img: 'bulochka.jpg', price: '70', value: 'шт', ordered: false, qty: 1, total: 70 },
-                    { title: 'Пряник', img: 'pryanik.jpg', price: '100', value: 'шт', ordered: false, qty: 1, total: 100 },
+                    { title: 'Хлеб Белий', img: 'bread.jpg', price: '60', value: 'шт', ordered: false, qty: 1, total: 60, category: 'Хлебушек'  },
+                    { title: 'Хлеб Черний', img: 'bread.jpg', price: '50', value: 'шт', ordered: false, qty: 1, total: 50, category: 'Хлебушек'  },
+                    { title: 'Булочка Вкусная', img: 'bulochka.jpg', price: '70', value: 'шт', ordered: false, qty: 1, total: 70, category: 'Булочки'  },
+                    { title: 'Булочка очень Вкусная', img: 'bulochka.jpg', price: '100', value: 'шт', ordered: false, qty: 1, total: 100, category: 'Булочки'  },
+                    { title: 'Пряник Такой', img: 'pryanik.jpg', price: '100', value: 'шт', ordered: false, qty: 1, total: 100, category: 'Прянички'  },
+                    { title: 'Пряник Другой', img: 'pryanik.jpg', price: '110', value: 'шт', ordered: false, qty: 1, total: 110, category: 'Прянички'  },
                 ] },
             { name: 'Домик в деревне', about: 'Информация о поставщике 3', logo: 'userpic.jpg', id: 3, category: 'Молочная продукция', phone: '8-800-333-33-33', favorite: false, },
             { name: 'Мясницкий ряд', about: 'Информация о поставщике 4', logo: 'userpic.jpg', id: 4, category: 'Мясная продукция', phone: '8-800-444-44-44', favorite: false, },
@@ -24,6 +30,13 @@ const store = new Vuex.Store({
             { name: 'Микоян', about: 'Информация о поставщике 9', logo: 'userpic.jpg', id: 9, category: 'Мясная продукция', phone: '8-800-100-10-10', favorite: false, },
             { name: '28 Хлебзавод', about: 'Информация о поставщике 10', logo: 'userpic.jpg', id: 10, category: 'Хлебная продукция', phone: '8-800-101-01-01', favorite: false, },
             { name: 'Веселый молочник', about: 'Информация о поставщике 11', logo: 'userpic.jpg', id: 11, category: 'Молочная продукция', phone: '8-800-334-55-22', favorite: false, },
+        ],
+        productCategories: [
+            { name: 'Все категории', },
+            { name: 'Мясная продукция' },
+            { name: 'Хлебная продукция' },
+            { name: 'Молочная продукция', },
+
         ],
         selectedSeller: 0,
         cart: [],
