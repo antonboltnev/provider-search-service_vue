@@ -2,7 +2,9 @@
     <div id="app">
         <a-main-menu/>
         <keep-alive>
-            <router-view></router-view>
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
         </keep-alive>
     </div>
 </template>

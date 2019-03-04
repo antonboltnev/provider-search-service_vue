@@ -27,7 +27,7 @@
             </div>
         </transition>
         <h2>Каталог поставщика</h2>
-        <div class="a-category-select-input__wrapper">
+        <div class="a-category-select-input__wrapper " v-if="products">
             <label for="category-select">
                 <select name="" id="category-select" v-model="selectedCategory">
                     <option value="ALL">Все категории</option>
@@ -47,6 +47,13 @@
                     :sellers_data="sellers_data"
                     @add-to-cart="addToCart(index)"
             />
+            <div class="a-seller-empty-catalog" v-if="!products">Поставщик пока не добавил товары в каталог...
+                <div class="back-to-main">
+                    <router-link to="/">
+                        <div class="btn bg-color">На главную</div>
+                    </router-link>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -179,6 +186,15 @@
 
     .cert-docs img {
         max-width: 100px;
+    }
+
+    .a-seller-empty-catalog {
+        max-width: 300px;
+    }
+
+    .a-seller-empty-catalog .back-to-main {
+        max-width: 150px;
+        margin: 20px auto;
     }
 
 </style>

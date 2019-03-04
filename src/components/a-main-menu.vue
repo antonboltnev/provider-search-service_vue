@@ -81,7 +81,7 @@ import Icon from 'vue-awesome/components/Icon'
     }
 
     .a-main-menu li:active {
-        box-shadow: inset 0 1px 15px 2px #c58c09;
+        box-shadow: inset 0 1px 15px 2px #d2d2d2;
         color: #757575;
         transition: .2s;
     }

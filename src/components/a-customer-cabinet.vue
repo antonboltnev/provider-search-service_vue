@@ -1,7 +1,7 @@
 <template>
   <div class="a-customer-cabinet">
     <div class="cabinet__favorites">
-      <div class="favorites-title fixed-top bg-color2">
+      <div class="favorites-title fixed-top bg-color2 shadow-border">
         Мои избранные поставщики:
       </div>
       <a-sellers-item
