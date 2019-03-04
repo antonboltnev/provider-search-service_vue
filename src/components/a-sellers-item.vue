@@ -84,18 +84,24 @@
     .item_fav svg {
         width: 30px;
         height: 30px;
+        fill: #fff;
+        stroke: #000;
+        stroke-width: 10px;
     }
 
-    .fav_added {
+    .item_fav.added svg {
         fill: #ff5a5a;
+        stroke: #fff;
+        stroke-width: 1px;
     }
 
-    .a-sellers-item a, .a-sellers-item div {
-        flex: 0 2 20%;
+    .a-sellers-item div {
+        flex: 0 2 10%;
     }
 
     .a-sellers-item a {
         border: 0;
+        max-width: 80px;
     }
 
     .item_title {
