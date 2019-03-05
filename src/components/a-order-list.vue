@@ -146,6 +146,10 @@
         margin-left: 10px;
     }
 
+    .empty-order-list {
+        padding-top: 35px;
+    }
+
     .thankyou-popup {
         position: absolute;
         width: 100%;
