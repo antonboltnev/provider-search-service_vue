@@ -99,6 +99,7 @@
 <style scoped>
 
     .a-seller__list-header {
+        z-index: 1;
         position: sticky;
         top: 38px;
         background: #fff;

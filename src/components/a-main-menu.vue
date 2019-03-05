@@ -106,7 +106,7 @@ import Icon from 'vue-awesome/components/Icon'
     .a-main-menu a svg {
         width: 30px;
         height: 30px;
-        fill: #797979;
+        fill: #b3b3b3;
     }
 
     .menu_a {

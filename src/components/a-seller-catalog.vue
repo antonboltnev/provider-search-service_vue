@@ -26,7 +26,6 @@
                 <p>Телефон: {{ sellers_data.phone }}</p>
             </div>
         </transition>
-        <h2>Каталог поставщика</h2>
         <div class="a-category-select-input__wrapper " v-if="products">
             <label for="category-select">
                 <select name="" id="category-select" v-model="selectedCategory">
