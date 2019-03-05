@@ -63,7 +63,8 @@
 
             setSellerIndex() {
                 let payload = this.sellers_data.id - 1;
-                return this.$store.dispatch('SET_SELLER_INDEX', payload);
+                this.$store.dispatch('SET_SELLER_INDEX', payload);
+                this.$store.dispatch('SET_HEADER_TEXT', 'Продукция поставщика');
             },
         },
     }

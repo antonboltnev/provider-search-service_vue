@@ -1,9 +1,6 @@
 <template>
   <div class="a-customer-cabinet">
     <div class="cabinet__favorites">
-      <div class="favorites-title fixed-top bg-color2 shadow-border">
-        Мои избранные поставщики:
-      </div>
       <a-sellers-item
           v-for="item in sellers"
           :key="item.id"
@@ -43,11 +40,15 @@ export default {
     }
   },
 
-    methods: {
-        addToFavorite(item) {
-            this.$store.dispatch('SET_SELLER_TO_FAV', item);
-        },
-    }
+  methods: {
+      addToFavorite(item) {
+          this.$store.dispatch('SET_SELLER_TO_FAV', item);
+      },
+  },
+
+  mounted() {
+      this.$store.dispatch('SET_HEADER_TEXT', 'Мои избранные поставщики');
+  },
 }
 
 </script>
@@ -59,12 +60,6 @@ export default {
 
   .no-favorite {
     padding-top: 50px;
-  }
-
-  .favorites-title {
-    color: #797979;
-    padding: 10px 0;
-    font-size: 25px;
   }
   
   .add-fav {

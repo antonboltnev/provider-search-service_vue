@@ -154,6 +154,10 @@
 </script>
 
 <style scoped>
+    .a-seller-catalog {
+        margin-top: 38px;
+    }
+
     .a-category-select-input__wrapper {
         margin: 0;
     }

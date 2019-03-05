@@ -1,10 +1,11 @@
 <template>
     <div id="app">
+        <a-header class="fixed-top bg-color2 shadow-border"/>
         <a-main-menu/>
         <keep-alive>
-            <transition name="fade" mode="out-in">
+            <!--<transition name="fade" mode="out-in">-->
                 <router-view></router-view>
-            </transition>
+            <!--</transition>-->
         </keep-alive>
     </div>
 </template>
@@ -16,6 +17,7 @@
 
     import 'vue-awesome/icons'
 
+    import aHeader from '@/components/a-header'
     import aMainMenu from '@/components/a-main-menu'
     import aMainPage from '@/components/a-main-page'
     import aSellerCatalog from '@/components/a-seller-catalog'
@@ -55,6 +57,7 @@
         name: 'app',
         router,
         components: {
+            aHeader,
             aMainPage,
             aSellerCatalog,
             aMainMenu,

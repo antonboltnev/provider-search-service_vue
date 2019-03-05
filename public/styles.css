@@ -29,8 +29,8 @@ a {
 /*BG COLOR*/
 
 .bg-color {
-      background: #ff5a5a;
-      color: #fff;
+      background: #ffffff;
+      color: #797979;
 }
 
 .bg-color2 {
@@ -41,7 +41,7 @@ a {
 /*BG COLOR END*/
 
 .text-color1 {
-      color: #ffb407;
+      color: #ff5a5a;
 }
 
 .text-color2 {
@@ -139,7 +139,7 @@ a {
       border-radius: 3px;
       border: 0;
       font-size: 16px;
-      margin-top: 10px;
+      margin-top: 20px;
       box-shadow: 0 1px 7px 0 #d8d8d8;
 }
 
@@ -153,7 +153,6 @@ a {
 /*SHADOWED ITEMS*/
 
 .shadow-border {
-      border-radius: 6px;
       padding: 10px 5px;
       box-shadow: 0 1px 7px 0 #d8d8d8;
 }

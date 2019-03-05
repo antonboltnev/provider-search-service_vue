@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
+        pageName: '',
         sellers: [
             { name: 'Мираторг', about: 'Информация о поставщике 1', logo: 'miratorg.jpg', docs: 'cert1.jpg', id: 1, category: 'Мясная продукция', phone: '8-800-111-11-11', favorite: false, products: [
                     { title: 'Мясо Коровки', img: 'meat.png', price: '1000', value: 'кг', ordered: false, qty: 1, total: 1000, category: 'Мясо' },
@@ -48,6 +49,9 @@ const store = new Vuex.Store({
         },
     },
     mutations: {
+        SET_HEADER: ( state, payload ) => {
+            state.pageName = payload;
+        },
         FILTER: ( state, payload ) => {
             state.sellers = state.sellers.filter(function (i) {
                 return i.category.match(payload);
@@ -91,6 +95,9 @@ const store = new Vuex.Store({
         }
     },
     actions: {
+        SET_HEADER_TEXT: ( context, payload ) => {
+            context.commit( 'SET_HEADER', payload );
+        },
         FILTER_SELLERS: ( context, payload ) => {
             context.commit( 'FILTER', payload );
         },

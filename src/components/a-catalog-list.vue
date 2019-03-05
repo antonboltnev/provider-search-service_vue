@@ -1,5 +1,5 @@
 <template>
-    <div class="a-catalog-list shadow-border">
+    <div class="a-catalog-list">
         <div class="product_img">
             <img :src=productImage alt="">
         </div>
@@ -13,10 +13,6 @@
             @click="addToCart"
         >{{ addToCartText }}
         </div>
-        <!--<div class="product_add-to-cart btn bg-color"-->
-             <!--v-else-->
-        <!--&gt;{{ addedToCartText }}-->
-        <!--</div>-->
     </div>
 </template>
 
@@ -51,6 +47,10 @@
                 this.$emit('add-to-cart');
             }
         },
+
+        mounted() {
+            this.$store.dispatch('SET_HEADER_TEXT', 'Каталог поставщика');
+        },
     }
 </script>
 
@@ -63,7 +63,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        flex: 0 0 25%;
+        flex: 0 0 40%;
         margin: 0 5px 50px 5px;
     }
 
@@ -77,6 +77,12 @@
 
     .product_add-to-cart:active {
         box-shadow: inset 0 0 10px 0 #525252;
+    }
+
+    @media (min-width: 600px) {
+        .a-catalog-list {
+            flex: 0 0 30%;
+        }
     }
 
 </style>

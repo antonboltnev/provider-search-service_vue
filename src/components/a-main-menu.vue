@@ -2,14 +2,14 @@
     <ul class="a-main-menu shadow-border bg-color2">
         <li>
           <router-link to="/">
-            <div class="menu_a">
+            <div class="menu_a" @click="mainPageClick">
               <icon name="home"></icon>
                 <span>Главная</span>
             </div>
           </router-link>
         </li>
         <li><router-link to="/">
-          <div class="menu_a">
+          <div class="menu_a" @click="mainPageClick">
             <icon name="envelope"></icon>
               <span>Сообщения</span>
           </div>
@@ -17,7 +17,7 @@
         </li>
         <li>
           <router-link to="/customer-cabinet">
-            <div class="menu_a">
+            <div class="menu_a" @click="favoritePageClick">
               <icon name="heart"></icon>
                 <span>Избранное</span>
             </div>
@@ -25,7 +25,7 @@
         </li>
         <li>
           <router-link to="/customer-order-list">
-            <div class="menu_a">
+            <div class="menu_a" @click="cartPageClick">
               <icon name="cart-arrow-down"></icon>
               <span>Заказы</span>
                 <span class="order_counter bg-color"
@@ -53,7 +53,19 @@ import Icon from 'vue-awesome/components/Icon'
             orderCounter() {
                     return this.$store.state.cart.length;
             }
-        }
+        },
+
+        methods: {
+            mainPageClick() {
+                this.$store.dispatch('SET_HEADER_TEXT', 'Каталог поставщиков');
+            },
+            favoritePageClick() {
+                this.$store.dispatch('SET_HEADER_TEXT', 'Мои избранные поставщики');
+            },
+            cartPageClick() {
+                this.$store.dispatch('SET_HEADER_TEXT', 'Мои активные заказы');
+            }
+        },
     }
 </script>
 
@@ -110,6 +122,8 @@ import Icon from 'vue-awesome/components/Icon'
         right: 2px;
         padding: 4px 8px;
         border-radius: 50%;
+        background: #5bd61e;
+        color: #fff;
         font-size: 13px;
     }
 </style>

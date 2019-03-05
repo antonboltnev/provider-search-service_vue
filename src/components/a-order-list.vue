@@ -1,6 +1,5 @@
 <template>
     <div class="a-order-list">
-        <p class="list_title fixed-top bg-color2 shadow-border" v-if="orders.length > 0">Мои активные заказы</p>
         <a-order-item
             :order_data="item"
             v-for="(item, index) in orders"
@@ -9,12 +8,12 @@
             @plus_qty="plusQty(index)"
             @minus_qty="minusQty(index)"
         />
-        <div class="order-total bg-color fixed-bottom" v-if="orders.length > 0">
+        <div class="order-total bg-color2 fixed-bottom" v-if="orders.length > 0">
             <div class="total-sum">
                 <div>Итого:</div>
                 <span>{{ totalSum }} руб.</span>
             </div>
-            <p class="total-sum_confirm btn bg-color" @click="checkout">Оформить заказ</p>
+            <p class="total-sum_confirm btn" @click="checkout">Оформить заказ</p>
         </div>
         <div class="empty-order-list" v-if="orders.length < 1">
             <p class="empty-order-list-p">У вас нет активных заказов</p>
@@ -86,7 +85,11 @@
         },
         created() {
             this.orderChecked = false;
-        }
+        },
+
+        mounted() {
+            this.$store.dispatch('SET_HEADER_TEXT', 'Мои заказы');
+        },
     }
 </script>
 
@@ -118,6 +121,7 @@
         padding: 10px 0;
         margin: 0 auto;
         color: #fff;
+        background: #5bd61e;
         font-weight: bold;
         display: flex;
         align-items: center;
@@ -130,7 +134,12 @@
 
     .total-sum_confirm {
         margin-left: 30px;
-        box-shadow: 0 0 5px 0 #000000;
+        box-shadow: 0 0 5px 0 #50753d;
+        background: #5bd61e;
+        color: #fff;
+    }
+    .total-sum_confirm:active {
+        box-shadow: inset 0 0 5px 0 #50753d;
     }
 
     .order-total span {
@@ -139,12 +148,12 @@
 
     .thankyou-popup {
         position: absolute;
-        width: 70%;
+        width: 100%;
         height: 200px;
         padding-top: 100px;
         top: 0;
         bottom: 0;
-        left: 16%;
+        left: 0;
         background: #fff;
         z-index: 2;
     }

@@ -89,6 +89,10 @@
                 this.$store.dispatch('SET_SELLER_TO_FAV', item);
             },
         },
+
+        mounted() {
+           this.$store.dispatch('SET_HEADER_TEXT', 'Каталог поставщиков');
+        },
     }
 </script>
 
@@ -96,7 +100,7 @@
 
     .a-seller__list-header {
         position: sticky;
-        top: 0;
+        top: 38px;
         background: #fff;
         padding: 0 10px;
     }
