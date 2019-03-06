@@ -27,7 +27,16 @@
             </div>
           </router-link>
         </li>
-        <li><router-link to="/settings">
+        <li>
+            <router-link to="/about">
+                <div class="menu_a" @click="aboutPageClick">
+                    <icon name="info-circle"></icon>
+                    <span>О ресурсе</span>
+                </div>
+            </router-link>
+        </li>
+        <li>
+            <router-link to="/settings">
             <div class="menu_a" @click="settingsPageClick">
                 <icon name="cog"></icon>
                 <span>Настройки</span>
@@ -68,6 +77,9 @@ import Icon from 'vue-awesome/components/Icon'
             },
             cartPageClick() {
                 this.$store.dispatch('SET_HEADER_TEXT', 'Мои активные заказы');
+            },
+            aboutPageClick() {
+                this.$store.dispatch('SET_HEADER_TEXT', 'О ресурсе');
             },
             settingsPageClick() {
                 this.$store.dispatch('SET_HEADER_TEXT', 'Настройки');
@@ -125,8 +137,8 @@ import Icon from 'vue-awesome/components/Icon'
     }
 
     .a-main-menu a svg {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
     }
 
     .menu_a {
