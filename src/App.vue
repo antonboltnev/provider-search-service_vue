@@ -3,7 +3,9 @@
         <a-header class="fixed-top bg-color2 shadow-border"/>
         <a-main-menu/>
         <keep-alive>
+            <transition name="fade">
                 <router-view></router-view>
+            </transition>
         </keep-alive>
     </div>
 </template>

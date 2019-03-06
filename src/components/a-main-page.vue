@@ -116,7 +116,7 @@
     }
 
     .a-main-page-nav-blocks a:nth-child(1) svg, .a-main-page-nav-blocks a:nth-child(4) svg, .a-main-page-nav-blocks a:nth-child(5) svg {
-        fill: #009c64;
+        fill: #38cdc1;
     }
 
     .order_counter {

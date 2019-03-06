@@ -1,5 +1,5 @@
 <template>
-    <ul class="a-main-menu shadow-border bg-color2" v-if="toggleHeaderVisibility">
+    <ul class="a-main-menu shadow-border bg-color" v-if="toggleHeaderVisibility">
         <li>
           <router-link to="/home">
             <div class="menu_a" @click="mainPageClick">
