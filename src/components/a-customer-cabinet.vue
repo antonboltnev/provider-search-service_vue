@@ -11,7 +11,7 @@
            v-if="sellers.length < 1"
       >
         <p class="no-favorite">У вас нет избранных поставщиков</p>
-        <router-link to="/">
+        <router-link to="/sellers-list">
           <p class="add-fav btn bg-color">Добавить</p>
         </router-link>
       </div>

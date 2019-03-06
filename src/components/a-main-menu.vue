@@ -1,14 +1,14 @@
 <template>
-    <ul class="a-main-menu shadow-border bg-color2">
+    <ul class="a-main-menu shadow-border bg-color2" v-if="toggleHeaderVisibility">
         <li>
-          <router-link to="/">
+          <router-link to="/home">
             <div class="menu_a" @click="mainPageClick">
               <icon name="home"></icon>
                 <span>Главная</span>
             </div>
           </router-link>
         </li>
-        <li><router-link to="/">
+        <li><router-link to="/home">
           <div class="menu_a" @click="mainPageClick">
             <icon name="envelope"></icon>
               <span>Сообщения</span>
@@ -52,12 +52,16 @@ import Icon from 'vue-awesome/components/Icon'
         computed: {
             orderCounter() {
                     return this.$store.state.cart.length;
+            },
+
+            toggleHeaderVisibility() {
+                return this.$store.state.isHeaderVisible
             }
         },
 
         methods: {
             mainPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Каталог поставщиков');
+                this.$store.dispatch('SET_HEADER_TEXT', 'Главная страница');
             },
             favoritePageClick() {
                 this.$store.dispatch('SET_HEADER_TEXT', 'Мои избранные поставщики');
@@ -66,15 +70,30 @@ import Icon from 'vue-awesome/components/Icon'
                 this.$store.dispatch('SET_HEADER_TEXT', 'Мои активные заказы');
             }
         },
+
+        watch: {
+            $route() {
+                if ( this.$route.path === '/home' ) {
+                    this.$store.dispatch('HIDE_HEADER');
+                } else {
+                    this.$store.dispatch('SHOW_HEADER');
+                }
+            },
+        },
+
+        created() {
+            if ( this.$route.path === '/home' ) {
+                this.$store.dispatch('HIDE_HEADER');
+            } else {
+                this.$store.dispatch('SHOW_HEADER');
+            }
+        }
     }
 </script>
 
 <style scoped>
     .a-main-menu {
-        margin: 0 auto;
-        max-width: 1200px;
         display: flex;
-        width: 100%;
         justify-content: space-around;
         position: fixed;
         left: 0;
@@ -114,16 +133,5 @@ import Icon from 'vue-awesome/components/Icon'
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    .order_counter {
-        position: absolute;
-        top: 2px;
-        right: 2px;
-        padding: 4px 8px;
-        border-radius: 50%;
-        background: #5bd61e;
-        color: #fff;
-        font-size: 13px;
     }
 </style>

@@ -17,7 +17,7 @@
         </div>
         <div class="empty-order-list" v-if="orders.length < 1">
             <p class="empty-order-list-p">У вас нет активных заказов</p>
-            <router-link to="/">
+            <router-link to="/sellers-list">
                 <p class="btn bg-color">Добавить</p>
             </router-link>
         </div>

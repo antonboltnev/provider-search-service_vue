@@ -5,6 +5,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         pageName: '',
+        isHeaderVisible: true,
         sellers: [
             { name: 'Мираторг', about: 'Информация о поставщике 1', logo: 'miratorg.jpg', docs: 'cert1.jpg', id: 1, category: 'Мясная продукция', phone: '8-800-111-11-11', favorite: false, products: [
                     { title: 'Мясо Коровки', img: 'meat.png', price: '1000', value: 'кг', ordered: false, qty: 1, total: 1000, category: 'Мясо' },
@@ -92,6 +93,12 @@ const store = new Vuex.Store({
         CART_CHECKOUT: ( state, payload ) => {
             state.order.push(payload);
             state.cart.splice(0, state.cart.length);
+        },
+        HIDE_HEAD: ( state ) => {
+            state.isHeaderVisible = false;
+        },
+        SHOW_HEAD: ( state ) => {
+            state.isHeaderVisible = true;
         }
     },
     actions: {
@@ -125,6 +132,12 @@ const store = new Vuex.Store({
         CHECKOUT: ( context, payload ) => {
            context.commit( 'CART_CHECKOUT', payload );
         },
+        HIDE_HEADER: ( context) => {
+            context.commit( 'HIDE_HEAD' );
+        },
+        SHOW_HEADER: ( context) => {
+            context.commit( 'SHOW_HEAD' );
+        }
     }
 });
 

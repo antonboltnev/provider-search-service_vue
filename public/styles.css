@@ -3,6 +3,10 @@
       padding: 0;
 }
 
+body, html {
+      height: 100%;
+}
+
 #app {
       font-family: 'Avenir', Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -11,7 +15,7 @@
       color: #2c3e50;
       margin: 0 auto 90px auto;
       padding: 20px 10px 1px 10px;
-      max-width: 1200px;
+      max-width: 900px;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -57,12 +61,12 @@ a {
       font-weight: bold;
       box-shadow: 0 1px 7px 0 #d8d8d8;
       -webkit-tap-highlight-color: transparent;
-      transition: .3s;
+      transition: .2s;
 }
 
 .btn:hover {
       box-shadow: 0 0 1px 0 #d8d8d8;
-      transition: .3s;
+      transition: .2s;
 }
 
 .btn:active {
@@ -134,7 +138,7 @@ a {
 
 .a-category-select-input__wrapper label {
       font-size: 20px;
-      width: 95%;
+      width: 98%;
 }
 
 .a-category-select-input__wrapper input, .a-category-select-input__wrapper select {
@@ -164,3 +168,16 @@ a {
 }
 
 /*SHADOWED ITEMS END*/
+
+/*COUNTER*/
+
+.order_counter {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      padding: 4px 8px;
+      border-radius: 50%;
+      background: #5bd61e;
+      color: #fff;
+      font-size: 13px;
+}
