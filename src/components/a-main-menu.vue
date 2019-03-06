@@ -61,7 +61,7 @@ import Icon from 'vue-awesome/components/Icon'
 
         methods: {
             mainPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Главная страница');
+                this.$store.dispatch('SET_HEADER_TEXT', 'Главная');
             },
             favoritePageClick() {
                 this.$store.dispatch('SET_HEADER_TEXT', 'Мои избранные поставщики');

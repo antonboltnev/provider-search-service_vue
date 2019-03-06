@@ -12,14 +12,6 @@
                     </select>
                 </label>
             </div>
-            <div class="a-sellers__list__title bg-color2">
-                <div class="title_items">Наименование поставщика:
-                </div>
-                <div class="title_items">Категория продукции:
-                </div>
-                <div class="title_items"> Контактный телефон:
-                </div>
-            </div>
         </div>
         <div class="a-sellers__list">
             <a-sellers-item
@@ -91,7 +83,7 @@
         },
 
         mounted() {
-           this.$store.dispatch('SET_HEADER_TEXT', 'Каталог поставщиков');
+           this.$store.dispatch('SET_HEADER_TEXT', 'Поставщики');
         },
     }
 </script>
@@ -107,19 +99,8 @@
         border-bottom: solid 1px #eeeeee;
     }
 
-    .a-sellers__list__title {
-        display: flex;
-        justify-content: space-around;
-        padding: 20px 20px 10px 20px;
-        margin: 0 -20px 0 -20px;
-        border-bottom: solid 1px #fff;
-    }
-
-    .title_items {
-        font-size: 12px;
-        flex: 0 0 30%;
-        text-transform: uppercase;
-        font-weight: bold;
+    .a-sellers__list {
+        margin-top: 30px;
     }
 
     .a-sellers__list__empty {

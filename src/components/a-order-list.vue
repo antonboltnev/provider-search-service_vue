@@ -18,7 +18,7 @@
         <div class="empty-order-list" v-if="orders.length < 1">
             <p class="empty-order-list-p">У вас нет активных заказов</p>
             <router-link to="/sellers-list">
-                <p class="btn bg-color">Добавить</p>
+                <p class="btn bg-color" @click="sellersPageClick">Добавить</p>
             </router-link>
         </div>
         <transition name="bounce">
@@ -62,6 +62,10 @@
             }
         },
         methods: {
+            sellersPageClick() {
+                this.$store.dispatch('SET_HEADER_TEXT', 'Поставщики');
+            },
+
             checkout() {
                this.orderChecked = true;
                this.$store.dispatch('CHECKOUT', this.orders);

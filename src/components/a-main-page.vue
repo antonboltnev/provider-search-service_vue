@@ -2,8 +2,10 @@
     <div class="a-main-page">
         <div class="a-main-page-nav-blocks">
             <router-link to="/sellers-list">
-                <icon name="cubes"></icon>
-                <div class="nav-block">Каталог поставщиков</div>
+                <div @click="sellersPageClick">
+                    <icon name="cubes"></icon>
+                    <div class="nav-block">Каталог поставщиков</div>
+                </div>
             </router-link>
             <router-link to="/customer-cabinet">
                 <icon name="heart"></icon>
@@ -57,11 +59,9 @@
         },
 
         methods: {
-
-        },
-
-        mounted() {
-            this.$store.dispatch('SET_HEADER_TEXT', 'Главная страница');
+            sellersPageClick() {
+                this.$store.dispatch('SET_HEADER_TEXT', 'Поставщики');
+            },
         },
     }
 </script>

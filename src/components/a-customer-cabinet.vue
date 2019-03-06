@@ -12,7 +12,7 @@
       >
         <p class="no-favorite">У вас нет избранных поставщиков</p>
         <router-link to="/sellers-list">
-          <p class="add-fav btn bg-color">Добавить</p>
+          <p class="add-fav btn bg-color" @click="sellersPageClick">Добавить</p>
         </router-link>
       </div>
     </div>
@@ -43,6 +43,10 @@ export default {
   methods: {
       addToFavorite(item) {
           this.$store.dispatch('SET_SELLER_TO_FAV', item);
+      },
+
+      sellersPageClick() {
+          this.$store.dispatch('SET_HEADER_TEXT', 'Поставщики');
       },
   },
 
