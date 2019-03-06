@@ -119,17 +119,15 @@
     }
     
     .order-total {
-        max-width: 1210px;
         bottom: 67px;
         font-size: 20px;
         padding: 10px 0;
         margin: 0 auto;
-        color: #fff;
-        background: #5bd61e;
         font-weight: bold;
         display: flex;
         align-items: center;
         justify-content: center;
+        border-bottom: solid 1px #fff;
     }
 
     .total-sum {
@@ -138,9 +136,7 @@
 
     .total-sum_confirm {
         margin-left: 30px;
-        box-shadow: 0 0 5px 0 #50753d;
-        background: #5bd61e;
-        color: #fff;
+        box-shadow: 0 0 5px 0 #404040;
     }
     .total-sum_confirm:active {
         box-shadow: inset 0 0 5px 0 #50753d;

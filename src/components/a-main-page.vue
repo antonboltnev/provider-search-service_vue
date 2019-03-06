@@ -1,17 +1,17 @@
 <template>
     <div class="a-main-page">
         <div class="a-main-page-nav-blocks">
-            <router-link to="/sellers-list">
+            <router-link to="/sellers-list" class="text-color1">
                 <div @click="sellersPageClick">
                     <icon name="cubes"></icon>
                     <div class="nav-block">Каталог поставщиков</div>
                 </div>
             </router-link>
-            <router-link to="/customer-cabinet">
+            <router-link to="/customer-cabinet" class="bg-color2 text-color3">
                 <icon name="heart"></icon>
                 <div class="nav-block">Мои избранные поставщики</div>
             </router-link>
-            <router-link to="/customer-order-list">
+            <router-link to="/customer-order-list" class="bg-color2 text-color3">
                 <div class="svg_wrapper">
                     <icon name="cart-arrow-down"></icon>
                     <div class="nav-block">Мои заказы
@@ -22,17 +22,21 @@
                     </div>
                 </div>
             </router-link>
-            <router-link to="/home">
+            <router-link to="/home" class="text-color1">
                 <icon name="envelope"></icon>
                 <div class="nav-block">Мои сообщения</div>
             </router-link>
-            <router-link to="/home">
-                <icon name="cogs"></icon>
-                <div class="nav-block">Настройки</div>
+            <router-link to="/settings" class="text-color1">
+                <div @click="settingsPageClick">
+                    <icon name="cogs"></icon>
+                    <div class="nav-block">Настройки</div>
+                </div>
             </router-link>
-            <router-link to="/home">
-                <icon name="info-circle"></icon>
-                <div class="nav-block">О сервисе</div>
+            <router-link to="/about" class="bg-color2 text-color3">
+                <div @click="aboutPageClick">
+                    <icon name="info-circle"></icon>
+                    <div class="nav-block">О сервисе</div>
+                </div>
             </router-link>
         </div>
     </div>
@@ -62,6 +66,12 @@
             sellersPageClick() {
                 this.$store.dispatch('SET_HEADER_TEXT', 'Поставщики');
             },
+            aboutPageClick() {
+                this.$store.dispatch('SET_HEADER_TEXT', 'О ресурсе');
+            },
+            settingsPageClick() {
+                this.$store.dispatch('SET_HEADER_TEXT', 'Настройки');
+            }
         },
     }
 </script>
@@ -81,12 +91,11 @@
 
     .a-main-page-nav-blocks a {
         width: 50%;
-        height: 33%;
+        height: 33.3%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: #848484;
     }
 
     .svg_wrapper {
@@ -100,30 +109,12 @@
         margin-bottom: 20px;
     }
 
-    .a-main-page-nav-blocks a:nth-child(2n+1) {
-        box-shadow: 1px 0 0 0 #eeeeee;
-        border-bottom: solid 1px #eeeeee;
-    }
-
-    .a-main-page-nav-blocks a:nth-child(2n) {
-        border-bottom: solid 1px #eeeeee;
-    }
-
-    .a-main-page-nav-blocks a:last-of-type {
-        border-bottom: 0;
-    }
-
-    .a-main-page-nav-blocks a:nth-child(5) {
-        border-bottom: 0;
-    }
-
-    .a-main-page-nav-blocks a:nth-child(2), .a-main-page-nav-blocks a:nth-child(3), .a-main-page-nav-blocks a:nth-child(6)   {
-        background: #009c64;
-        color: #fff;
-    }
-
     .a-main-page-nav-blocks a:nth-child(2) svg, .a-main-page-nav-blocks a:nth-child(3) svg, .a-main-page-nav-blocks a:nth-child(6) svg {
         fill: #fff;
+    }
+
+    .a-main-page-nav-blocks a:nth-child(1) svg, .a-main-page-nav-blocks a:nth-child(4) svg, .a-main-page-nav-blocks a:nth-child(5) svg {
+        fill: #009c64;
     }
 
     .order_counter {

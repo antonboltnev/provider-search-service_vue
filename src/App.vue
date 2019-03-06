@@ -22,6 +22,8 @@
     import aSellerCatalog from '@/components/a-seller-catalog'
     import aCustomerCabinet from '@/components/a-customer-cabinet'
     import aOrderList from '@/components/a-order-list'
+    import aAboutPage from '@/components/a-about-page'
+    import aSettingsPage from '@/components/a-settings-page'
 
 
 
@@ -54,7 +56,17 @@
                 name: 'CustomerOrderList',
                 component: aOrderList
             },
-        ] // сокращённая запись для `routes: routes`
+            {
+                path: '/about',
+                name: 'About',
+                component: aAboutPage
+            },
+            {
+                path: '/settings',
+                name: 'Settings',
+                component: aSettingsPage
+            }
+        ]
     });
 
     export default {
@@ -66,7 +78,9 @@
             aSellersPage,
             aSellerCatalog,
             aMainMenu,
-            aCustomerCabinet
+            aCustomerCabinet,
+            aAboutPage,
+            aSettingsPage
         },
 
         computed: {

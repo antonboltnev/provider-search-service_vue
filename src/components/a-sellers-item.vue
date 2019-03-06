@@ -91,7 +91,7 @@
     }
 
     .item_fav.added svg {
-        fill: #ff5a5a;
+        fill: #009c64;
         stroke: #fff;
         stroke-width: 1px;
     }

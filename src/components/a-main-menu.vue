@@ -8,13 +8,6 @@
             </div>
           </router-link>
         </li>
-        <li><router-link to="/home">
-          <div class="menu_a" @click="mainPageClick">
-            <icon name="envelope"></icon>
-              <span>Сообщения</span>
-          </div>
-          </router-link>
-        </li>
         <li>
           <router-link to="/customer-cabinet">
             <div class="menu_a" @click="favoritePageClick">
@@ -33,6 +26,13 @@
                 >{{ orderCounter }}</span>
             </div>
           </router-link>
+        </li>
+        <li><router-link to="/settings">
+            <div class="menu_a" @click="settingsPageClick">
+                <icon name="cog"></icon>
+                <span>Настройки</span>
+            </div>
+        </router-link>
         </li>
     </ul>
 </template>
@@ -68,6 +68,9 @@ import Icon from 'vue-awesome/components/Icon'
             },
             cartPageClick() {
                 this.$store.dispatch('SET_HEADER_TEXT', 'Мои активные заказы');
+            },
+            settingsPageClick() {
+                this.$store.dispatch('SET_HEADER_TEXT', 'Настройки');
             }
         },
 
@@ -109,23 +112,21 @@ import Icon from 'vue-awesome/components/Icon'
         border-radius: 3px;
         transition: .2s;
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .a-main-menu li:active {
-        box-shadow: inset 0 1px 15px 2px #d2d2d2;
-        color: #757575;
+        box-shadow: inset 0 1px 15px 2px #4c4c4c;
         transition: .2s;
     }
 
     .a-main-menu a {
         text-decoration: none;
-        color: #797979;
     }
 
     .a-main-menu a svg {
         width: 30px;
         height: 30px;
-        fill: #b3b3b3;
     }
 
     .menu_a {

@@ -48,8 +48,8 @@
             />
             <div class="a-seller-empty-catalog" v-if="!products">Поставщик пока не добавил товары в каталог...
                 <div class="back-to-main">
-                    <router-link to="/">
-                        <div class="btn bg-color">На главную</div>
+                    <router-link to="/sellers-list">
+                        <div class="btn bg-color">К списку поставщиков</div>
                     </router-link>
                 </div>
             </div>
