@@ -86,6 +86,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        color: #848484;
     }
 
     .svg_wrapper {
@@ -114,6 +115,15 @@
 
     .a-main-page-nav-blocks a:nth-child(5) {
         border-bottom: 0;
+    }
+
+    .a-main-page-nav-blocks a:nth-child(2), .a-main-page-nav-blocks a:nth-child(3), .a-main-page-nav-blocks a:nth-child(6)   {
+        background: #009c64;
+        color: #fff;
+    }
+
+    .a-main-page-nav-blocks a:nth-child(2) svg, .a-main-page-nav-blocks a:nth-child(3) svg, .a-main-page-nav-blocks a:nth-child(6) svg {
+        fill: #fff;
     }
 
     .order_counter {

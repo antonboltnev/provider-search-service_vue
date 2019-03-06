@@ -161,6 +161,10 @@
         margin: 0;
     }
 
+    #category-select {
+        margin-top: 0;
+    }
+
     .a-seller-catalog-wrapper {
         max-width: 800px;
         margin: 20px auto 0 auto;

@@ -98,8 +98,7 @@
 <style>
     #app.margin_bottom {
         margin-bottom: 0;
-        padding-top: 0;
-        padding-bottom: 0;
         height: 100%;
+        padding: 0;
     }
 </style>
