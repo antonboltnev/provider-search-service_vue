@@ -87,6 +87,8 @@
         align-items: center;
         flex-wrap: wrap;
         justify-content: space-evenly;
+        margin: 0 auto;
+        width: 100%;
     }
 
     .a-main-page-nav-blocks a {
@@ -120,5 +122,12 @@
     .order_counter {
         right: 5%;
         top: -5px;
+    }
+
+    @media (min-width: 769px) {
+        .a-main-page-nav-blocks a {
+            width: 30%;
+            border: solid 1px #009c64;
+        }
     }
 </style>

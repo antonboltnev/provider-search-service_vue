@@ -45,7 +45,6 @@
     .a-header-title {
         z-index: 2;
         font-size: 20px;
-        max-width: 890px;
         margin: 0 auto;
     }
 

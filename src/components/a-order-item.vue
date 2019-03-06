@@ -65,7 +65,7 @@
         align-items: center;
         border-radius: 6px;
         margin-bottom: 20px;
-        padding: 10px 0;
+        padding: 10px;
     }
 
     .item_img img {
