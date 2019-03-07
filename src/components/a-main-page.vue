@@ -128,6 +128,13 @@
         .a-main-page-nav-blocks a {
             width: 30%;
             box-shadow: 0 3px 20px 0 #d4d4d4;
+            transition: ease .5s;
+        }
+
+        .a-main-page-nav-blocks a:hover {
+            width: 30%;
+            box-shadow: 0 3px 35px 0 #aeaeae;
+            transition: ease .5s;
         }
     }
 </style>
