@@ -141,9 +141,9 @@ const store = new Vuex.Store({
     }
 });
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   render: h => h(App),
     store,
-}).$mount('#app')
+}).$mount('#app');

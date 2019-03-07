@@ -102,6 +102,7 @@
         },
 
         created() {
+            this.$router.push('/home');
             if ( this.$route.path === '/home' ) {
                 this.$store.dispatch('HIDE_HEADER');
             } else {

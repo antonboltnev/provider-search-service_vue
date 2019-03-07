@@ -127,7 +127,7 @@
     @media (min-width: 769px) {
         .a-main-page-nav-blocks a {
             width: 30%;
-            border: solid 1px #009c64;
+            box-shadow: 0 3px 20px 0 #d4d4d4;
         }
     }
 </style>
