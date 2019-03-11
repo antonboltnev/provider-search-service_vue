@@ -18,13 +18,6 @@ body, html {
       max-width: 900px;
 }
 
-.fade-enter-active, .fade-leave-active {
-      transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-      opacity: 0;
-}
-
 a {
       text-decoration: none;
       color: inherit;
@@ -97,34 +90,16 @@ a {
 
 /*ANIMATION*/
 .fade-enter-active, .fade-leave-active {
-      transition: all 200ms
-}
-.fade-enter, .fade-leave-to {
-      opacity: 0
-}
-.fade-enter {
-      transform: translateX(100%);
-}
-.fade-leave-to {
-      transform: translateX(-100%);
+      transition-property: opacity;
+      transition-duration: .25s;
 }
 
-.bounce-enter-active {
-      animation: bounce-in .5s;
+.fade-enter-active {
+      transition-delay: .25s;
 }
-.bounce-leave-active {
-      animation: bounce-in .5s reverse;
-}
-@keyframes bounce-in {
-      0% {
-            transform: scale(0);
-      }
-      50% {
-            transform: scale(1.5);
-      }
-      100% {
-            transform: scale(1);
-      }
+
+.fade-enter, .fade-leave-active {
+      opacity: 0
 }
 
 /*ANIMATION ENDS*/

@@ -63,6 +63,10 @@
         margin-bottom: 20px;
     }
 
+    .setting-types p {
+        max-width: 80%;
+    }
+
     .switch {
         display: inline-block;
         vertical-align: middle;
