@@ -1,7 +1,7 @@
 <template>
     <div class="a-main-page">
         <div class="a-main-page-nav-blocks">
-            <router-link to="/sellers-list" class="text-color1">
+            <router-link to="/sellers-list" class="text-color1 bg-color-fff">
                 <div @click="sellersPageClick">
                     <icon name="cubes"></icon>
                     <div class="nav-block">Каталог поставщиков</div>
@@ -22,11 +22,11 @@
                     </div>
                 </div>
             </router-link>
-            <router-link to="/home" class="text-color1">
+            <router-link to="/home" class="text-color1 bg-color-fff">
                 <icon name="envelope"></icon>
                 <div class="nav-block">Мои сообщения</div>
             </router-link>
-            <router-link to="/settings" class="text-color1">
+            <router-link to="/settings" class="text-color1 bg-color-fff">
                 <div @click="settingsPageClick">
                     <icon name="cogs"></icon>
                     <div class="nav-block">Настройки</div>
@@ -80,6 +80,8 @@
     .a-main-page {
         height: 100%;
         display: flex;
+        background: url("../../public/img/bg_blur.jpg") no-repeat center;
+        background-size: cover;
     }
 
     .a-main-page-nav-blocks {
@@ -116,7 +118,7 @@
     }
 
     .a-main-page-nav-blocks a:nth-child(1) svg, .a-main-page-nav-blocks a:nth-child(4) svg, .a-main-page-nav-blocks a:nth-child(5) svg {
-        fill: #38cdc1;
+        fill: #8190b0;
     }
 
     .order_counter {
@@ -125,16 +127,21 @@
     }
 
     @media (min-width: 769px) {
-        .a-main-page-nav-blocks a {
-            width: 30%;
-            box-shadow: 0 3px 20px 0 #d4d4d4;
-            transition: ease .5s;
+        .a-main-page {
+            position: absolute;
+            left: 0;
+            right: 0;
         }
 
-        .a-main-page-nav-blocks a:hover {
+        .a-main-page-nav-blocks a {
             width: 30%;
-            box-shadow: 0 3px 35px 0 #aeaeae;
-            transition: ease .5s;
+            /*box-shadow: 0 0 7px 0 #212121;*/
+            /*transition: ease .3s;*/
         }
+
+        /*.a-main-page-nav-blocks a:hover {*/
+            /*box-shadow: 0 3px 25px 0 #212121;*/
+            /*transition: ease .3s;*/
+        /*}*/
     }
 </style>

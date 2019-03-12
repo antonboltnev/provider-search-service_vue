@@ -31,14 +31,18 @@ a {
 }
 
 .bg-color2 {
-      background: linear-gradient(45deg, #3edc83, #32beff);
+      background: linear-gradient(45deg, #d6e1dc, #7e8eaf);
       color: #ffffff;
+}
+
+.bg-color-fff {
+      background: #fff;
 }
 
 /*BG COLOR END*/
 
 .text-color1 {
-      color: #38cdc1;
+      color: #8190b0;
 }
 
 .text-color2 {
