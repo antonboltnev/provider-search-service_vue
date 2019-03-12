@@ -175,7 +175,7 @@
 
     .a-seller-info {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         margin-bottom: 30px;
     }

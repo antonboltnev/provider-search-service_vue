@@ -1,5 +1,5 @@
 <template>
-    <ul class="a-main-menu shadow-border bg-color" v-if="toggleHeaderVisibility">
+    <ul class="a-main-menu shadow-border bg-color fixed-bottom" v-if="toggleHeaderVisibility">
         <li>
           <router-link to="/home">
             <div class="menu_a" @click="mainPageClick">
@@ -110,10 +110,6 @@ import Icon from 'vue-awesome/components/Icon'
     .a-main-menu {
         display: flex;
         justify-content: space-around;
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
         padding: 0 5px 3px 5px;
     }
 
