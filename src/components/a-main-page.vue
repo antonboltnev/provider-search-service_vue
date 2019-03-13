@@ -136,13 +136,6 @@
         .a-main-page-nav-blocks a {
             width: 30%;
             border-radius: 5px;
-            /*box-shadow: 0 0 7px 0 #212121;*/
-            /*transition: ease .3s;*/
         }
-
-        /*.a-main-page-nav-blocks a:hover {*/
-            /*box-shadow: 0 3px 25px 0 #212121;*/
-            /*transition: ease .3s;*/
-        /*}*/
     }
 </style>
