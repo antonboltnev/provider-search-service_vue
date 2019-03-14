@@ -161,6 +161,6 @@
     }
 
     .switch input[type=checkbox]:checked+.checkbox {
-        background: linear-gradient(45deg, #3edc83, #32beff);
+        background: linear-gradient(45deg, #00ff8b,#0053ff);
     }
 </style>
