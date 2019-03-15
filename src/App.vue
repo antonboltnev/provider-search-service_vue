@@ -17,6 +17,7 @@
 
     import 'vue-awesome/icons'
 
+    import aLoginPage from '@/components/a-login-page'
     import aHeader from '@/components/a-header'
     import aMainMenu from '@/components/a-main-menu'
     import aMainPage from '@/components/a-main-page'
@@ -33,6 +34,11 @@
 
     const router = new Router({
         routes: [
+            {
+               path: '/login',
+               name: 'login',
+               component: aLoginPage
+            },
             {
                 path: '/home',
                 name: 'Home',
@@ -75,6 +81,7 @@
         name: 'app',
         router,
         components: {
+            aLoginPage,
             aHeader,
             aMainPage,
             aSellersPage,
@@ -93,7 +100,7 @@
 
         watch: {
             $route() {
-                if ( this.$route.path === '/home' ) {
+                if ( this.$route.path === '/login' ) {
                     this.$store.dispatch('HIDE_HEADER');
                 } else {
                     this.$store.dispatch('SHOW_HEADER');
@@ -102,8 +109,9 @@
         },
 
         created() {
-            this.$router.push('/home');
-            if ( this.$route.path === '/home' ) {
+            this.$router.push('/login');
+
+            if ( this.$route.path === '/login' ) {
                 this.$store.dispatch('HIDE_HEADER');
             } else {
                 this.$store.dispatch('SHOW_HEADER');

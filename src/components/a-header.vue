@@ -23,7 +23,7 @@
 
         watch: {
             $route() {
-                if ( this.$route.path === '/home' ) {
+                if ( this.$route.path === '/login' ) {
                     this.$store.dispatch('HIDE_HEADER');
                 } else {
                     this.$store.dispatch('SHOW_HEADER');
@@ -32,7 +32,7 @@
         },
 
         created() {
-            if ( this.$route.path === '/home' ) {
+            if ( this.$route.path === '/login' ) {
                 this.$store.dispatch('HIDE_HEADER');
             } else {
                 this.$store.dispatch('SHOW_HEADER');

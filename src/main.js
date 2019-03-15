@@ -43,6 +43,11 @@ const store = new Vuex.Store({
         selectedSeller: 0,
         cart: [],
         order: [],
+        users: [
+            { login: 'anton', password: '123123' },
+            { login: 'sergey', password: '321321' },
+        ],
+        isAuth: false,
     },
     getters: {
         SELLERS: state => {
@@ -99,6 +104,9 @@ const store = new Vuex.Store({
         },
         SHOW_HEAD: ( state ) => {
             state.isHeaderVisible = true;
+        },
+        AUTH: ( state ) => {
+            state.isAuth = true;
         }
     },
     actions: {
@@ -137,6 +145,9 @@ const store = new Vuex.Store({
         },
         SHOW_HEADER: ( context) => {
             context.commit( 'SHOW_HEAD' );
+        },
+        SUCCESS_AUTH: ( context ) => {
+            context.commit( 'AUTH' );
         }
     }
 });
