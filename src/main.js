@@ -48,6 +48,11 @@ const store = new Vuex.Store({
             { login: 'sergey', password: '321321' },
         ],
         isAuth: false,
+        errorMessages: {
+            authError: 'Проверьте правильность ввода',
+            authWrongEmail: 'Нет такого пользователя',
+            authWrongPass: 'Неверный пароль'
+        },
     },
     getters: {
         SELLERS: state => {

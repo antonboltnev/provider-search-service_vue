@@ -2,6 +2,7 @@
     <div class='a-login-page'>
         <h1 v-if="!this.auth">Надобно авторизоваться....</h1>
         <div class="a-login-page-input_wrapper" v-if="!this.auth">
+            <span class="input_error_msg" v-if="showError">{{ this.$store.state.errorMessages.authError }}</span>
             <input type="text"
                    v-model="loginField"
                    placeholder="Email"
@@ -33,6 +34,7 @@
            return {
                loginField: '',
                passwordField: '',
+               showError: false,
            }
         },
         methods: {
@@ -46,8 +48,10 @@
                                 vm.$router.push('/home');
                             }, 1500);
                         }, 500);
+                        this.showError = false;
                         break;
                     } else {
+                        this.showError = true;
                         console.log('нет таких пользователей');
                     }
                 }
@@ -61,10 +65,10 @@
         },
 
         mounted() {
-            var self = this;
+            var vm = this;
             window.addEventListener('keyup', function(event) {
                 if (event.keyCode === 13) {
-                    self.confirmLogin();
+                    vm.confirmLogin();
                 }
             });
         }
@@ -98,5 +102,10 @@
     .a-login-page_confirm span:last-of-type {
         text-decoration: underline;
         cursor: pointer;
+    }
+
+    .input_error_msg {
+        color: red;
+        padding-bottom: 10px;
     }
 </style>
