@@ -12,7 +12,7 @@
           <router-link to="/customer-cabinet">
             <div class="menu_a" @click="favoritePageClick">
               <icon name="heart"></icon>
-                <span>Избранное1</span>
+                <span>Избранное</span>
             </div>
           </router-link>
         </li>
