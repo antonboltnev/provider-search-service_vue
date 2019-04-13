@@ -31,7 +31,7 @@
             <router-link to="/about">
                 <div class="menu_a" @click="aboutPageClick">
                     <icon name="info-circle"></icon>
-                    <span>О ресурсе</span>
+                    <span class="no-wrap">О ресурсе</span>
                 </div>
             </router-link>
         </li>
@@ -142,5 +142,9 @@ import Icon from 'vue-awesome/components/Icon'
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .no-wrap {
+      white-space: nowrap;
     }
 </style>
