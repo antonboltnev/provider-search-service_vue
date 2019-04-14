@@ -154,7 +154,7 @@
 
 <style scoped>
     .a-seller-catalog {
-        margin-top: 38px;
+        margin: 38px auto 50px auto;
     }
 
     .a-category-select-input__wrapper {
