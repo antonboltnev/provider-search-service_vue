@@ -100,7 +100,7 @@
 <style scoped>
     .a-order-list {
         max-width: 800px;
-        margin: 50px auto;
+        margin: 50px auto 120px auto;
     }
 
     .list_title {
@@ -117,9 +117,9 @@
         max-width: 100px;
         margin: 0 auto;
     }
-    
+
     .order-total {
-        bottom: 61px;
+        bottom: 65px;
         font-size: 20px;
         padding: 10px 0;
         margin: 0 auto;
