@@ -143,7 +143,8 @@
                     this.passwordsOk = false;
                     return false;
                 } else {
-                    this.$store.dispatch('REGISTRATION', payload);
+                    localStorage.setItem('user', JSON.stringify(payload));
+                    this.$store.dispatch('REGISTRATION', JSON.parse(localStorage.getItem("user")));
                     this.$store.dispatch('SUCCESS_REGISTRATION');
                     setTimeout(function () {
                         vm.$router.push('/home');

@@ -110,6 +110,9 @@ const store = new Vuex.Store({
         SHOW_HEAD: ( state ) => {
             state.isHeaderVisible = true;
         },
+        SET_USER: ( state, payload ) => {
+            state.users.push(payload);
+        },
         AUTH: ( state ) => {
             state.isAuth = true;
         },
@@ -165,6 +168,9 @@ const store = new Vuex.Store({
         },
         REGISTRATION: ( context, payload ) => {
            context.commit( 'REGISTER', payload );
+        },
+        USER_FROM_STORAGE: ( context, payload ) => {
+            context.commit( 'SET_USER', payload );
         }
     }
 });

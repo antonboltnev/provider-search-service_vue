@@ -110,6 +110,10 @@
 
         created() {
             this.$router.push('/login');
+            if ( localStorage.getItem("user") ) {
+                this.$store.dispatch( 'USER_FROM_STORAGE', JSON.parse(localStorage.getItem("user")) );
+                console.log(JSON.parse(localStorage.getItem("user")));
+            }
 
             if ( this.$route.path === '/login' ) {
                 this.$store.dispatch('HIDE_HEADER');
