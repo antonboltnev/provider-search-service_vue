@@ -156,11 +156,6 @@ a {
       font-size: 16px;
       margin-top: 20px;
       box-shadow: 0 1px 7px 0 #d8d8d8;
-      -webkit-appearance: none;
-}
-
-.a-category-select-input__wrapper select {
-      width: 100%;
 }
 
 /*SELECT ENDS*/

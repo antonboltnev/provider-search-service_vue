@@ -116,6 +116,13 @@
             } else {
                 this.$store.dispatch('SHOW_HEADER');
             }
+        },
+        mounted() {
+            if ( this.$route.path === '/login' ) {
+                this.$store.dispatch('HIDE_HEADER');
+            } else {
+                this.$store.dispatch('SHOW_HEADER');
+            }
         }
     }
 </script>

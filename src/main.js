@@ -44,10 +44,10 @@ const store = new Vuex.Store({
         cart: [],
         order: [],
         users: [
-            { login: 'anton', password: '123123' },
-            { login: 'sergey', password: '321321' },
+            { name: 'anton', email: 'anton@ya.ru', phone: '123123', pass: '123123' }
         ],
         isAuth: false,
+        isRegistered: false,
         errorMessages: {
             authError: 'Проверьте правильность ввода',
             authWrongEmail: 'Нет такого пользователя',
@@ -112,6 +112,12 @@ const store = new Vuex.Store({
         },
         AUTH: ( state ) => {
             state.isAuth = true;
+        },
+        REGISTER: ( state, payload ) => {
+            state.users.push(payload);
+        },
+        SUCCESS_REGISTRATION: ( state ) => {
+            state.isRegistered = true;
         }
     },
     actions: {
@@ -153,6 +159,12 @@ const store = new Vuex.Store({
         },
         SUCCESS_AUTH: ( context ) => {
             context.commit( 'AUTH' );
+        },
+        SUCCESS_REGISTRATION: ( context ) => {
+           context.commit( 'SUCCESS_REGISTRATION' );
+        },
+        REGISTRATION: ( context, payload ) => {
+           context.commit( 'REGISTER', payload );
         }
     }
 });
