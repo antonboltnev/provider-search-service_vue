@@ -24,6 +24,11 @@ a {
       color: inherit;
 }
 
+button {
+      -webkit-appearance: none;
+      border: 0;
+}
+
 /*BG COLOR*/
 
 .bg-color {

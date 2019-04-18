@@ -27,7 +27,6 @@
             <h1 v-if="!this.auth">Регистрация</h1>
             <form id="reg-form" action="#">
                 <div class="a-login-page-input_wrapper">
-                    <span class="password-error" v-if="!passwordsOk">{{ this.$store.state.errorMessages.registerPassConfirm }}</span>
                     <span class="password-error" v-if="emptyFieldError">{{ this.$store.state.errorMessages.emptyFields }}</span>
                     <input type="text"
                            v-model="nameField"
@@ -50,6 +49,7 @@
                            placeholder="Телефон*"
                            class="shadow-border"
                     />
+                    <span class="password-error" v-if="!passwordsOk">{{ this.$store.state.errorMessages.registerPassConfirm }}</span>
                     <input type="password"
                            v-model="passwordField"
                            required

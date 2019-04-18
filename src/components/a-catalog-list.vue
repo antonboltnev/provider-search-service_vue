@@ -10,15 +10,25 @@
             {{ product_data.price }} руб/{{ product_data.value }}
         </div>
         <div class="product_add-to-cart btn bg-color"
+             v-if="!this.product_data.ordered"
             @click="addToCart"
         >{{ addToCartText }}
         </div>
+        <button class="product_add-to-cart btn bg-color2"
+             v-if="this.product_data.ordered"
+             :disabled="this.product_data.ordered"
+        >{{ addedToCart }}<icon name="check"></icon>
+        </button>
     </div>
 </template>
 
 <script>
+    import Icon from 'vue-awesome/components/Icon'
     export default {
         name: "a-catalog-list",
+        components: {
+            Icon
+        },
         props: {
             product_data: {
                 type: Object,
@@ -33,6 +43,7 @@
         data() {
            return {
                addToCartText: 'В корзину',
+               addedToCart: 'В корзине'
            }
         },
 
@@ -73,6 +84,12 @@
 
     .product_add-to-cart {
         margin-top: 10px;
+    }
+
+    .product_add-to-cart svg {
+        position: relative;
+        top: 2px;
+        left: 10px;
     }
 
     .product_add-to-cart:active {

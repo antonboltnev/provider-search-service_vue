@@ -105,6 +105,13 @@ const store = new Vuex.Store({
         CART_CHECKOUT: ( state, payload ) => {
             state.order.push(payload);
             state.cart.splice(0, state.cart.length);
+            for ( let i = 0; i < state.sellers.length; i++ ) {
+                if  ( state.sellers[i].products !== undefined ) {
+                    for ( let j = 0; j <  state.sellers[i].products.length; j++) {
+                        state.sellers[i].products[j].ordered = false;
+                    }
+                }
+            }
         },
         HIDE_HEAD: ( state ) => {
             state.isHeaderVisible = false;
