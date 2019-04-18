@@ -51,7 +51,9 @@ const store = new Vuex.Store({
         errorMessages: {
             authError: 'Проверьте правильность ввода',
             authWrongEmail: 'Нет такого пользователя',
-            authWrongPass: 'Неверный пароль'
+            authWrongPass: 'Неверный пароль',
+            registerPassConfirm: 'Пароли не совпадают!',
+            emptyFields: 'Заполните поля!'
         },
     },
     getters: {

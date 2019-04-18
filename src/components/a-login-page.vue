@@ -27,12 +27,14 @@
             <h1 v-if="!this.auth">Регистрация</h1>
             <form id="reg-form" action="#">
                 <div class="a-login-page-input_wrapper">
-                    <span class="password-error" v-if="!passwordsOk">Пароли не совпадают!</span>
+                    <span class="password-error" v-if="!passwordsOk">{{ this.$store.state.errorMessages.registerPassConfirm }}</span>
+                    <span class="password-error" v-if="emptyFieldError">{{ this.$store.state.errorMessages.emptyFields }}</span>
                     <input type="text"
                            v-model="nameField"
                            required
                            placeholder="Имя*"
                            class="shadow-border"
+                           @keyup="clearErrorName"
                     >
                     <input type="email"
                            v-model="emailField"
@@ -53,6 +55,7 @@
                            required
                            placeholder="Пароль*"
                            class="shadow-border"
+                           @keyup="clearErrorPass"
                     >
                     <input type="password"
                            v-model="confirmPasswordField"
@@ -100,6 +103,7 @@
                showError: false,
                loginTab: true,
                passwordsOk: true,
+               emptyFieldError: false,
            }
         },
         methods: {
@@ -109,7 +113,7 @@
             confirmLogin() {
                 if ( this.$store.state.users.length ) {
                 for (let i = 0; i < this.$store.state.users.length; i++) {
-                    if ((this.$store.state.users[i].email === this.authLogin) && (this.$store.state.users[i].pass === this.authPass)) {
+                    if ( (this.$store.state.users[i].email.length) && (this.$store.state.users[i].email === this.authLogin) && (this.$store.state.users[i].pass === this.authPass)) {
                         let vm = this;
                         setTimeout(function () {
                             vm.$store.dispatch('SUCCESS_AUTH');
@@ -142,14 +146,26 @@
                 if ( this.confirmPasswordField !== this.passwordField ) {
                     this.passwordsOk = false;
                     return false;
-                } else {
+                }
+                if ( !this.nameField.length || !this.emailField.length || !this.phoneField.length || !this.passwordField.length ) {
+                    this.emptyFieldError = true;
+                    return false;
+                }
+                    this.passwordsOk = true;
+                    this.emptyFieldError = false;
                     localStorage.setItem('user', JSON.stringify(payload));
                     this.$store.dispatch('REGISTRATION', JSON.parse(localStorage.getItem("user")));
                     this.$store.dispatch('SUCCESS_REGISTRATION');
                     setTimeout(function () {
                         vm.$router.push('/home');
                     }, 1500);
-                }
+            },
+
+            clearErrorPass() {
+                this.passwordsOk = true;
+            },
+            clearErrorName() {
+                this.emptyFieldError = false;
             }
         },
 
