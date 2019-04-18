@@ -42,7 +42,6 @@ const store = new Vuex.Store({
         ],
         selectedSeller: 0,
         cart: [],
-        order: [],
         users: [
             { name: 'anton', email: 'anton@ya.ru', phone: '123123', pass: '123123' }
         ],
@@ -84,10 +83,19 @@ const store = new Vuex.Store({
             }
         },
         SET_ORDER_LIST: ( state, {productIndex, sellerIndex} ) => {
-            state.sellers[sellerIndex].products[productIndex].ordered = !state.sellers[sellerIndex].products[productIndex].ordered;
+            state.sellers[sellerIndex].products[productIndex].ordered = true;
         },
         REMOVE_ITEM: ( state, payload ) => {
-           state.cart[payload].qty = 0;
+            for ( let i = 0; i < state.sellers.length; i++ ) {
+                if  ( state.sellers[i].products !== undefined ) {
+                    for ( let j = 0; j <  state.sellers[i].products.length; j++) {
+                        if (state.sellers[i].products[j].title === state.cart[payload].title) {
+                            state.sellers[i].products[j].ordered = false;
+                        }
+                    }
+                }
+            }
+           state.cart[payload].qty = 1;
            state.cart.splice(payload, 1);
         },
         PLUS_QTY: ( state, payload ) => {
@@ -102,13 +110,13 @@ const store = new Vuex.Store({
                 return false;
             }
         },
-        CART_CHECKOUT: ( state, payload ) => {
-            state.order.push(payload);
+        CART_CHECKOUT: ( state ) => {
             state.cart.splice(0, state.cart.length);
             for ( let i = 0; i < state.sellers.length; i++ ) {
                 if  ( state.sellers[i].products !== undefined ) {
                     for ( let j = 0; j <  state.sellers[i].products.length; j++) {
                         state.sellers[i].products[j].ordered = false;
+                        state.sellers[i].products[j].qty = 1;
                     }
                 }
             }

@@ -147,7 +147,7 @@
         },
 
         mounted: function () {
-            return this.$store.state.sellers.products;
+            // return this.$store.state.sellers.products;
         },
     }
 </script>
