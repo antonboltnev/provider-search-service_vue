@@ -16,7 +16,7 @@
                        required
                 >
                 <div class="a-login-page_confirm">
-                    <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmLogin">Confirm</button>
+                    <button class="login-confirm-btn btn btn-big bg-color2" @click="confirmLogin">Confirm</button>
                     <br>
                     <span>or <span class="switch-tabs" @click="registrationTab">Sign Up</span></span>
                 </div>
