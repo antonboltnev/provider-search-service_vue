@@ -21,7 +21,7 @@
                     @addToFavorite="addToFavorite"
             />
             <div class="a-sellers__list__empty" v-if="emptyFilterResults">
-                <span>Упс, что-то мы ничего не смогли найти...</span>
+                <span>Oops, we're afraid, but we could not find anything...</span>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
         },
         data() {
             return {
-                selectedCategory: 'Все категории',
+                selectedCategory: 'ALL',
                 emptyFilterResults: {
                     type: Boolean,
                     default: false,
@@ -58,7 +58,7 @@
             sellers() {
                 let vm = this;
                 let selectFiilter = this.selectedCategory;
-                if (selectFiilter === 'Все категории') {
+                if (selectFiilter === 'ALL') {
                     vm.emptyFilterResults = false;
                     return this.$store.state.sellers;
                 }
@@ -83,7 +83,7 @@
         },
 
         mounted() {
-           this.$store.dispatch('SET_HEADER_TEXT', 'Поставщики');
+           this.$store.dispatch('SET_HEADER_TEXT', 'Providers');
         },
     }
 </script>

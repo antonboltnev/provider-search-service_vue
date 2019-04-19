@@ -8,11 +8,6 @@
                 <router-link to="/seller-catalog">{{ sellers_data.name }}</router-link>
             </div>
         </router-link>
-        <!--<div class="item_info">-->
-            <!--<router-link to="/seller-catalog">-->
-                <!--<icon name="info"></icon>-->
-            <!--</router-link>-->
-        <!--</div>-->
         <div class="item_category">{{ sellers_data.category }}</div>
         <div class="item_fav add"
              v-if="!sellers_data.favorite"
@@ -25,7 +20,7 @@
         ><icon name="heart" :class="{ 'fav_added': sellers_data.favorite}"></icon>
         </div>
         <div class="item_go-ro-catalog btn bg-color" @click="setSellerIndex">
-            <router-link to="/seller-catalog">Каталог</router-link>
+            <router-link to="/seller-catalog">Catalogue</router-link>
         </div>
     </div>
 </template>
@@ -64,7 +59,7 @@
             setSellerIndex() {
                 let payload = this.sellers_data.id - 1;
                 this.$store.dispatch('SET_SELLER_INDEX', payload);
-                this.$store.dispatch('SET_HEADER_TEXT', 'Продукция поставщика');
+                this.$store.dispatch('SET_HEADER_TEXT', 'Providers catalogue');
             },
         },
     }

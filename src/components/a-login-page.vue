@@ -1,7 +1,7 @@
 <template>
     <div class='a-login-page'>
         <div class="a-login-page-input_wrapper" v-if="!this.auth && this.loginTab">
-            <h1 v-if="!this.auth">Авторизация</h1>
+            <h1 v-if="!this.auth">Sign In</h1>
             <form id="auth-form" action="#">
                 <span class="input_error_msg" v-if="showError">{{ this.$store.state.errorMessages.authError }}</span>
                 <input type="text"
@@ -12,26 +12,26 @@
                 >
                 <input type="password"
                        v-model="authPass"
-                       placeholder="Пароль (123123)"
+                       placeholder="Password (123123)"
                        required
                        class="shadow-border"
                 >
                 <div class="a-login-page_confirm">
-                    <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmLogin">Войти</button>
+                    <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmLogin">Confirm</button>
                     <br>
-                    <span>или <span class="switch-tabs" @click="registrationTab">Зарегистрироваться</span></span>
+                    <span>or <span class="switch-tabs" @click="registrationTab">Sign Up</span></span>
                 </div>
             </form>
         </div>
         <div class="a-registation-tab" v-if="!this.isRegistered && !this.loginTab">
-            <h1 v-if="!this.auth">Регистрация</h1>
+            <h1 v-if="!this.auth">Sign Up</h1>
             <form id="reg-form" action="#">
                 <div class="a-login-page-input_wrapper">
                     <span class="password-error" v-if="emptyFieldError">{{ this.$store.state.errorMessages.emptyFields }}</span>
                     <input type="text"
                            v-model="nameField"
                            required
-                           placeholder="Имя*"
+                           placeholder="First Name*"
                            class="shadow-border"
                            @keyup="clearErrorName"
                     >
@@ -45,38 +45,37 @@
                            v-model="phoneField"
                            mask="\+\7 (111) 111-11-11"
                            @input="rawVal = arguments[1]"
-                           required
-                           placeholder="Телефон*"
+                           placeholder="Phone"
                            class="shadow-border"
                     />
                     <span class="password-error" v-if="!passwordsOk">{{ this.$store.state.errorMessages.registerPassConfirm }}</span>
                     <input type="password"
                            v-model="passwordField"
                            required
-                           placeholder="Пароль*"
+                           placeholder="Password*"
                            class="shadow-border"
                            @keyup="clearErrorPass"
                     >
                     <input type="password"
                            v-model="confirmPasswordField"
                            required
-                           placeholder="Подтвердите пароль*"
+                           placeholder="Confirm password*"
                            class="shadow-border"
                     >
-                    <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Зарегистрироваться</button>
+                    <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Confirm</button>
                     <br>
-                    <span>или <span class="switch-tabs" @click="registrationTab">Войти</span></span>
+                    <span>or <span class="switch-tabs" @click="registrationTab">Sign In</span></span>
                 </div>
             </form>
         </div>
         <transition name="bounce">
             <div v-if="this.auth" class="a-succes_auth-wrapper">
-                <h2>Успешная авторизация!</h2>
+                <h2>Success!</h2>
             </div>
         </transition>
         <transition name="bounce">
             <div v-if="this.isRegistered" class="a-succes_auth-wrapper">
-                <h2>Успешная регистрация!</h2>
+                <h2>Success!</h2>
             </div>
         </transition>
     </div>
@@ -125,13 +124,11 @@
                         break;
                     } else {
                         this.showError = true;
-                        console.log('нет таких пользователей');
                     }
                 }
             }
                 else {
                     this.showError = true;
-                    console.log('нет таких пользователей');
                 }
               },
 
@@ -147,7 +144,7 @@
                     this.passwordsOk = false;
                     return false;
                 }
-                if ( !this.nameField.length || !this.emailField.length || !this.phoneField.length || !this.passwordField.length ) {
+                if ( !this.nameField.length || !this.emailField.length || !this.passwordField.length ) {
                     this.emptyFieldError = true;
                     return false;
                 }

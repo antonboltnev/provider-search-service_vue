@@ -4,17 +4,17 @@
             <router-link to="/sellers-list" class="text-color1 bg-color-fff">
                 <div @click="sellersPageClick">
                     <icon name="cubes"></icon>
-                    <div class="nav-block">Каталог поставщиков</div>
+                    <div class="nav-block">Providers catalogue</div>
                 </div>
             </router-link>
             <router-link to="/customer-cabinet" class="bg-color2 text-color3">
                 <icon name="heart"></icon>
-                <div class="nav-block">Мои избранные поставщики</div>
+                <div class="nav-block">Favorites</div>
             </router-link>
             <router-link to="/customer-order-list" class="bg-color2 text-color3">
                 <div class="svg_wrapper">
                     <icon name="cart-arrow-down"></icon>
-                    <div class="nav-block">Мои заказы
+                    <div class="nav-block">My orders
                         <span class="order_counter bg-color"
                               v-if="this.$store.state.cart.length"
                         >{{ orderCounter }}
@@ -24,18 +24,18 @@
             </router-link>
             <router-link to="/home" class="text-color1 bg-color-fff">
                 <icon name="envelope"></icon>
-                <div class="nav-block">Мои сообщения</div>
+                <div class="nav-block">Profile</div>
             </router-link>
             <router-link to="/settings" class="text-color1 bg-color-fff">
                 <div @click="settingsPageClick">
                     <icon name="cogs"></icon>
-                    <div class="nav-block">Настройки</div>
+                    <div class="nav-block">Preferences</div>
                 </div>
             </router-link>
             <router-link to="/about" class="bg-color2 text-color3">
                 <div @click="aboutPageClick">
                     <icon name="info-circle"></icon>
-                    <div class="nav-block">О сервисе</div>
+                    <div class="nav-block">About</div>
                 </div>
             </router-link>
         </div>
@@ -64,13 +64,13 @@
 
         methods: {
             sellersPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Поставщики');
+                this.$store.dispatch('SET_HEADER_TEXT', 'Providers');
             },
             aboutPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'О ресурсе');
+                this.$store.dispatch('SET_HEADER_TEXT', 'About');
             },
             settingsPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Настройки');
+                this.$store.dispatch('SET_HEADER_TEXT', 'Preferences');
             }
         },
     }

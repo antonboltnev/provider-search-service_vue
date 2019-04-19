@@ -2,10 +2,10 @@
     <div class="a-seller-catalog">
         <div class="a-seller-info">
             <div class="a-seller-cert btn bg-color" @click="showAdvancedInfo">
-                <p class="cert-title">Сертификаты</p>
+                <p class="cert-title">Certificates</p>
             </div>
-            <div class="a-seller-about btn bg-color" @click="showAboutText">Информация</div>
-            <div class="a-seller-chat btn bg-color">Написать
+            <div class="a-seller-about btn bg-color" @click="showAboutText">Information</div>
+            <div class="a-seller-chat btn bg-color">Message
             </div>
         </div>
         <transition name="fade">
@@ -23,13 +23,13 @@
         </transition>
         <transition name="fade">
             <div class="a-seller-advanced-info about" v-if="isAboutTextVisible">
-                <p>Телефон: {{ sellers_data.phone }}</p>
+                <p>Contact phone: {{ sellers_data.phone }}</p>
             </div>
         </transition>
         <div class="a-category-select-input__wrapper " v-if="products">
             <label for="category-select">
                 <select name="" id="category-select" v-model="selectedCategory">
-                    <option value="ALL">Все категории</option>
+                    <option value="ALL">ALL</option>
                     <a-seller-catalog-select-option
                             v-for="item in showProductCategories"
                             :key="item.id"
@@ -46,10 +46,10 @@
                     :sellers_data="sellers_data"
                     @add-to-cart="addToCart(index)"
             />
-            <div class="a-seller-empty-catalog" v-if="!products">Поставщик пока не добавил товары в каталог...
+            <div class="a-seller-empty-catalog" v-if="!products">Provider did not add any products to catalogue...
                 <div class="back-to-main">
                     <router-link to="/sellers-list">
-                        <div class="btn bg-color">К списку поставщиков</div>
+                        <div class="btn bg-color">To providers list</div>
                     </router-link>
                 </div>
             </div>

@@ -4,7 +4,7 @@
           <router-link to="/home">
             <div class="menu_a" @click="mainPageClick">
               <icon name="home"></icon>
-                <span>Главная</span>
+                <span>Home</span>
             </div>
           </router-link>
         </li>
@@ -12,7 +12,7 @@
           <router-link to="/customer-cabinet">
             <div class="menu_a" @click="favoritePageClick">
               <icon name="heart"></icon>
-                <span>Избранное</span>
+                <span>Favorites</span>
             </div>
           </router-link>
         </li>
@@ -20,7 +20,7 @@
           <router-link to="/customer-order-list">
             <div class="menu_a" @click="cartPageClick">
               <icon name="cart-arrow-down"></icon>
-              <span>Заказы</span>
+              <span>Orders</span>
                 <span class="order_counter bg-color"
                     v-if="this.$store.state.cart.length"
                 >{{ orderCounter }}</span>
@@ -31,7 +31,7 @@
             <router-link to="/about">
                 <div class="menu_a" @click="aboutPageClick">
                     <icon name="info-circle"></icon>
-                    <span class="no-wrap">О ресурсе</span>
+                    <span class="no-wrap">About</span>
                 </div>
             </router-link>
         </li>
@@ -39,7 +39,7 @@
             <router-link to="/settings">
             <div class="menu_a" @click="settingsPageClick">
                 <icon name="cog"></icon>
-                <span>Настройки</span>
+                <span>Preferences</span>
             </div>
         </router-link>
         </li>
@@ -70,19 +70,19 @@ import Icon from 'vue-awesome/components/Icon'
 
         methods: {
             mainPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Главная');
+                this.$store.dispatch('SET_HEADER_TEXT', 'Home');
             },
             favoritePageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Мои избранные поставщики');
+                this.$store.dispatch('SET_HEADER_TEXT', 'My favorite providers');
             },
             cartPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Мои активные заказы');
+                this.$store.dispatch('SET_HEADER_TEXT', 'My orders');
             },
             aboutPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'О ресурсе');
+                this.$store.dispatch('SET_HEADER_TEXT', 'About');
             },
             settingsPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Настройки');
+                this.$store.dispatch('SET_HEADER_TEXT', 'Preferences');
             }
         },
 

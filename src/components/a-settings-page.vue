@@ -1,7 +1,7 @@
 <template>
     <div class="a-settings-page">
         <div class="setting-types">
-            <p>Открыть доступ поставщикам к моим данным</p>
+            <p>Show my profile data to providers</p>
             <div class="type-checkbox">
                 <label class="switch">
                     <input type="checkbox" checked="checked">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="setting-types">
-            <p>Получать уведомления</p>
+            <p>Receive notifications</p>
             <div class="type-checkbox">
                 <label class="switch">
                     <input type="checkbox" checked="checked">
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="setting-types">
-            <p>Следить за изменениями каталога поставщиков в избранном</p>
+            <p>Track the updates in provider's catalogues</p>
             <div class="type-checkbox">
                 <label class="switch">
                     <input type="checkbox" checked="checked">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="setting-types">
-            <p>Получать новости о ресурсе</p>
+            <p>Receive service news</p>
             <div class="type-checkbox">
                 <label class="switch">
                     <input type="checkbox" checked="checked">

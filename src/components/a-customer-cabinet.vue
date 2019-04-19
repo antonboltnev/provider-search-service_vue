@@ -10,9 +10,9 @@
       <div class="asd"
            v-if="sellers.length < 1"
       >
-        <p class="no-favorite">У вас нет избранных поставщиков</p>
+        <p class="no-favorite">You do not have favorite providers</p>
         <router-link to="/sellers-list">
-          <p class="add-fav btn bg-color" @click="sellersPageClick">Добавить</p>
+          <p class="add-fav btn bg-color" @click="sellersPageClick">Add</p>
         </router-link>
       </div>
     </div>
@@ -46,12 +46,12 @@ export default {
       },
 
       sellersPageClick() {
-          this.$store.dispatch('SET_HEADER_TEXT', 'Поставщики');
+          this.$store.dispatch('SET_HEADER_TEXT', 'Providers');
       },
   },
 
   mounted() {
-      this.$store.dispatch('SET_HEADER_TEXT', 'Мои избранные поставщики');
+      this.$store.dispatch('SET_HEADER_TEXT', 'My favorite providers');
   },
 }
 

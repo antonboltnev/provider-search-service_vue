@@ -10,22 +10,22 @@
         />
         <div class="order-total bg-color2 fixed-bottom" v-if="orders.length > 0">
             <div class="total-sum">
-                <div>Итого:</div>
-                <span>{{ totalSum }} руб.</span>
+                <div>Total:</div>
+                <span>${{ totalSum }}</span>
             </div>
-            <p class="total-sum_confirm btn" @click="checkout">Оформить заказ</p>
+            <p class="total-sum_confirm btn" @click="checkout">Checkout</p>
         </div>
         <div class="empty-order-list" v-if="orders.length < 1">
-            <p class="empty-order-list-p">У вас нет активных заказов</p>
+            <p class="empty-order-list-p">You do not have active orders</p>
             <router-link to="/sellers-list">
-                <p class="btn bg-color" @click="sellersPageClick">Добавить</p>
+                <p class="btn bg-color" @click="sellersPageClick">Add</p>
             </router-link>
         </div>
         <transition name="bounce">
             <div class="thankyou-popup" v-if="orderChecked">
-            <p>Ваш заказ оформлен!</p>
+            <p>Checkout Success!</p>
             <br>
-            <span>Представитель поставщика свяжется с вами в ближайшее время.</span>
+            <span>Provider's representative will contact you soon</span>
             <br>
             <br>
             <br>
@@ -63,7 +63,7 @@
         },
         methods: {
             sellersPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Поставщики');
+                this.$store.dispatch('SET_HEADER_TEXT', 'Providers');
             },
 
             checkout() {

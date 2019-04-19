@@ -7,7 +7,7 @@
             {{ product_data.title }}
         </div>
         <div class="product_price">
-            {{ product_data.price }} руб/{{ product_data.value }}
+            ${{ product_data.price }} / {{ product_data.value }}
         </div>
         <div class="product_add-to-cart btn bg-color"
              v-if="!this.product_data.ordered"
@@ -42,8 +42,8 @@
 
         data() {
            return {
-               addToCartText: 'В корзину',
-               addedToCart: 'В корзине'
+               addToCartText: 'Add to cart',
+               addedToCart: 'In cart'
            }
         },
 
@@ -60,7 +60,7 @@
         },
 
         mounted() {
-            this.$store.dispatch('SET_HEADER_TEXT', 'Каталог поставщика');
+            this.$store.dispatch('SET_HEADER_TEXT', 'Providers catalogue');
         },
     }
 </script>

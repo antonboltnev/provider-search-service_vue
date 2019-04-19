@@ -5,7 +5,7 @@
         </div>
         <div class="item_info">
             <div class="item_title"><span class="text-bold">{{ order_data.title }}</span></div>
-            <div class="item_price">Цена: <span class="text-bold">{{ order_data.price }} руб/{{ order_data.value }}</span></div>
+            <div class="item_price">Price: <span class="text-bold">${{ order_data.price }} / {{ order_data.value }}</span></div>
             <div class="item_qty_wrapper">
                 <div class="item_change-qty"
                      @click="minusQty"
@@ -15,7 +15,7 @@
                 <div class="item_qty">{{ order_data.qty }}</div>
                 <div class="item_change-qty" @click="plusQty">+</div>
             </div>
-            <div class="item_total text-bold text-color1">Итого: {{ order_data.qty * order_data.price}} руб.</div>
+            <div class="item_total text-bold text-color1">Total: ${{ order_data.qty * order_data.price}}</div>
         </div>
         <div class="item_remove" @click="removeItemFromCart">
             <icon name="times"></icon>

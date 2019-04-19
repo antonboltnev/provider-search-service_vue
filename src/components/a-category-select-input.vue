@@ -1,15 +1,15 @@
 <template>
     <div class="a-category-select-input__wrapper">
-        <label for="category-input">Выберите категорию продукции:
+        <label for="category-input">Choose product category:
             <input
                     id="category-input"
                     type="text"
-                    placeholder='Например: "bread" '
+                    placeholder='Ex: "bread" '
                     v-model.trim="category"
                     @keyup="filterSellers"
             />
         </label>
-        <div class="filter-sellers" @click="filterSellers">Найти</div>
+        <div class="filter-sellers" @click="filterSellers">Search</div>
     </div>
 </template>
 
