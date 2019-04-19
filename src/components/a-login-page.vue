@@ -1,5 +1,6 @@
 <template>
     <div class='a-login-page'>
+        <h1 class="main-title">Easy way to find <span class="underlined">reliable</span> providers</h1>
         <div class="a-login-page-input_wrapper" v-if="!this.auth && this.loginTab">
             <h1 v-if="!this.auth">Sign In</h1>
             <form id="auth-form" action="#">
@@ -22,47 +23,47 @@
             </form>
         </div>
         <div class="a-registation-tab" v-if="!this.isRegistered && !this.loginTab">
-            <h1 v-if="!this.auth">Sign Up</h1>
-            <form id="reg-form" action="#">
-                <div class="a-login-page-input_wrapper">
-                    <span class="password-error" v-if="emptyFieldError">{{ this.$store.state.errorMessages.emptyFields }}</span>
-                    <input type="text"
-                           v-model="nameField"
-                           required
-                           placeholder="First Name*"
-                           @keyup="clearErrorName"
-                    >
-                    <input type="email"
-                           v-model="emailField"
-                           required
-                           placeholder="Email*"
-                    >
-                    <masked-input
-                           v-model="phoneField"
-                           mask="\+\7 (111) 111-11-11"
-                           @input="rawVal = arguments[1]"
-                           placeholder="Phone"
-                    />
-                    <span class="password-error" v-if="!passwordsOk">{{ this.$store.state.errorMessages.registerPassConfirm }}</span>
-                    <input type="password"
-                           v-model="passwordField"
-                           required
-                           placeholder="Password*"
-                           @keyup="clearErrorPass"
-                    >
-                    <input type="password"
-                           v-model="confirmPasswordField"
-                           required
-                           placeholder="Confirm password*"
-                    >
-                    <div class="a-login-page_confirm">
-                        <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Confirm</button>
-                        <br>
-                        <span>or <span class="switch-tabs" @click="registrationTab">Sign In</span></span>
+                <h1 v-if="!this.auth">Sign Up</h1>
+                <form id="reg-form" action="#">
+                    <div class="a-login-page-input_wrapper">
+                        <span class="password-error" v-if="emptyFieldError">{{ this.$store.state.errorMessages.emptyFields }}</span>
+                        <input type="text"
+                               v-model="nameField"
+                               required
+                               placeholder="First Name*"
+                               @keyup="clearErrorName"
+                        >
+                        <input type="email"
+                               v-model="emailField"
+                               required
+                               placeholder="Email*"
+                        >
+                        <masked-input
+                                v-model="phoneField"
+                                mask="\+\7 (111) 111-11-11"
+                                @input="rawVal = arguments[1]"
+                                placeholder="Phone"
+                        />
+                        <span class="password-error" v-if="!passwordsOk">{{ this.$store.state.errorMessages.registerPassConfirm }}</span>
+                        <input type="password"
+                               v-model="passwordField"
+                               required
+                               placeholder="Password*"
+                               @keyup="clearErrorPass"
+                        >
+                        <input type="password"
+                               v-model="confirmPasswordField"
+                               required
+                               placeholder="Confirm password*"
+                        >
+                        <div class="a-login-page_confirm">
+                            <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Confirm</button>
+                            <br>
+                            <span>or <span class="switch-tabs" @click="registrationTab">Sign In</span></span>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
         <transition name="bounce">
             <div v-if="this.auth" class="a-succes_auth-wrapper">
                 <h2>Success!</h2>
@@ -193,6 +194,18 @@
     .a-login-page h1 {
         margin: 20px 0;
         color: #fff;
+        font-size: 1.3em;
+    }
+
+    .a-login-page h1.main-title {
+        font-size: 1.8em;
+        text-transform: uppercase;
+    }
+
+    .underlined {
+        background: linear-gradient(135deg, #00f791 20%, #00b6bc 70%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .a-login-page h2 {
