@@ -229,7 +229,7 @@
 
     .a-login-page input {
         width: 70%;
-        margin: 5px 0 20px 0;
+        margin: 5px 0 10px 0;
         padding: 15px 0 15px 10px;
         border: 0;
         -webkit-appearance: none;
