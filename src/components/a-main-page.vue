@@ -80,8 +80,6 @@
     .a-main-page {
         height: 100%;
         display: flex;
-        background: url("../../public/img/bg_blur.jpg") no-repeat center;
-        background-size: cover;
     }
 
     .a-main-page-nav-blocks {
@@ -100,6 +98,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+
+    .a-main-page-nav-blocks a.bg-color2 {
+        background: transparent;
     }
 
     .svg_wrapper {

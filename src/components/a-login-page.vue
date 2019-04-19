@@ -191,7 +191,6 @@
         flex-direction: column;
         justify-content: center;
         height: 100%;
-        background: url(../../public/img/groccery-bg.jpg) no-repeat center;
     }
 
     .a-login-page h1 {

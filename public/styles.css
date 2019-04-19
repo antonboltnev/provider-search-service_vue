@@ -50,6 +50,11 @@ button {
       background: #fff;
 }
 
+.bg-color-gradient {
+      background: linear-gradient(45deg, #00ff8b,#0053ff);
+      color: #ffffff;
+}
+
 /*BG COLOR END*/
 
 .text-color1 {
