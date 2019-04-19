@@ -221,6 +221,7 @@
 
     .a-login-page_confirm {
         width: 100%;
+        padding-bottom: 20px;
     }
 
     .a-login-page input {
