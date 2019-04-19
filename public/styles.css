@@ -6,6 +6,7 @@
 
 input {
       border-radius: 0;
+      outline: none;
 }
 
 body, html {

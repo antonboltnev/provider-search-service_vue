@@ -1,10 +1,10 @@
 <template>
     <div class='a-login-page'>
-        <h1 class="main-title">Easy way to find <span class="underlined">reliable</span> providers</h1>
+        <h1 class="main-title" v-if="!this.isRegistered">Easy way to find <span class="underlined">reliable</span> providers</h1>
         <div class="a-login-page-input_wrapper" v-if="!this.auth && this.loginTab">
             <h1 v-if="!this.auth">Sign In</h1>
             <form id="auth-form" action="#">
-                <span class="input_error_msg" v-if="showError">{{ this.$store.state.errorMessages.authError }}</span>
+                <p class="input_error_msg" v-if="showError">{{ this.$store.state.errorMessages.authError }}</p>
                 <input type="text"
                        v-model="authLogin"
                        placeholder="Email"
@@ -26,7 +26,7 @@
                 <h1 v-if="!this.auth">Sign Up</h1>
                 <form id="reg-form" action="#">
                     <div class="a-login-page-input_wrapper">
-                        <span class="password-error" v-if="emptyFieldError">{{ this.$store.state.errorMessages.emptyFields }}</span>
+                        <p class="password-error" v-if="emptyFieldError">{{ this.$store.state.errorMessages.emptyFields }}</p>
                         <input type="text"
                                v-model="nameField"
                                required
@@ -37,6 +37,7 @@
                                v-model="emailField"
                                required
                                placeholder="Email*"
+                               @keyup="clearErrorName"
                         >
                         <masked-input
                                 v-model="phoneField"
@@ -50,11 +51,13 @@
                                required
                                placeholder="Password*"
                                @keyup="clearErrorPass"
+                               @keydown="clearErrorName"
                         >
                         <input type="password"
                                v-model="confirmPasswordField"
                                required
                                placeholder="Confirm password*"
+                               @keyup="clearErrorPass"
                         >
                         <div class="a-login-page_confirm">
                             <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Confirm</button>
@@ -248,13 +251,21 @@
         cursor: pointer;
     }
 
-    .input_error_msg {
-        color: red;
+    #auth-form, #reg-form {
+        position: relative;
+    }
+
+    .input_error_msg, .password-error {
+        color: #ff5555;
         padding-bottom: 10px;
+        position: absolute;
+        top: -15px;
+        right: 0;
+        left: 0;
     }
 
     .password-error {
-        color: red;
+        color: #ff5555;
     }
 
     .login-confirm-btn {
