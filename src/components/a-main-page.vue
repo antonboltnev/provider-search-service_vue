@@ -80,6 +80,8 @@
     .a-main-page {
         height: 100%;
         display: flex;
+        max-width: 900px;
+        margin: 0 auto;
     }
 
     .a-main-page-nav-blocks {

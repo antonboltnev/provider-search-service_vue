@@ -137,5 +137,6 @@
         height: 100%;
         padding: 0;
         background: url(../public/img/groccery-bg.jpg) no-repeat center;
+        background-size: cover;
     }
 </style>
