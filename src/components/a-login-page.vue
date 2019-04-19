@@ -1,6 +1,6 @@
 <template>
     <div class='a-login-page'>
-        <h1 class="main-title" v-if="!this.isRegistered">Easy way to find <span class="underlined">reliable</span> providers</h1>
+        <h1 class="main-title" v-if="!this.isRegistered && !this.auth">Easy way to find <span class="underlined">reliable</span> providers</h1>
         <div class="a-login-page-input_wrapper" v-if="!this.auth && this.loginTab">
             <h1 v-if="!this.auth">Sign In</h1>
             <form id="auth-form" action="#">
