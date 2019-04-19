@@ -6,15 +6,13 @@
                 <span class="input_error_msg" v-if="showError">{{ this.$store.state.errorMessages.authError }}</span>
                 <input type="text"
                        v-model="authLogin"
-                       placeholder="Email (anton@ya.ru)"
+                       placeholder="Email"
                        required
-                       class="shadow-border"
                 >
                 <input type="password"
                        v-model="authPass"
-                       placeholder="Password (123123)"
+                       placeholder="Password"
                        required
-                       class="shadow-border"
                 >
                 <div class="a-login-page_confirm">
                     <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmLogin">Confirm</button>
@@ -32,39 +30,36 @@
                            v-model="nameField"
                            required
                            placeholder="First Name*"
-                           class="shadow-border"
                            @keyup="clearErrorName"
                     >
                     <input type="email"
                            v-model="emailField"
                            required
                            placeholder="Email*"
-                           class="shadow-border"
                     >
                     <masked-input
                            v-model="phoneField"
                            mask="\+\7 (111) 111-11-11"
                            @input="rawVal = arguments[1]"
                            placeholder="Phone"
-                           class="shadow-border"
                     />
                     <span class="password-error" v-if="!passwordsOk">{{ this.$store.state.errorMessages.registerPassConfirm }}</span>
                     <input type="password"
                            v-model="passwordField"
                            required
                            placeholder="Password*"
-                           class="shadow-border"
                            @keyup="clearErrorPass"
                     >
                     <input type="password"
                            v-model="confirmPasswordField"
                            required
                            placeholder="Confirm password*"
-                           class="shadow-border"
                     >
-                    <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Confirm</button>
-                    <br>
-                    <span>or <span class="switch-tabs" @click="registrationTab">Sign In</span></span>
+                    <div class="a-login-page_confirm">
+                        <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Confirm</button>
+                        <br>
+                        <span>or <span class="switch-tabs" @click="registrationTab">Sign In</span></span>
+                    </div>
                 </div>
             </form>
         </div>
@@ -192,10 +187,16 @@
         flex-direction: column;
         justify-content: center;
         height: 100%;
+        background: url(../../public/img/groccery-bg.jpg) no-repeat center;
     }
 
     .a-login-page h1 {
         margin: 20px 0;
+        color: #fff;
+    }
+
+    .a-login-page h2 {
+        color: #fff;
     }
 
     .a-login-page-input_wrapper, .a-succes_auth-wrapper {
@@ -205,12 +206,27 @@
         align-items: center;
     }
 
+    .a-login-page_confirm {
+        width: 100%;
+    }
+
     .a-login-page input {
         width: 70%;
         margin: 5px 0 20px 0;
         padding: 15px 0 15px 10px;
         border: 0;
         -webkit-appearance: none;
+        border-bottom: solid 1px #fff;
+        background: transparent;
+        color: #fff;
+    }
+
+    .a-login-page input::placeholder {
+        color: #fff;
+    }
+
+    .a-login-page_confirm span {
+        color: #fff;
     }
 
     .switch-tabs {
@@ -231,5 +247,6 @@
         -webkit-appearance: none;
         border: 0;
         margin-bottom: 30px;
+        box-shadow: none !important;
     }
 </style>
