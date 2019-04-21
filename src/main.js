@@ -82,8 +82,8 @@ const store = new Vuex.Store({
                 state.cart.push(products);
             }
         },
-        SET_ORDER_LIST: ( state, {productIndex, sellerIndex} ) => {
-            state.sellers[sellerIndex].products[productIndex].ordered = true;
+        SET_ORDER_LIST: ( state, {k, sellerIndex} ) => {
+            state.sellers[sellerIndex].products[k].ordered = true;
         },
         REMOVE_ITEM: ( state, payload ) => {
             for ( let i = 0; i < state.sellers.length; i++ ) {
@@ -156,8 +156,8 @@ const store = new Vuex.Store({
         ADD_TO_CART: ( context, products ) => {
            context.commit('ADD_TO_CART', products );
         },
-        SET_ORDER_LIST: ( context, {productIndex, sellerIndex} ) => {
-            context.commit('SET_ORDER_LIST', {productIndex, sellerIndex});
+        SET_ORDER_LIST: ( context, {k, sellerIndex} ) => {
+            context.commit('SET_ORDER_LIST', {k, sellerIndex});
         },
         REMOVE_FROM_CART: ( context, payload ) => {
             context.commit( 'REMOVE_ITEM', payload );

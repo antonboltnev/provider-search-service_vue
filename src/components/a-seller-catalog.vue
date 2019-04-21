@@ -106,7 +106,7 @@
                 } else {
                     return this.$store.state.sellers[e].products.filter(function (item) {
                         vm.emptyFilterResults = false;
-                        return item.category.indexOf(selectFiilter) > -1;
+                        return item.category.match(selectFiilter);
                     });
                 }
             },
@@ -127,12 +127,19 @@
         },
 
         methods: {
-            addToCart(index) {
-                let product = this.products[index];
+            addToCart(e) {
+                let k;
+                let vm = this;
+                let product = this.products[e];
                 let sellerIndex = this.sellers_data.id - 1;
-                let productIndex = this.products.indexOf(product);
-                this.$store.dispatch('ADD_TO_CART', product);
-                this.$store.dispatch('SET_ORDER_LIST', {productIndex, sellerIndex});
+                let updateProducts = this.sellers_data.products;
+                for (var i = 0; i < updateProducts.length; i++) {
+                  if (updateProducts[i].title === product.title) {
+                    k = i;
+                  }
+                }
+                this.$store.dispatch('SET_ORDER_LIST', {k, sellerIndex});
+                vm.$store.dispatch('ADD_TO_CART', product);
             },
 
             showAdvancedInfo() {
