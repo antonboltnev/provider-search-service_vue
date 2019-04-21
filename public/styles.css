@@ -159,6 +159,7 @@ button {
 .a-category-select-input__wrapper label {
       font-size: 20px;
       width: 100%;
+      position: relative;
 }
 
 .a-category-select-input__wrapper input, .a-category-select-input__wrapper select {
@@ -166,11 +167,21 @@ button {
       color: #797979;
       padding: 10px;
       background: transparent;
+      position: relative;
       border-radius: 3px;
       border: 0;
       font-size: 16px;
       margin-top: 20px;
       box-shadow: 0 1px 7px 0 #d8d8d8;
+      -webkit-appearance: none;
+}
+
+.a-category-select-input__wrapper label:after {
+  content: 'v';
+  position: absolute;
+  right: 30px;
+  color: #797979;
+  top: 24px;
 }
 
 /*SELECT ENDS*/

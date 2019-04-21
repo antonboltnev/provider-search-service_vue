@@ -96,7 +96,6 @@
         top: 38px;
         background: #fff;
         padding: 0 10px;
-        border-bottom: solid 1px #eeeeee;
     }
 
     .a-sellers__list {

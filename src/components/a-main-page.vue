@@ -23,7 +23,7 @@
                 </div>
             </router-link>
             <router-link to="/home" class="text-color1 bg-color-fff">
-                <icon name="envelope"></icon>
+                <icon name="user"></icon>
                 <div class="nav-block">Profile</div>
             </router-link>
             <router-link to="/settings" class="text-color1 bg-color-fff">
