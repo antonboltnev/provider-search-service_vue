@@ -5,7 +5,7 @@
             <h1 v-if="!this.auth">Sign In</h1>
             <form id="auth-form" action="#">
                 <p class="input_error_msg" v-if="showError">{{ this.$store.state.errorMessages.authError }}</p>
-                <input type="text"
+                <input type="email"
                        v-model="authLogin"
                        placeholder="Email"
                        required
