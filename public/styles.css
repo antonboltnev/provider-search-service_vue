@@ -21,6 +21,7 @@ body, html {
       color: #2c3e50;
       margin: 0 auto 120px auto;
       padding: 20px 10px 1px 10px;
+      max-width: 900px;
 }
 
 a {
@@ -164,7 +165,7 @@ button {
 }
 
 .a-category-select-input__wrapper input, .a-category-select-input__wrapper select {
-      width: 95%;
+      width: 100%;
       color: #797979;
       padding: 10px;
       background: transparent;
@@ -177,12 +178,10 @@ button {
       -webkit-appearance: none;
 }
 
-.a-category-select-input__wrapper label:after {
-  content: 'v';
-  position: absolute;
-  right: 30px;
-  color: #797979;
-  top: 24px;
+.a-category-select-input__wrapper label svg {
+      position: absolute;
+      top: 30px;
+      right: 20px;
 }
 
 /*SELECT ENDS*/

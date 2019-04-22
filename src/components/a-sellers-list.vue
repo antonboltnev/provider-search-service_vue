@@ -10,6 +10,7 @@
                                 :category_data="item"
                         />
                     </select>
+                    <icon name="chevron-down"></icon>
                 </label>
             </div>
         </div>
@@ -30,12 +31,14 @@
 <script>
     import aSellersItem from '@/components/a-sellers-item'
     import aSellerCatalogSelectOption from '@/components/a-seller-catalog-select-option'
+    import Icon from 'vue-awesome/components/Icon'
 
     export default {
         name: "a-sellers-list",
         components: {
             aSellersItem,
-            aSellerCatalogSelectOption
+            aSellerCatalogSelectOption,
+            Icon
         },
         data() {
             return {

@@ -36,6 +36,7 @@
                             :category_data="item"
                     />
                 </select>
+                <icon name="chevron-down"></icon>
             </label>
         </div>
         <div class="a-seller-catalog-wrapper">
