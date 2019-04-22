@@ -3,16 +3,18 @@
         <form action="" id="profile-form">
             <div class="profile-input-wrapper">
                 <p class="input-title">Name:</p>
-                <input type="text" :value="getUserData.name" disabled>
+                <input type="text" :value="getUserData.name" :disabled="this.editProfileInfo">
             </div>
             <div class="profile-input-wrapper">
                 <p class="input-title">Email:</p>
-                <input type="text" :value="getUserData.email" disabled>
+                <input type="text" :value="getUserData.email" :disabled="this.editProfileInfo">
             </div>
             <div class="profile-input-wrapper">
                 <p class="input-title">Phone:</p>
-                <input type="text" :value="getUserData.phone" disabled>
+                <input type="text" :value="getUserData.phone" :disabled="this.editProfileInfo">
             </div>
+            <div class="edit-profile-info btn bg-color2" v-if="editProfileInfo" @click="editInfo">Edit</div>
+            <div class="edit-profile-info btn bg-color2" v-if="!editProfileInfo" @click="saveInfo">Save</div>
         </form>
     </div>
 </template>
@@ -22,13 +24,22 @@
         name: "a-profile-page",
         data() {
             return {
-                userData: [],
+                editProfileInfo: true,
             }
         },
         computed: {
            getUserData() {
                return this.$store.state.users[0];
            }
+        },
+        methods: {
+            editInfo() {
+                this.editProfileInfo = !this.editProfileInfo;
+            },
+            saveInfo() {
+                this.editProfileInfo = !this.editProfileInfo;
+                this.$store.dispatch('EDIT_PROFILE', this.getUserData);
+            }
         },
         mounted() {
             this.$store.dispatch('SET_HEADER_TEXT', 'Profile');
@@ -48,6 +59,10 @@
         align-items: center;
         margin: 20px 0;
     }
+    
+    .input-title {
+        color: #797979;
+    }
 
     .profile-input-wrapper input {
         color: #797979;
@@ -60,6 +75,7 @@
     }
 
     .profile-input-wrapper input:disabled {
-        background: transparent;
+        background: #e6e6e6;
+        color: #aeaeae;
     }
 </style>

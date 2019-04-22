@@ -136,7 +136,16 @@ const store = new Vuex.Store({
         },
         SUCCESS_REGISTRATION: ( state ) => {
             state.isRegistered = true;
-        }
+        },
+        EDIT_PROFILE_INFO: ( state, payload ) => {
+            let promise = new Promise(function (resolve, reject) {
+                state.users.splice(0, 1);
+                resolve();
+            });
+            promise.then(function () {
+                state.users.push(payload);
+            });
+        },
     },
     actions: {
         SET_HEADER_TEXT: ( context, payload ) => {
@@ -186,6 +195,9 @@ const store = new Vuex.Store({
         },
         USER_FROM_STORAGE: ( context, payload ) => {
             context.commit( 'SET_USER', payload );
+        },
+        EDIT_PROFILE: ( context, payload ) => {
+            context.commit( 'EDIT_PROFILE_INFO', payload );
         }
     }
 });
