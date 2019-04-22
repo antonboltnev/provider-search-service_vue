@@ -42,9 +42,7 @@ const store = new Vuex.Store({
         ],
         selectedSeller: 0,
         cart: [],
-        users: [
-            { name: 'anton', email: 'anton@ya.ru', phone: '123123', pass: '123123' }
-        ],
+        users: [],
         isAuth: false,
         isRegistered: false,
         errorMessages: {

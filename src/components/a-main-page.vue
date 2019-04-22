@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </router-link>
-            <router-link to="/home" class="text-color1 bg-color-fff">
+            <router-link to="/profile" class="text-color1 bg-color-fff">
                 <icon name="user"></icon>
                 <div class="nav-block">Profile</div>
             </router-link>

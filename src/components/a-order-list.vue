@@ -92,7 +92,7 @@
         },
 
         mounted() {
-            this.$store.dispatch('SET_HEADER_TEXT', 'Мои заказы');
+            this.$store.dispatch('SET_HEADER_TEXT', 'My orders');
         },
     }
 </script>

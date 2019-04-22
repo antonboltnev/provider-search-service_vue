@@ -27,6 +27,7 @@
     import aOrderList from '@/components/a-order-list'
     import aAboutPage from '@/components/a-about-page'
     import aSettingsPage from '@/components/a-settings-page'
+    import aProfilePage from '@/components/a-profile-page'
 
 
 
@@ -43,6 +44,11 @@
                 path: '/home',
                 name: 'Home',
                 component: aMainPage
+            },
+            {
+               path: '/profile',
+               name: 'Profile',
+               component: aProfilePage
             },
             {
                 path: '/sellers-list',
@@ -89,7 +95,8 @@
             aMainMenu,
             aCustomerCabinet,
             aAboutPage,
-            aSettingsPage
+            aSettingsPage,
+            aProfilePage
         },
 
         computed: {
