@@ -11,10 +11,8 @@
 </template>
 
 <script>
-    import Vue from 'vue';
-    import Router  from 'vue-router';
     import '../public/styles.css'
-
+    import {router} from './router.js'
     import 'vue-awesome/icons'
 
     import aLoginPage from '@/components/a-login-page'
@@ -30,58 +28,6 @@
     import aProfilePage from '@/components/a-profile-page'
 
 
-
-    Vue.use(Router);
-
-    const router = new Router({
-        routes: [
-            {
-               path: '/login',
-               name: 'login',
-               component: aLoginPage
-            },
-            {
-                path: '/home',
-                name: 'Home',
-                component: aMainPage
-            },
-            {
-               path: '/profile',
-               name: 'Profile',
-               component: aProfilePage
-            },
-            {
-                path: '/sellers-list',
-                name: 'SellersList',
-                component: aSellersPage
-            },
-            {
-                path: '/seller-catalog',
-                name: 'Catalog',
-                component: aSellerCatalog,
-            },
-            {
-              path: '/customer-cabinet',
-              name: 'CustomerCabinet',
-              component: aCustomerCabinet
-            },
-            {
-                path: '/customer-order-list',
-                name: 'CustomerOrderList',
-                component: aOrderList
-            },
-            {
-                path: '/about',
-                name: 'About',
-                component: aAboutPage
-            },
-            {
-                path: '/settings',
-                name: 'Settings',
-                component: aSettingsPage
-            }
-        ]
-    });
 
     export default {
         name: 'app',
@@ -105,13 +51,19 @@
             }
         },
 
+        methods: {
+           hideHeader() {
+               if ( this.$route.path === '/login' ) {
+                   this.$store.dispatch('HIDE_HEADER');
+               } else {
+                   this.$store.dispatch('SHOW_HEADER');
+               }
+           }
+        },
+
         watch: {
             $route() {
-                if ( this.$route.path === '/login' ) {
-                    this.$store.dispatch('HIDE_HEADER');
-                } else {
-                    this.$store.dispatch('SHOW_HEADER');
-                }
+                this.hideHeader();
             },
         },
 
@@ -122,18 +74,10 @@
                 console.log(JSON.parse(localStorage.getItem("user")));
             }
 
-            if ( this.$route.path === '/login' ) {
-                this.$store.dispatch('HIDE_HEADER');
-            } else {
-                this.$store.dispatch('SHOW_HEADER');
-            }
+            this.hideHeader();
         },
         mounted() {
-            if ( this.$route.path === '/login' ) {
-                this.$store.dispatch('HIDE_HEADER');
-            } else {
-                this.$store.dispatch('SHOW_HEADER');
-            }
+            this.hideHeader();
         }
     }
 </script>

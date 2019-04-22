@@ -1,24 +1,24 @@
 <template>
     <div class="a-catalog-list">
-        <div class="product_img">
-            <img :src=productImage alt="">
+        <div class="a-catalog-list_img">
+            <img :src="productImage" alt="">
         </div>
-        <div class="product_title">
+        <div class="a-catalog-list_title">
             {{ product_data.title }}
         </div>
-        <div class="product_price">
+        <div class="a-catalog-list_price">
             ${{ product_data.price }} / {{ product_data.value }}
         </div>
-        <div class="product_add-to-cart btn bg-color"
+        <div class="a-catalog-list_add-to-cart btn bg-color"
              v-if="!this.product_data.ordered"
             @click="addToCart"
         >{{ addToCartText }}
         </div>
-        <button class="product_add-to-cart btn bg-color2"
+        <div class="a-catalog-list_add-to-cart btn bg-color2"
              v-if="this.product_data.ordered"
              :disabled="this.product_data.ordered"
         >{{ addedToCart }}<icon name="check"></icon>
-        </button>
+        </div>
     </div>
 </template>
 
@@ -67,7 +67,7 @@
 </script>
 
 <style scoped>
-    .product_title {
+    .a-catalog-list_title {
         margin: 10px 0;
     }
 
@@ -79,21 +79,21 @@
         margin: 0 5px 50px 5px;
     }
 
-    .product_img img {
+    .a-catalog-list_img img {
       max-width: 100px;
     }
 
-    .product_add-to-cart {
+    .a-catalog-list_add-to-cart {
         margin-top: 10px;
     }
 
-    .product_add-to-cart svg {
+    .a-catalog-list_add-to-cart svg {
         position: relative;
         top: 2px;
         left: 10px;
     }
 
-    .product_add-to-cart:active {
+    .a-catalog-list_add-to-cart:active {
         box-shadow: inset 0 0 10px 0 #525252;
     }
 
