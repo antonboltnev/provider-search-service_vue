@@ -18,7 +18,7 @@
             <div class="profile-input-wrapper">
                 <p class="input-title">Phone:</p>
                 <masked-input
-                        type="number"
+                        type="tel"
                         v-model="getUserData.phone"
                         :disabled="this.editProfileInfo"
                         mask="\+\7 (111) 111-11-11"
@@ -91,10 +91,11 @@
         border: 0;
         font-size: 16px;
         box-shadow: inset 0 1px 7px 0 #d8d8d8;
+        -webkit-box-shadow: inset 0 1px 7px 0 #d8d8d8;
     }
 
     .profile-input-wrapper input:disabled {
         background: #e6e6e6;
-        color: #aeaeae !important;
+        color: #aeaeae;
     }
 </style>
