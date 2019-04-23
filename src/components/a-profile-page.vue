@@ -3,16 +3,22 @@
         <form action="" id="profile-form">
             <div class="profile-input-wrapper">
                 <p class="input-title">Name:</p>
-                <input type="text" v-model="getUserData.name" :disabled="this.editProfileInfo">
+                <input
+                        type="text"
+                        v-model="getUserData.name"
+                        :disabled="this.editProfileInfo">
             </div>
             <div class="profile-input-wrapper">
                 <p class="input-title">Email:</p>
-                <input type="text" v-model="getUserData.email" :disabled="this.editProfileInfo">
+                <input
+                        type="email"
+                        v-model="getUserData.email"
+                        :disabled="this.editProfileInfo">
             </div>
             <div class="profile-input-wrapper">
                 <p class="input-title">Phone:</p>
                 <masked-input
-                        type="text"
+                        type="number"
                         v-model="getUserData.phone"
                         :disabled="this.editProfileInfo"
                         mask="\+\7 (111) 111-11-11"
@@ -89,6 +95,6 @@
 
     .profile-input-wrapper input:disabled {
         background: #e6e6e6;
-        color: #aeaeae;
+        color: #aeaeae !important;
     }
 </style>

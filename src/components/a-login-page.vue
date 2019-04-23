@@ -111,7 +111,7 @@
             confirmLogin() {
                 if ( this.$store.state.users.length ) {
                 for (let i = 0; i < this.$store.state.users.length; i++) {
-                    if ( (this.$store.state.users[i].email.length) && (this.$store.state.users[i].email === this.authLogin) && (this.$store.state.users[i].pass === this.authPass)) {
+                    if ( (this.$store.state.users[i].email.length) && (this.$store.state.users[i].email === this.authLogin.toLocaleLowerCase()) && (this.$store.state.users[i].pass === this.authPass)) {
                         let vm = this;
                         setTimeout(function () {
                             vm.$store.dispatch('SUCCESS_AUTH');
