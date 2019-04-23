@@ -1,49 +1,51 @@
 <template>
-    <ul class="a-main-menu shadow-border bg-color fixed-bottom" v-if="toggleHeaderVisibility">
-        <li>
-          <router-link to="/home">
-            <div class="menu_a" @click="mainPageClick">
-              <icon name="home"></icon>
-                <span>Home</span>
-            </div>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/customer-cabinet">
-            <div class="menu_a" @click="favoritePageClick">
-              <icon name="heart"></icon>
-                <span>Favorites</span>
-            </div>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/customer-order-list">
-            <div class="menu_a" @click="cartPageClick">
-              <icon name="cart-arrow-down"></icon>
-              <span>Orders</span>
-                <span class="order_counter bg-color"
-                    v-if="this.$store.state.cart.length"
-                >{{ orderCounter }}</span>
-            </div>
-          </router-link>
-        </li>
-        <li>
-            <router-link to="/about">
-                <div class="menu_a" @click="aboutPageClick">
-                    <icon name="info-circle"></icon>
-                    <span class="no-wrap">About</span>
-                </div>
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/settings">
-            <div class="menu_a" @click="settingsPageClick">
-                <icon name="cog"></icon>
-                <span>Preferences</span>
-            </div>
-        </router-link>
-        </li>
-    </ul>
+    <nav>
+        <ul class="a-main-menu shadow-border bg-color fixed-bottom" v-if="toggleHeaderVisibility">
+            <li>
+                <router-link to="/home">
+                    <div class="menu_a" @click="mainPageClick">
+                        <icon name="home"></icon>
+                        <span>Home</span>
+                    </div>
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/customer-cabinet">
+                    <div class="menu_a" @click="favoritePageClick">
+                        <icon name="heart"></icon>
+                        <span>Favorites</span>
+                    </div>
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/customer-order-list">
+                    <div class="menu_a" @click="cartPageClick">
+                        <icon name="cart-arrow-down"></icon>
+                        <span>Orders</span>
+                        <span class="order_counter bg-color"
+                              v-if="this.$store.state.cart.length"
+                        >{{ orderCounter }}</span>
+                    </div>
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/about">
+                    <div class="menu_a" @click="aboutPageClick">
+                        <icon name="info-circle"></icon>
+                        <span class="no-wrap">About</span>
+                    </div>
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/settings">
+                    <div class="menu_a" @click="settingsPageClick">
+                        <icon name="cog"></icon>
+                        <span>Preferences</span>
+                    </div>
+                </router-link>
+            </li>
+        </ul>
+    </nav>
 </template>
 
 <script>
@@ -53,10 +55,6 @@ import Icon from 'vue-awesome/components/Icon'
         name: "a-main-menu",
         components: {
           Icon
-        },
-        data() {
-           return {
-           }
         },
         computed: {
             orderCounter() {

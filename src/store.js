@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {router} from './router.js'
 Vue.use(Vuex);
 export  const store = new Vuex.Store({
     state: {
@@ -128,13 +129,29 @@ export  const store = new Vuex.Store({
             state.users.push(payload);
         },
         AUTH: ( state ) => {
-            state.isAuth = true;
+            let promise = new Promise(function (resolve, reject) {
+                    state.isAuth = true;
+                    return resolve();
+            });
+            promise.then(() => {
+                setTimeout(function () {
+                    router.push('/home');
+                }, 1500);
+            })
         },
         REGISTER: ( state, payload ) => {
             state.users.push(payload);
         },
         SUCCESS_REGISTRATION: ( state ) => {
-            state.isRegistered = true;
+            let promise = new Promise(function (resolve, reject) {
+                state.isRegistered = true;
+                resolve();
+            });
+            promise.then(() =>{
+                setTimeout(function () {
+                    router.push('/home');
+                }, 1500);
+            });
         },
         EDIT_PROFILE_INFO: ( state, payload ) => {
             console.log(payload)

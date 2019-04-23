@@ -40,6 +40,7 @@
                                @keyup="clearErrorName"
                         >
                         <masked-input
+                                type="tel"
                                 v-model="phoneField"
                                 mask="\+\7 (111) 111-11-11"
                                 @input="rawVal = arguments[1]"
@@ -113,12 +114,7 @@
                 for (let i = 0; i < this.$store.state.users.length; i++) {
                     if ( (this.$store.state.users[i].email.length) && (this.$store.state.users[i].email === this.authLogin.toLocaleLowerCase()) && (this.$store.state.users[i].pass === this.authPass)) {
                         let vm = this;
-                        setTimeout(function () {
-                            vm.$store.dispatch('SUCCESS_AUTH');
-                            setTimeout(function () {
-                                vm.$router.push('/home');
-                            }, 1500);
-                        }, 500);
+                        vm.$store.dispatch('SUCCESS_AUTH');
                         this.showError = false;
                         break;
                     } else {
@@ -152,9 +148,6 @@
                     localStorage.setItem('user', JSON.stringify(payload));
                     this.$store.dispatch('REGISTRATION', JSON.parse(localStorage.getItem("user")));
                     this.$store.dispatch('SUCCESS_REGISTRATION');
-                    setTimeout(function () {
-                        vm.$router.push('/home');
-                    }, 1500);
             },
 
             clearErrorPass() {

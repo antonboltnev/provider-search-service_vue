@@ -25,7 +25,7 @@ export const router = new Router ({
             {
                 path: '/home',
                 name: 'Home',
-                component: aMainPage
+                component: aMainPage,
             },
             {
                 path: '/profile',
@@ -34,12 +34,12 @@ export const router = new Router ({
             },
             {
                 path: '/sellers-list',
-                name: 'SellersList',
+                name: 'sellersList',
                 component: aSellersPage
             },
             {
                 path: '/seller-catalog',
-                name: 'Catalog',
+                name: 'catalog',
                 component: aSellerCatalog,
             },
             {

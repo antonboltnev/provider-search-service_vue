@@ -1,8 +1,7 @@
 <template>
     <div class="a-category-select-input__wrapper">
-        <label for="category-input">Choose product category:
+        <label>Choose product category:
             <input
-                    id="category-input"
                     type="text"
                     placeholder='Ex: "bread" '
                     v-model.trim="category"
@@ -16,9 +15,6 @@
 <script>
     export default {
         name: "a-category-select-input",
-        props: {
-
-        },
         data() {
            return {
                category: '',

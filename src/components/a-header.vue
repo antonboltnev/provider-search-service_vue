@@ -1,7 +1,7 @@
 <template>
-    <div class="a-header-title" v-if="toggleHeaderVisibility">
-        <p class="title-text">{{ pageTitle }}</p>
-    </div>
+    <header class="a-header-title" v-if="toggleHeaderVisibility">
+        <h1 class="title-text">{{ pageTitle }}</h1>
+    </header>
 </template>
 
 <script>
@@ -46,6 +46,10 @@
         z-index: 2;
         font-size: 20px;
         margin: 0 auto;
+    }
+
+    .title-text {
+        font-size: 16px;
     }
 
 </style>

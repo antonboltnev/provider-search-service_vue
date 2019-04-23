@@ -11,7 +11,7 @@
            v-if="sellers.length < 1"
       >
         <p class="no-favorite">You do not have favorite providers</p>
-        <router-link to="/sellers-list">
+        <router-link :to="{ name: 'sellersList' }">
           <p class="add-fav btn bg-color" @click="sellersPageClick">Add</p>
         </router-link>
       </div>
@@ -27,11 +27,6 @@ export default {
   components: {
       aSellersItem
   },
-  data() {
-    return {
-    }
-  },
-
   computed: {
     sellers() {
           return this.$store.state.sellers.filter(function (e) {
