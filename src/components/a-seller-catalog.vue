@@ -90,8 +90,8 @@
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
                 e = this.sellerSelectedIndex;
                 let categoryArr = [];
-                for ( let item in this.$store.state.sellers[e].products) {
-                    categoryArr.push(this.$store.state.sellers[e].products[item].category);
+                for ( let item of this.$store.state.sellers[e].products) {
+                    categoryArr.push(item.category);
                 }
                 return Object.values(categoryArr.reduce((acc, cur) => Object.assign(acc,{[cur]:cur}),{} ));
             },
@@ -134,7 +134,7 @@
                 let product = this.products[e];
                 let sellerIndex = this.sellers_data.id - 1;
                 let updateProducts = this.sellers_data.products;
-                for (var i = 0; i < updateProducts.length; i++) {
+                for (let i = 0; i < updateProducts.length; i++) {
                   if (updateProducts[i].title === product.title) {
                     k = i;
                   }
@@ -152,10 +152,6 @@
                 this.isAboutTextVisible = !this.isAboutTextVisible;
                 this.isAdvancesInfoVisible = false;
             }
-        },
-
-        mounted: function () {
-            // return this.$store.state.sellers.products;
         },
     }
 </script>

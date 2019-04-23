@@ -52,8 +52,8 @@
         computed: {
             showProductCategories() {
                 let productArr = [];
-                for ( let item in this.$store.state.productCategories) {
-                    productArr.push(this.$store.state.productCategories[item].name);
+                for ( let item of this.$store.state.productCategories) {
+                    productArr.push(item.name);
                 }
                 return productArr;
             },
@@ -66,8 +66,8 @@
                     return this.$store.state.sellers;
                 }
 
-                for (let item = 0; item < this.$store.state.sellers.length; item++) {
-                    if (selectFiilter !== this.$store.state.sellers[item].category) {
+                for (let item of this.$store.state.sellers) {
+                    if (selectFiilter !== item.category) {
                         vm.emptyFilterResults = true;
                     } else {
                         return this.$store.state.sellers.filter(function (e) {

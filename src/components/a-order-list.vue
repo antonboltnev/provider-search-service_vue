@@ -55,8 +55,8 @@
 
             totalSum() {
                 let totalSum = 0;
-                for (let i = 0; i< this.orders.length; i++) {
-                    totalSum += parseInt(this.orders[i].total);
+                for (let item of this.orders) {
+                    totalSum += parseInt(item.total);
                 }
                 return totalSum;
             }

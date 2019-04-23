@@ -111,8 +111,8 @@
             },
             confirmLogin() {
                 if ( this.$store.state.users.length ) {
-                for (let i = 0; i < this.$store.state.users.length; i++) {
-                    if ( (this.$store.state.users[i].email.length) && (this.$store.state.users[i].email === this.authLogin.toLocaleLowerCase()) && (this.$store.state.users[i].pass === this.authPass)) {
+                for (let item of  this.$store.state.users) {
+                    if ( (item.email.length) && (item.email === this.authLogin.toLocaleLowerCase()) && (item.pass === this.authPass)) {
                         let vm = this;
                         vm.$store.dispatch('SUCCESS_AUTH');
                         this.showError = false;
@@ -128,7 +128,6 @@
               },
 
             confirmRegistration() {
-                let vm = this;
                 var payload = {
                     name: this.nameField,
                     email: this.emailField,

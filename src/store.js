@@ -38,6 +38,7 @@ export  const store = new Vuex.Store({
             { name: 'Meat' },
             { name: 'Bread' },
             { name: 'Milk', },
+            { name: 'Vodka', },
 
         ],
         selectedSeller: 0,
@@ -84,11 +85,11 @@ export  const store = new Vuex.Store({
             state.sellers[sellerIndex].products[k].ordered = true;
         },
         REMOVE_ITEM: ( state, payload ) => {
-            for ( let i = 0; i < state.sellers.length; i++ ) {
-                if  ( state.sellers[i].products !== undefined ) {
-                    for ( let j = 0; j <  state.sellers[i].products.length; j++) {
-                        if (state.sellers[i].products[j].title === state.cart[payload].title) {
-                            state.sellers[i].products[j].ordered = false;
+            for ( let seller of state.sellers) {
+                if  ( seller.products !== undefined ) {
+                    for ( let product of  seller.products.length) {
+                        if (product.title === state.cart[payload].title) {
+                            product.ordered = false;
                         }
                     }
                 }
@@ -110,7 +111,7 @@ export  const store = new Vuex.Store({
         },
         CART_CHECKOUT: ( state ) => {
             state.cart.splice(0, state.cart.length);
-            for ( let i = 0; i < state.sellers.length; i++ ) {
+            for ( let i = 0; i < state.sellers.length; i++) {
                 if  ( state.sellers[i].products !== undefined ) {
                     for ( let j = 0; j <  state.sellers[i].products.length; j++) {
                         state.sellers[i].products[j].ordered = false;
