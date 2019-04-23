@@ -3,15 +3,22 @@
         <form action="" id="profile-form">
             <div class="profile-input-wrapper">
                 <p class="input-title">Name:</p>
-                <input type="text" :value="getUserData.name" :disabled="this.editProfileInfo">
+                <input type="text" v-model="getUserData.name" :disabled="this.editProfileInfo">
             </div>
             <div class="profile-input-wrapper">
                 <p class="input-title">Email:</p>
-                <input type="text" :value="getUserData.email" :disabled="this.editProfileInfo">
+                <input type="text" v-model="getUserData.email" :disabled="this.editProfileInfo">
             </div>
             <div class="profile-input-wrapper">
                 <p class="input-title">Phone:</p>
-                <input type="text" :value="getUserData.phone" :disabled="this.editProfileInfo">
+                <masked-input
+                        type="text"
+                        v-model="getUserData.phone"
+                        :disabled="this.editProfileInfo"
+                        mask="\+\7 (111) 111-11-11"
+                        @input="rawVal = arguments[1]"
+                        placeholder="Phone"
+                />
             </div>
             <div class="edit-profile-info btn bg-color2" v-if="editProfileInfo" @click="editInfo">Edit</div>
             <div class="edit-profile-info btn bg-color2" v-if="!editProfileInfo" @click="saveInfo">Save</div>
@@ -20,8 +27,13 @@
 </template>
 
 <script>
+    import  MaskedInput from 'vue-masked-input'
+
     export default {
         name: "a-profile-page",
+        components: {
+            MaskedInput
+        },
         data() {
             return {
                 editProfileInfo: true,
@@ -29,7 +41,7 @@
         },
         computed: {
            getUserData() {
-               return this.$store.state.users[0];
+               return this.$store.state.users[0]
            }
         },
         methods: {
@@ -37,6 +49,7 @@
                 this.editProfileInfo = !this.editProfileInfo;
             },
             saveInfo() {
+                localStorage.setItem('user', JSON.stringify(this.getUserData));
                 this.editProfileInfo = !this.editProfileInfo;
                 this.$store.dispatch('EDIT_PROFILE', this.getUserData);
             }

@@ -137,13 +137,8 @@ export  const store = new Vuex.Store({
             state.isRegistered = true;
         },
         EDIT_PROFILE_INFO: ( state, payload ) => {
-            let promise = new Promise(function (resolve, reject) {
-                state.users.splice(0, 1);
-                resolve();
-            });
-            promise.then(function () {
-                state.users.push(payload);
-            });
+            console.log(payload)
+            Object.assign(state.users, payload);
         },
     },
     actions: {
