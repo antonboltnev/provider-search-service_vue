@@ -176,6 +176,7 @@ button {
       margin-top: 20px;
       box-shadow: 0 1px 7px 0 #d8d8d8;
       -webkit-appearance: none;
+      z-index: 1;
 }
 
 .a-category-select-input__wrapper label svg {
