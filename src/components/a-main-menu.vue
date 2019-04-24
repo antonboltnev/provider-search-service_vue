@@ -29,10 +29,10 @@
                 </router-link>
             </li>
             <li>
-                <router-link to="/about">
+                <router-link to="/profile">
                     <div class="menu_a" @click="aboutPageClick">
-                        <icon name="info-circle"></icon>
-                        <span class="no-wrap">About</span>
+                        <icon name="user"></icon>
+                        <span class="no-wrap">Profile</span>
                     </div>
                 </router-link>
             </li>

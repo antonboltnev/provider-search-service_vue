@@ -39,7 +39,6 @@ export  const store = new Vuex.Store({
             { name: 'Bread' },
             { name: 'Milk', },
             { name: 'Vodka', },
-
         ],
         selectedSeller: 0,
         cart: [],
@@ -53,6 +52,12 @@ export  const store = new Vuex.Store({
             registerPassConfirm: 'Passwords do not match',
             emptyFields: 'Please, fill the form-fields'
         },
+        preferencesCheckboxes: [
+            { id: 'profile-data', value: true },
+            { id: 'notifications', value: true },
+            { id: 'updates', value: true },
+            { id: 'news', value: true }
+        ]
     },
     getters: {
         SELLERS: state => {
@@ -158,6 +163,13 @@ export  const store = new Vuex.Store({
             console.log(payload)
             Object.assign(state.users, payload);
         },
+        SET_CHECKBOX: ( state, payload ) => {
+            for ( let item of state.preferencesCheckboxes  ) {
+                if ( item.id === payload ) {
+                    item.value = !item.value;
+                }
+            }
+        }
     },
     actions: {
         SET_HEADER_TEXT: ( context, payload ) => {
@@ -210,6 +222,9 @@ export  const store = new Vuex.Store({
         },
         EDIT_PROFILE: ( context, payload ) => {
             context.commit( 'EDIT_PROFILE_INFO', payload );
+        },
+        SET_PREFERENCES_CHECKBOXES: ( context, payload ) => {
+            context.commit( 'SET_CHECKBOX', payload );
         }
     }
 });

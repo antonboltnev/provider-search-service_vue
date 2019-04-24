@@ -4,7 +4,7 @@
             <p>Show my profile data to providers</p>
             <div class="type-checkbox">
                 <label class="switch">
-                    <input type="checkbox" checked="checked">
+                    <input id="profile-data" type="checkbox" :checked="isProfileChecked" @click="clickInput">
                     <div class="checkbox"></div>
                 </label>
             </div>
@@ -13,7 +13,7 @@
             <p>Receive notifications</p>
             <div class="type-checkbox">
                 <label class="switch">
-                    <input type="checkbox" checked="checked">
+                    <input id="notifications" type="checkbox" :checked="isNotifsChecked" @click="clickInput">
                     <div class="checkbox"></div>
                 </label>
             </div>
@@ -22,7 +22,7 @@
             <p>Track the updates in provider's catalogues</p>
             <div class="type-checkbox">
                 <label class="switch">
-                    <input type="checkbox" checked="checked">
+                    <input id="updates" type="checkbox" :checked="isUpdatesChecked" @click="clickInput">
                     <div class="checkbox"></div>
                 </label>
             </div>
@@ -31,7 +31,7 @@
             <p>Receive service news</p>
             <div class="type-checkbox">
                 <label class="switch">
-                    <input type="checkbox" checked="checked">
+                    <input id="news" type="checkbox" :checked="isNewsChecked" @click="clickInput">
                     <div class="checkbox"></div>
                 </label>
             </div>
@@ -44,8 +44,21 @@
         name: "a-settings-page",
         data() {
            return {
-
+               isProfileChecked: this.$store.state.preferencesCheckboxes[0].value,
+               isNotifsChecked: this.$store.state.preferencesCheckboxes[1].value,
+               isUpdatesChecked: this.$store.state.preferencesCheckboxes[2].value,
+               isNewsChecked: this.$store.state.preferencesCheckboxes[3].value
            }
+        },
+
+        methods: {
+            clickInput(item) {
+                for ( let notif of this.$store.state.preferencesCheckboxes ) {
+                    if ( item.target.id === notif.id ) {
+                        this.$store.dispatch( 'SET_PREFERENCES_CHECKBOXES', item.target.id );
+                    }
+                }
+            }
         },
     }
 </script>
