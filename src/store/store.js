@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {router} from './router.js'
+import {router} from '../router/router.js'
 Vue.use(Vuex);
 export  const store = new Vuex.Store({
     state: {
@@ -87,7 +87,7 @@ export  const store = new Vuex.Store({
         REMOVE_ITEM: ( state, payload ) => {
             for ( let seller of state.sellers) {
                 if  ( seller.products !== undefined ) {
-                    for ( let product of  seller.products.length) {
+                    for ( let product of  seller.products) {
                         if (product.title === state.cart[payload].title) {
                             product.ordered = false;
                         }
