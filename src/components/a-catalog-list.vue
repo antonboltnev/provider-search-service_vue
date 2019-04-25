@@ -33,11 +33,11 @@
         props: {
             product_data: {
                 type: Object,
-                default: {}
+                default() {}
             },
             sellers_data: {
                 type: Object,
-                default: {}
+                default() {}
             }
         },
 

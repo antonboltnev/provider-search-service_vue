@@ -36,7 +36,7 @@
         props: {
            sellers_data: {
                type: Object,
-               default: {}
+               default() {}
            },
         },
         data() {

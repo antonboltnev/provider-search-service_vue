@@ -34,7 +34,7 @@
         props: {
             order_data: {
                 type: Object,
-                default: {}
+                default() {}
             }
         },
         computed: {
