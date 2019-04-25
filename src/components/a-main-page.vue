@@ -76,7 +76,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .a-main-page {
         height: 100%;
         display: flex;

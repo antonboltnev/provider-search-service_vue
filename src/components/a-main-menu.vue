@@ -104,7 +104,7 @@ import Icon from 'vue-awesome/components/Icon'
     }
 </script>
 
-<style scoped>
+<style>
     .a-main-menu {
         display: flex;
         justify-content: space-around;

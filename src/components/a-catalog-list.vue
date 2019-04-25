@@ -9,16 +9,16 @@
         <div class="a-catalog-list_price">
             ${{ product_data.price }} / {{ product_data.value }}
         </div>
-        <div class="a-catalog-list_add-to-cart btn bg-color"
+        <button class="a-catalog-list_add-to-cart btn bg-color"
              v-if="!this.product_data.ordered"
             @click="addToCart"
         >{{ addToCartText }}
-        </div>
-        <div class="a-catalog-list_add-to-cart btn bg-color2"
+        </button>
+        <button class="a-catalog-list_add-to-cart btn bg-color2"
              v-if="this.product_data.ordered"
              :disabled="this.product_data.ordered"
         >{{ addedToCart }}<icon name="check"></icon>
-        </div>
+        </button>
     </div>
 </template>
 
@@ -66,7 +66,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .a-catalog-list_title {
         margin: 10px 0;
     }

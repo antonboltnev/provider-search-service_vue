@@ -58,7 +58,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .a-order-item {
         display: flex;
         justify-content: space-between;

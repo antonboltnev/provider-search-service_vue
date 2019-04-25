@@ -52,7 +52,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
   .cabinet__favorites {
     margin-top: 35px;
   }

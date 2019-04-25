@@ -65,7 +65,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .a-sellers-item {
         justify-content: space-around;
         align-items: center;

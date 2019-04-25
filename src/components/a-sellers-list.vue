@@ -91,14 +91,13 @@
     }
 </script>
 
-<style scoped>
+<style>
 
     .a-seller__list-header {
         z-index: 1;
         position: sticky;
         top: 38px;
         background: #fff;
-        padding: 0 10px;
     }
 
     .a-sellers__list {

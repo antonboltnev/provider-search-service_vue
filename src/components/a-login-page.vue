@@ -177,7 +177,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .a-login-page {
         display: flex;
         flex-direction: column;

@@ -28,7 +28,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .a-category-select-input__wrapper {
         display: flex;
         align-items: center;

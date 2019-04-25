@@ -156,7 +156,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .a-seller-catalog {
         margin: 38px auto 50px auto;
     }

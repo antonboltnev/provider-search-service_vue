@@ -41,7 +41,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .a-header-title {
         z-index: 2;
         font-size: 20px;

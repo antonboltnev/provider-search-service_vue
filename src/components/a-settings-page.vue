@@ -53,8 +53,8 @@
 
         methods: {
             clickInput(item) {
-                for ( let notif of this.$store.state.preferencesCheckboxes ) {
-                    if ( item.target.id === notif.id ) {
+                for ( let checkbox of this.$store.state.preferencesCheckboxes ) {
+                    if ( item.target.id === checkbox.id ) {
                         this.$store.dispatch( 'SET_PREFERENCES_CHECKBOXES', item.target.id );
                     }
                 }
@@ -63,7 +63,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .a-settings-page {
         margin-top: 40px;
     }
