@@ -18,7 +18,7 @@
             <div class="item_total text-bold text-color1">Total: ${{ order_data.qty * order_data.price}}</div>
         </div>
         <div class="item_remove" @click="removeItemFromCart">
-            <icon name="times"></icon>
+            <icon name="trash"></icon>
         </div>
     </div>
 </template>
@@ -88,9 +88,9 @@
     }
 
     .item_remove svg {
-        width: 30px;
-        height: 30px;
-        fill: #ff5a5a;
+        width: 20px;
+        height: 20px;
+        fill: #797979;
     }
 
     .item_qty_wrapper {

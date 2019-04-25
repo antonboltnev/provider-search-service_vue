@@ -109,6 +109,7 @@ import Icon from 'vue-awesome/components/Icon'
         display: flex;
         justify-content: space-around;
         padding: 0 5px 3px 5px;
+        z-index: 1;
     }
 
     .a-main-menu li {
