@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import {store} from '../store/store.js'
 
 import aLoginPage from '@/components/a-login-page'
 import aHeader from '@/components/a-header'
@@ -16,6 +17,7 @@ import aProfilePage from '@/components/a-profile-page'
 Vue.use(Router);
 
 export const router = new Router ({
+        mode: 'history',
         routes: [
             {
                 path: '/login',
@@ -63,4 +65,13 @@ export const router = new Router ({
                 component: aSettingsPage
             }
         ]
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.fullPath !== '/login') {
+        if (!store.state.isRegistered && !store.state.isAuth) {
+            next('/login');
+        }
+    }
+    next();
 });

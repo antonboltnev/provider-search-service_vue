@@ -67,7 +67,7 @@
 </script>
 
 <style>
-    form {
+    .a-profile-page form {
         margin: 100px auto 0 auto;
         max-width: 300px;
     }

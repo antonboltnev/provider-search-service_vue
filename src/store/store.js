@@ -160,7 +160,6 @@ export  const store = new Vuex.Store({
             });
         },
         EDIT_PROFILE_INFO: ( state, payload ) => {
-            console.log(payload)
             Object.assign(state.users, payload);
         },
         SET_CHECKBOX: ( state, payload ) => {
