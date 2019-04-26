@@ -61,7 +61,7 @@
                                @keyup="clearErrorPass"
                         >
                         <div class="a-login-page_confirm">
-                            <button type="submit" class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Confirm</button>
+                            <button class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Confirm</button>
                             <br>
                             <span>or <span class="switch-tabs" @click="registrationTab">Sign In</span></span>
                         </div>
@@ -84,11 +84,15 @@
 <script>
 
     import  MaskedInput from 'vue-masked-input'
+    import {usersRef} from '../firebaseDB'
 
     export default {
         name: "a-login-page",
         components: {
             MaskedInput
+        },
+        firebase: {
+           usersDb: usersRef
         },
         data() {
            return {
@@ -110,11 +114,11 @@
                 this.loginTab = !this.loginTab;
             },
             confirmLogin() {
-                if ( this.$store.state.users.length ) {
-                for (let item of  this.$store.state.users) {
-                    if ( (item.email.length) && (item.email === this.authLogin.toLocaleLowerCase()) && (item.pass === this.authPass)) {
+                if ( this.usersDb.length ) {
+                for (let item of  this.usersDb) {
+                    if ( (item.email) && (item.email === this.authLogin.toLocaleLowerCase()) && (item.pass === this.authPass)) {
                         let vm = this;
-                        vm.$store.dispatch('SUCCESS_AUTH');
+                        vm.$store.dispatch('SUCCESS_AUTH', item);
                         this.showError = false;
                         break;
                     } else {
@@ -144,9 +148,10 @@
                 }
                     this.passwordsOk = true;
                     this.emptyFieldError = false;
-                    localStorage.setItem('user', JSON.stringify(payload));
-                    this.$store.dispatch('REGISTRATION', JSON.parse(localStorage.getItem("user")));
-                    this.$store.dispatch('SUCCESS_REGISTRATION');
+                    this.$store.dispatch('REGISTRATION', payload);
+                    usersRef.push(payload).then(() => {
+                        this.$store.dispatch('SUCCESS_REGISTRATION');
+                    });
             },
 
             clearErrorPass() {
@@ -173,6 +178,8 @@
                     vm.confirmLogin();
                 }
             });
+            console.log('This is DB: ', this.usersDb);
+            console.log('This is STORE: ', this.$store.state.users);
         }
     }
 </script>

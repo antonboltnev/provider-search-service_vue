@@ -13,7 +13,7 @@
                 <input
                         type="email"
                         v-model="getUserData.email"
-                        :disabled="this.editProfileInfo">
+                        :disabled="true">
             </div>
             <div class="profile-input-wrapper">
                 <p class="input-title">Phone:</p>
@@ -34,11 +34,15 @@
 
 <script>
     import  MaskedInput from 'vue-masked-input'
+    import {usersRef} from '../firebaseDB'
 
     export default {
         name: "a-profile-page",
         components: {
             MaskedInput
+        },
+        firebase: {
+            usersDb: usersRef
         },
         data() {
             return {
@@ -55,8 +59,15 @@
                 this.editProfileInfo = !this.editProfileInfo;
             },
             saveInfo() {
-                localStorage.setItem('user', JSON.stringify(this.getUserData));
                 this.editProfileInfo = !this.editProfileInfo;
+                let user;
+                let userIndex;
+                for ( user of this.usersDb ) {
+                        userIndex = this.usersDb.indexOf(user);
+                }
+                usersRef[userIndex].name = this.getUserData.name;
+                usersRef[userIndex].phone = this.getUserData.phone;
+                console.log(usersRef);
                 this.$store.dispatch('EDIT_PROFILE', this.getUserData);
             }
         },

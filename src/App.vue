@@ -51,10 +51,6 @@
         },
 
         created() {
-            if ( localStorage.getItem("user") ) {
-                this.$store.dispatch( 'USER_FROM_STORAGE', JSON.parse(localStorage.getItem("user")) );
-            }
-
             this.hideHeader();
         },
         mounted() {
