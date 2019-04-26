@@ -15,17 +15,8 @@
     import {router} from './router/router.js'
     import 'vue-awesome/icons'
 
-    import aLoginPage from '@/components/a-login-page'
     import aHeader from '@/components/a-header'
     import aMainMenu from '@/components/a-main-menu'
-    import aMainPage from '@/components/a-main-page'
-    import aSellersPage from '@/components/a-sellers-page'
-    import aSellerCatalog from '@/components/a-seller-catalog'
-    import aCustomerCabinet from '@/components/a-customer-cabinet'
-    import aOrderList from '@/components/a-order-list'
-    import aAboutPage from '@/components/a-about-page'
-    import aSettingsPage from '@/components/a-settings-page'
-    import aProfilePage from '@/components/a-profile-page'
 
 
 
@@ -33,16 +24,8 @@
         name: 'app',
         router,
         components: {
-            aLoginPage,
             aHeader,
-            aMainPage,
-            aSellersPage,
-            aSellerCatalog,
             aMainMenu,
-            aCustomerCabinet,
-            aAboutPage,
-            aSettingsPage,
-            aProfilePage
         },
 
         computed: {
@@ -70,7 +53,6 @@
         created() {
             if ( localStorage.getItem("user") ) {
                 this.$store.dispatch( 'USER_FROM_STORAGE', JSON.parse(localStorage.getItem("user")) );
-                console.log(JSON.parse(localStorage.getItem("user")));
             }
 
             this.hideHeader();

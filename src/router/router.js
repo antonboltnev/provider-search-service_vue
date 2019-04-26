@@ -3,8 +3,6 @@ import Router from 'vue-router';
 import {store} from '../store/store.js'
 
 import aLoginPage from '@/components/a-login-page'
-import aHeader from '@/components/a-header'
-import aMainMenu from '@/components/a-main-menu'
 import aMainPage from '@/components/a-main-page'
 import aSellersPage from '@/components/a-sellers-page'
 import aSellerCatalog from '@/components/a-seller-catalog'

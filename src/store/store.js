@@ -135,7 +135,7 @@ export  const store = new Vuex.Store({
             state.users.push(payload);
         },
         AUTH: ( state ) => {
-            let promise = new Promise(function (resolve, reject) {
+            let promise = new Promise(function (resolve) {
                     state.isAuth = true;
                     return resolve();
             });
@@ -149,7 +149,7 @@ export  const store = new Vuex.Store({
             state.users.push(payload);
         },
         SUCCESS_REGISTRATION: ( state ) => {
-            let promise = new Promise(function (resolve, reject) {
+            let promise = new Promise(function (resolve) {
                 state.isRegistered = true;
                 resolve();
             });
