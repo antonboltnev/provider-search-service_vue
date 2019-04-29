@@ -134,9 +134,10 @@ export  const store = new Vuex.Store({
         SET_USER: ( state, payload ) => {
             state.users.push(payload);
         },
-        AUTH: ( state ) => {
+        AUTH: ( state, payload ) => {
             let promise = new Promise(function (resolve) {
                     state.isAuth = true;
+                    state.users.push(payload);
                     return resolve();
             });
             promise.then(() => {
@@ -146,11 +147,18 @@ export  const store = new Vuex.Store({
             })
         },
         REGISTER: ( state, payload ) => {
-            state.users.push(payload);
+            let promise = new Promise(function (resolve) {
+                state.users.slice(0, state.users.length);
+                resolve();
+            });
+            promise.then(() => {
+                state.users.push(payload);
+            });
         },
         SUCCESS_REGISTRATION: ( state ) => {
             let promise = new Promise(function (resolve) {
                 state.isRegistered = true;
+
                 resolve();
             });
             promise.then(() =>{
@@ -207,8 +215,8 @@ export  const store = new Vuex.Store({
         SHOW_HEADER: ( context) => {
             context.commit( 'SHOW_HEAD' );
         },
-        SUCCESS_AUTH: ( context ) => {
-            context.commit( 'AUTH' );
+        SUCCESS_AUTH: ( context, payload ) => {
+            context.commit( 'AUTH', payload );
         },
         SUCCESS_REGISTRATION: ( context ) => {
             context.commit( 'SUCCESS_REGISTRATION' );
