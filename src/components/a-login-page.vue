@@ -132,7 +132,7 @@
               },
 
             confirmRegistration() {
-                var payload = {
+                let payload = {
                     name: this.nameField,
                     email: this.emailField,
                     phone: this.phoneField,
@@ -172,14 +172,12 @@
         },
 
         mounted() {
-            var vm = this;
+            let vm = this;
             window.addEventListener('keyup', function(event) {
                 if (event.keyCode === 13) {
                     vm.confirmLogin();
                 }
             });
-            console.log('This is DB: ', this.usersDb);
-            console.log('This is STORE: ', this.$store.state.users);
         }
     }
 </script>

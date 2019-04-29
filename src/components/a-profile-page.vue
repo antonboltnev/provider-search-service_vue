@@ -67,7 +67,6 @@
                 }
                 usersRef[userIndex].name = this.getUserData.name;
                 usersRef[userIndex].phone = this.getUserData.phone;
-                console.log(usersRef);
                 this.$store.dispatch('EDIT_PROFILE', this.getUserData);
             }
         },
