@@ -14,11 +14,13 @@
             @click="addToCart"
         >{{ addToCartText }}
         </button>
-        <button class="a-catalog-list_add-to-cart btn bg-color2"
-             v-if="this.product_data.ordered"
-             :disabled="this.product_data.ordered"
-        >{{ addedToCart }}<icon name="check"></icon>
-        </button>
+        <transition name="bounce">
+            <button class="a-catalog-list_add-to-cart btn bg-color2"
+                    v-if="this.product_data.ordered"
+                    :disabled="this.product_data.ordered"
+            >{{ addedToCart }}<icon name="check"></icon>
+            </button>
+        </transition>
     </div>
 </template>
 

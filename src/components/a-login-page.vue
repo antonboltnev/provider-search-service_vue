@@ -197,12 +197,13 @@
     }
 
     .a-login-page h1.main-title {
-        font-size: 1.8em;
+        font-size: 1.5em;
         text-transform: uppercase;
     }
 
     .underlined {
-        background: linear-gradient(135deg, #00f791 20%, #00b6bc 70%);
+        background: #fdf966;
+        font-size: 40px;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }

@@ -93,7 +93,8 @@
                 for ( let item of this.$store.state.sellers[e].products) {
                     categoryArr.push(item.category);
                 }
-                return Object.values(categoryArr.reduce((acc, cur) => Object.assign(acc,{[cur]:cur}),{} ));
+                return Object.values(categoryArr.reduce((acc, cur) =>
+                        Object.assign(acc,{[cur]:cur}),{} ));
             },
 
             products(e) {
