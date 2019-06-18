@@ -1,12 +1,11 @@
 <template>
     <div class="a-seller-catalog">
         <div class="a-seller-info">
-            <div class="a-seller-cert btn bg-color" @click="showAdvancedInfo">
+            <v-btn class="a-seller-cert" dark color="#4e70b1" @click="showAdvancedInfo">
                 <p class="cert-title">Certificates</p>
-            </div>
-            <div class="a-seller-about btn bg-color" @click="showAboutText">Information</div>
-            <div class="a-seller-chat btn bg-color">Message
-            </div>
+            </v-btn>
+            <v-btn class="a-seller-about btn bg-color" dark color="#4e70b1" @click="showAboutText">Information</v-btn>
+            <v-btn class="a-seller-chat btn bg-color" dark color="#4e70b1">Message</v-btn>
         </div>
         <transition name="fade">
             <div class="a-seller-advanced-info certs" v-if="isAdvancesInfoVisible">
@@ -62,6 +61,7 @@
     import aCatalogList from '@/components/a-catalog-list'
     import aSellerCatalogSelectOption from '@/components/a-seller-catalog-select-option'
     import Icon from 'vue-awesome/components/Icon'
+    import {mapGetters, mapActions} from 'vuex'
 
     export default {
         name: "a-seller-catalog",
@@ -85,12 +85,15 @@
             }
         },
         computed: {
+            ...mapGetters([
+                'SELLERS'
+            ]),
             showProductCategories(e) {
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
                 e = this.sellerSelectedIndex;
                 let categoryArr = [];
-                for ( let item of this.$store.state.sellers[e].products) {
+                for ( let item of this.SELLERS[e].products) {
                     categoryArr.push(item.category);
                 }
                 return Object.values(categoryArr.reduce((acc, cur) =>
@@ -104,9 +107,9 @@
                 e = this.sellerSelectedIndex;
 
                 if ( selectFiilter === 'ALL' ) {
-                    return this.$store.state.sellers[e].products;
+                    return this.SELLERS[e].products;
                 } else {
-                    return this.$store.state.sellers[e].products.filter(function (item) {
+                    return this.SELLERS[e].products.filter(function (item) {
                         vm.emptyFilterResults = false;
                         return item.category.match(selectFiilter);
                     });
@@ -117,31 +120,34 @@
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
                 e = this.sellerSelectedIndex;
-                return require('../../public/img/' + this.$store.state.sellers[e].docs);
+                return require('../../public/img/' + this.SELLERS[e].docs);
             },
 
             sellers_data(e) {
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
                 e = this.sellerSelectedIndex;
-                return this.$store.state.sellers[e];
+                return this.SELLERS[e];
             }
         },
 
         methods: {
+            ...mapActions([
+                'SET_ORDER_LIST',
+                'ADD_TO_CART'
+            ]),
             addToCart(e) {
-                let k;
-                let vm = this;
+                let product_index;
                 let product = this.products[e];
                 let sellerIndex = this.sellers_data.id - 1;
                 let updateProducts = this.sellers_data.products;
                 for (let i = 0; i < updateProducts.length; i++) {
                   if (updateProducts[i].title === product.title) {
-                    k = i;
+                      product_index = i;
                   }
                 }
-                this.$store.dispatch('SET_ORDER_LIST', {k, sellerIndex});
-                vm.$store.dispatch('ADD_TO_CART', product);
+                this.SET_ORDER_LIST({product_index, sellerIndex});
+                this.ADD_TO_CART(product);
             },
 
             showAdvancedInfo() {
@@ -183,7 +189,7 @@
 
     .a-seller-cert, .a-seller-about, .a-seller-chat {
         margin: 0 2px;
-        flex: 0 0 25%;
+        flex: 0 0 30%;
     }
 
     .a-seller-advanced-info {

@@ -50,6 +50,7 @@
 
 <script>
 import Icon from 'vue-awesome/components/Icon'
+import {mapActions} from 'vuex'
 
     export default {
         name: "a-main-menu",
@@ -67,20 +68,23 @@ import Icon from 'vue-awesome/components/Icon'
         },
 
         methods: {
+            ...mapActions([
+                    'SET_HEADER_TEXT'
+            ]),
             mainPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Home');
+                this.SET_HEADER_TEXT('Home');
             },
             favoritePageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'My favorite providers');
+                this.SET_HEADER_TEXT('My favorite providers');
             },
             cartPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'My orders');
+                this.SET_HEADER_TEXT('My orders');
             },
             aboutPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'About');
+                this.SET_HEADER_TEXT('About');
             },
             settingsPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Preferences');
+                this.SET_HEADER_TEXT('Preferences');
             }
         },
 

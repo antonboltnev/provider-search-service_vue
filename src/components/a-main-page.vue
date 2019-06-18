@@ -44,16 +44,12 @@
 
 <script>
     import Icon from 'vue-awesome/components/Icon'
+    import {mapActions} from 'vuex'
 
     export default {
         name: "a-main-page",
         components: {
             Icon
-        },
-        data() {
-           return {
-
-           }
         },
 
         computed: {
@@ -63,14 +59,17 @@
         },
 
         methods: {
+            ...mapActions([
+                'SET_HEADER_TEXT'
+            ]),
             sellersPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Providers');
+                this.SET_HEADER_TEXT('Providers');
             },
             aboutPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'About');
+                this.SET_HEADER_TEXT('About');
             },
             settingsPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Preferences');
+                this.SET_HEADER_TEXT('Preferences');
             }
         },
     }

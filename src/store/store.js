@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {router} from '../router/router.js'
+import router from '../router/router.js'
 Vue.use(Vuex);
-export  const store = new Vuex.Store({
+let store = new Vuex.Store({
     state: {
         pageName: '',
         isHeaderVisible: true,
@@ -34,11 +34,11 @@ export  const store = new Vuex.Store({
             { name: 'Milk products 2', about: 'Provider 11 Info', logo: 'face-logo.png', id: 11, category: 'Milk', phone: '8-800-334-55-22', favorite: false, },
         ],
         productCategories: [
-            { name: 'ALL', },
-            { name: 'Meat' },
-            { name: 'Bread' },
-            { name: 'Milk', },
-            { name: 'Vodka', },
+            {name: 'ALL'},
+            {name: 'Meat'},
+            {name: 'Bread'},
+            {name: 'Milk'},
+            {name: 'Vodka'},
         ],
         selectedSeller: 0,
         cart: [],
@@ -53,10 +53,10 @@ export  const store = new Vuex.Store({
             emptyFields: 'Please, fill the form-fields'
         },
         preferencesCheckboxes: [
-            { id: 'profile-data', value: true },
-            { id: 'notifications', value: true },
-            { id: 'updates', value: true },
-            { id: 'news', value: true }
+            {id: 'profile-data', value: true},
+            {id: 'notifications', value: true},
+            {id: 'updates', value: true},
+            {id: 'news', value: true}
         ]
     },
     getters: {
@@ -65,79 +65,79 @@ export  const store = new Vuex.Store({
         },
     },
     mutations: {
-        SET_HEADER: ( state, payload ) => {
-            state.pageName = payload;
+        SET_HEADER: (state, text) => {
+            state.pageName = text;
         },
-        FILTER: ( state, payload ) => {
+        FILTER: (state, category) => {
             state.sellers = state.sellers.filter(function (i) {
-                return i.category.match(payload);
+                return i.category.match(category);
             });
         },
-        SET_INDEX: ( state, payload ) => {
-            state.selectedSeller = payload;
+        SET_INDEX: (state, index) => {
+            state.selectedSeller = index;
         },
-        SET_FAV: ( state, payload ) => {
-            state.sellers[payload].favorite = !state.sellers[payload].favorite;
+        SET_FAV: (state, index) => {
+            state.sellers[index].favorite = !state.sellers[index].favorite;
         },
-        ADD_TO_CART: ( state, products ) => {
-            if ( state.cart.includes( products ) ) {
+        ADD_TO_CART: (state, products) => {
+            if (state.cart.includes(products)) {
                 return false;
             } else {
                 state.cart.push(products);
             }
         },
-        SET_ORDER_LIST: ( state, {k, sellerIndex} ) => {
-            state.sellers[sellerIndex].products[k].ordered = true;
+        SET_ORDER_LIST: (state, {product_index, sellerIndex}) => {
+            state.sellers[sellerIndex].products[product_index].ordered = true;
         },
-        REMOVE_ITEM: ( state, payload ) => {
+        REMOVE_ITEM: (state, index) => {
             for ( let seller of state.sellers) {
                 if  ( seller.products !== undefined ) {
                     for ( let product of  seller.products) {
-                        if (product.title === state.cart[payload].title) {
+                        if (product.title === state.cart[index].title) {
                             product.ordered = false;
                         }
                     }
                 }
             }
-            state.cart[payload].qty = 1;
-            state.cart.splice(payload, 1);
+            state.cart[index].qty = 1;
+            state.cart.splice(index, 1);
         },
-        PLUS_QTY: ( state, payload ) => {
-            state.cart[payload].qty++;
-            state.cart[payload].total = state.cart[payload].qty * state.cart[payload].price;
+        PLUS_QTY: (state, index) => {
+            state.cart[index].qty++;
+            state.cart[index].total = state.cart[index].qty * state.cart[index].price;
         },
-        MINUS_QTY: ( state, payload ) => {
-            if ( state.cart[payload].qty > 1 ) {
-                state.cart[payload].qty--;
-                state.cart[payload].total -= state.cart[payload].price;
+        MINUS_QTY: (state, index) => {
+            if (state.cart[index].qty > 1) {
+                state.cart[index].qty--;
+                state.cart[index].total -= state.cart[index].price;
             } else {
                 return false;
             }
         },
-        CART_CHECKOUT: ( state ) => {
+        CART_CHECKOUT: (state) => {
             state.cart.splice(0, state.cart.length);
-            for ( let i = 0; i < state.sellers.length; i++) {
-                if  ( state.sellers[i].products !== undefined ) {
-                    for ( let j = 0; j <  state.sellers[i].products.length; j++) {
+            for (let i = 0; i < state.sellers.length; i++) {
+                if  (state.sellers[i].products !== undefined) {
+                    for (let j = 0; j <  state.sellers[i].products.length; j++) {
                         state.sellers[i].products[j].ordered = false;
                         state.sellers[i].products[j].qty = 1;
                     }
                 }
             }
         },
-        HIDE_HEAD: ( state ) => {
+        HIDE_HEAD: (state) => {
             state.isHeaderVisible = false;
         },
-        SHOW_HEAD: ( state ) => {
+        SHOW_HEAD: (state) => {
             state.isHeaderVisible = true;
         },
-        SET_USER: ( state, payload ) => {
+        SET_USER: (state, payload) => {
             state.users.push(payload);
         },
-        AUTH: ( state, payload ) => {
+        AUTH: (state, user) => {
             let promise = new Promise(function (resolve) {
                     state.isAuth = true;
-                    state.users.push(payload);
+                    state.users.push(user);
                     return resolve();
             });
             promise.then(() => {
@@ -146,16 +146,16 @@ export  const store = new Vuex.Store({
                 }, 1500);
             })
         },
-        REGISTER: ( state, payload ) => {
+        REGISTER: (state, regData) => {
             let promise = new Promise(function (resolve) {
                 state.users.slice(0, state.users.length);
                 resolve();
             });
             promise.then(() => {
-                state.users.push(payload);
+                state.users.push(regData);
             });
         },
-        SUCCESS_REGISTRATION: ( state ) => {
+        SUCCESS_REGISTRATION: (state) => {
             let promise = new Promise(function (resolve) {
                 state.isRegistered = true;
 
@@ -167,71 +167,70 @@ export  const store = new Vuex.Store({
                 }, 1500);
             });
         },
-        EDIT_PROFILE_INFO: ( state, payload ) => {
-            Object.assign(state.users, payload);
+        EDIT_PROFILE_INFO: (state, userData) => {
+            Object.assign(state.users, userData);
         },
-        SET_CHECKBOX: ( state, payload ) => {
-            for ( let item of state.preferencesCheckboxes  ) {
-                if ( item.id === payload ) {
+        SET_CHECKBOX: (state, index) => {
+            for (let item of state.preferencesCheckboxes) {
+                if (item.id === index) {
                     item.value = !item.value;
                 }
             }
         }
     },
     actions: {
-        SET_HEADER_TEXT: ( context, payload ) => {
-            context.commit( 'SET_HEADER', payload );
+        SET_HEADER_TEXT ({commit}, text) {
+            commit('SET_HEADER', text);
         },
-        FILTER_SELLERS: ( context, payload ) => {
-            context.commit( 'FILTER', payload );
+        FILTER_SELLERS ({commit}, category) {
+            commit('FILTER', category);
         },
-        SET_SELLER_INDEX: ( context, payload ) => {
-            context.commit('SET_INDEX', payload);
+        SET_SELLER_INDEX ({commit}, index) {
+            commit('SET_INDEX', index);
         },
-        SET_SELLER_TO_FAV: ( context, payload ) => {
-            context.commit('SET_FAV', payload);
+        SET_SELLER_TO_FAV ({commit}, index)  {
+            commit('SET_FAV', index);
         },
-        ADD_TO_CART: ( context, products ) => {
-            context.commit('ADD_TO_CART', products );
+        ADD_TO_CART ({commit}, products) {
+            commit('ADD_TO_CART', products);
         },
-        SET_ORDER_LIST: ( context, {k, sellerIndex} ) => {
-            context.commit('SET_ORDER_LIST', {k, sellerIndex});
+        SET_ORDER_LIST ({commit}, {product_index, sellerIndex}) {
+            commit('SET_ORDER_LIST', {product_index, sellerIndex});
         },
-        REMOVE_FROM_CART: ( context, payload ) => {
-            context.commit( 'REMOVE_ITEM', payload );
+        REMOVE_FROM_CART ({commit}, index) {
+            commit('REMOVE_ITEM', index);
         },
-        INCREMENT_PRODUCT_QTY: ( context, payload ) => {
-            context.commit( 'PLUS_QTY', payload );
+        INCREMENT_PRODUCT_QTY ({commit}, index) {
+            commit('PLUS_QTY', index);
         },
-        DECREMENT_PRODUCT_QTY: ( context, payload ) => {
-            context.commit( 'MINUS_QTY', payload );
+        DECREMENT_PRODUCT_QTY ({commit}, index) {
+            commit('MINUS_QTY', index);
         },
-        CHECKOUT: ( context, payload ) => {
-            context.commit( 'CART_CHECKOUT', payload );
+        CHECKOUT ({commit}) {
+            commit('CART_CHECKOUT');
         },
-        HIDE_HEADER: ( context) => {
-            context.commit( 'HIDE_HEAD' );
+        HIDE_HEADER ({commit}) {
+            commit('HIDE_HEAD');
         },
-        SHOW_HEADER: ( context) => {
-            context.commit( 'SHOW_HEAD' );
+        SHOW_HEADER ({commit}) {
+            commit('SHOW_HEAD');
         },
-        SUCCESS_AUTH: ( context, payload ) => {
-            context.commit( 'AUTH', payload );
+        SUCCESS_AUTH ({commit}, user) {
+            commit('AUTH', user);
         },
-        SUCCESS_REGISTRATION: ( context ) => {
-            context.commit( 'SUCCESS_REGISTRATION' );
+        SUCCESS_REGISTRATION ({commit}) {
+            commit('SUCCESS_REGISTRATION');
         },
-        REGISTRATION: ( context, payload ) => {
-            context.commit( 'REGISTER', payload );
+        REGISTRATION ({commit}, regData) {
+            commit('REGISTER', regData);
         },
-        USER_FROM_STORAGE: ( context, payload ) => {
-            context.commit( 'SET_USER', payload );
+        EDIT_PROFILE ({commit}, userData) {
+            commit('EDIT_PROFILE_INFO', userData);
         },
-        EDIT_PROFILE: ( context, payload ) => {
-            context.commit( 'EDIT_PROFILE_INFO', payload );
+        SET_PREFERENCES_CHECKBOXES ({commit}, index) {
+            commit('SET_CHECKBOX', index);
         },
-        SET_PREFERENCES_CHECKBOXES: ( context, payload ) => {
-            context.commit( 'SET_CHECKBOX', payload );
-        }
     }
 });
+
+export  default store;

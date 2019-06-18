@@ -40,6 +40,7 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
     export default {
         name: "a-settings-page",
         data() {
@@ -52,10 +53,13 @@
         },
 
         methods: {
+            ...mapActions([
+                'SET_PREFERENCES_CHECKBOXES'
+            ]),
             clickInput(item) {
-                for ( let checkbox of this.$store.state.preferencesCheckboxes ) {
-                    if ( item.target.id === checkbox.id ) {
-                        this.$store.dispatch( 'SET_PREFERENCES_CHECKBOXES', item.target.id );
+                for (let checkbox of this.$store.state.preferencesCheckboxes) {
+                    if (item.target.id === checkbox.id) {
+                        this.SET_PREFERENCES_CHECKBOXES(item.target.id);
                     }
                 }
             }

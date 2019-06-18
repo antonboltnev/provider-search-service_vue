@@ -32,6 +32,7 @@
     import aSellersItem from '@/components/a-sellers-item'
     import aSellerCatalogSelectOption from '@/components/a-seller-catalog-select-option'
     import Icon from 'vue-awesome/components/Icon'
+    import {mapActions} from 'vuex'
 
     export default {
         name: "a-sellers-list",
@@ -80,13 +81,17 @@
         },
 
         methods: {
+            ...mapActions([
+                'SET_SELLER_TO_FAV',
+                'SET_HEADER_TEXT'
+            ]),
             addToFavorite(item) {
-                this.$store.dispatch('SET_SELLER_TO_FAV', item);
+                this.SET_SELLER_TO_FAV(item);
             },
         },
 
         mounted() {
-           this.$store.dispatch('SET_HEADER_TEXT', 'Providers');
+           this.SET_HEADER_TEXT('Providers');
         },
     }
 </script>

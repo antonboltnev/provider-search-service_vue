@@ -11,9 +11,7 @@
            v-if="sellers.length < 1"
       >
         <p class="no-favorite">You do not have favorite providers</p>
-        <router-link :to="{ name: 'sellersList' }">
-          <p class="add-fav btn bg-color" @click="sellersPageClick">Add</p>
-        </router-link>
+          <v-btn :to="{ name: 'sellersList' }" class="add-fav" dark color="#4e70b1" @click="sellersPageClick">Add</v-btn>
       </div>
     </div>
   </div>
@@ -21,6 +19,7 @@
 
 <script>
 import aSellersItem from '@/components/a-sellers-item'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'a-customer-cabinet',
@@ -28,25 +27,32 @@ export default {
       aSellersItem
   },
   computed: {
+    ...mapGetters([
+       'SELLERS'
+    ]),
     sellers() {
-          return this.$store.state.sellers.filter(function (e) {
+          return this.SELLERS.filter(function (e) {
               return ( e.favorite === true );
           });
     }
   },
 
   methods: {
+      ...mapActions([
+          'SET_SELLER_TO_FAV',
+          'SET_HEADER_TEXT'
+      ]),
       addToFavorite(item) {
-          this.$store.dispatch('SET_SELLER_TO_FAV', item);
+          this.SET_SELLER_TO_FAV(item);
       },
 
       sellersPageClick() {
-          this.$store.dispatch('SET_HEADER_TEXT', 'Providers');
+          this.SET_HEADER_TEXT('Providers');
       },
   },
 
   mounted() {
-      this.$store.dispatch('SET_HEADER_TEXT', 'My favorite providers');
+      this.SET_HEADER_TEXT('My favorite providers');
   },
 }
 

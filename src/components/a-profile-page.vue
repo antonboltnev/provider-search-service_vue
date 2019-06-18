@@ -26,8 +26,8 @@
                         placeholder="Phone"
                 />
             </div>
-            <div class="edit-profile-info btn bg-color2" v-if="editProfileInfo" @click="editInfo">Edit</div>
-            <div class="edit-profile-info btn bg-color2" v-if="!editProfileInfo" @click="saveInfo">Save</div>
+            <v-btn color="#4e70b1" dark class="edit-profile-info" v-if="editProfileInfo" @click="editInfo">Edit</v-btn>
+            <v-btn color="#4e70b1" dark class="edit-profile-info" v-if="!editProfileInfo" @click="saveInfo">Save</v-btn>
         </form>
     </div>
 </template>
@@ -35,6 +35,7 @@
 <script>
     import  MaskedInput from 'vue-masked-input'
     import {usersRef} from '../firebaseDB'
+    import {mapActions} from 'vuex'
 
     export default {
         name: "a-profile-page",
@@ -55,6 +56,10 @@
            }
         },
         methods: {
+            ...mapActions([
+                    'EDIT_PROFILE',
+                    'SET_HEADER_TEXT'
+            ]),
             editInfo() {
                 this.editProfileInfo = !this.editProfileInfo;
             },
@@ -67,11 +72,11 @@
                 }
                 usersRef[userIndex].name = this.getUserData.name;
                 usersRef[userIndex].phone = this.getUserData.phone;
-                this.$store.dispatch('EDIT_PROFILE', this.getUserData);
+                this.EDIT_PROFILE(this.getUserData);
             }
         },
         mounted() {
-            this.$store.dispatch('SET_HEADER_TEXT', 'Profile');
+            this.SET_HEADER_TEXT('Profile');
         },
     }
 </script>
@@ -107,5 +112,9 @@
     .profile-input-wrapper input:disabled {
         background: #e6e6e6;
         color: #aeaeae;
+    }
+
+    .edit-profile-info {
+        width: 100%;
     }
 </style>

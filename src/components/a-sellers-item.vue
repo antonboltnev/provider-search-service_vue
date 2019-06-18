@@ -9,24 +9,29 @@
             </div>
         </router-link>
         <div class="item_category">{{ sellers_data.category }}</div>
-        <div class="item_fav add"
-             v-if="!sellers_data.favorite"
-             @click="addToFavorite"
-        ><icon name="heart"></icon>
-        </div>
-        <div class="item_fav added"
-             v-if="sellers_data.favorite"
-             @click="addToFavorite"
-        ><icon name="heart" :class="{ 'fav_added': sellers_data.favorite}"></icon>
-        </div>
-        <div class="item_go-ro-catalog btn bg-color" @click="setSellerIndex">
-            <router-link to="/seller-catalog">Catalogue</router-link>
-        </div>
+        <v-btn flat icon v-if="!sellers_data.favorite">
+            <v-icon class="item_fav add"
+                    @click="addToFavorite"
+                    color="#797979"
+            >favorite
+            </v-icon>
+        </v-btn>
+        <v-btn flat icon v-if="sellers_data.favorite">
+            <v-icon class="item_fav added"
+                    @click="addToFavorite"
+                    color="#4e70b1"
+            >favorite
+            </v-icon>
+        </v-btn>
+        <v-btn class="item_go-ro-catalog" @click="setSellerIndex" dark color="#4e70b1" to="/seller-catalog">
+            Catalogue
+        </v-btn>
     </div>
 </template>
 
 <script>
     import Icon from 'vue-awesome/components/Icon'
+    import {mapActions} from 'vuex'
 
     export default {
         name: "a-sellers-item",
@@ -51,15 +56,19 @@
         },
 
         methods: {
+            ...mapActions([
+                'SET_SELLER_INDEX',
+                'SET_HEADER_TEXT'
+            ]),
             addToFavorite() {
                 let payload = this.sellers_data.id - 1;
                 this.$emit('addToFavorite', payload);
             },
 
             setSellerIndex() {
-                let payload = this.sellers_data.id - 1;
-                this.$store.dispatch('SET_SELLER_INDEX', payload);
-                this.$store.dispatch('SET_HEADER_TEXT', 'Providers catalogue');
+                let index = this.sellers_data.id - 1;
+                this.SET_SELLER_INDEX(index);
+                this.SET_HEADER_TEXT('Providers catalogue');
             },
         },
     }
@@ -77,18 +86,8 @@
         max-width: 70px;
     }
 
-    .item_fav svg {
-        width: 30px;
-        height: 30px;
-        fill: #fff;
-        stroke: #000;
-        stroke-width: 10px;
-    }
-
-    .item_fav.added svg {
-        fill: #4e70b1;
-        stroke: #fff;
-        stroke-width: 1px;
+    .v-icon.item_fav {
+        font-size: 30px;
     }
 
     .a-sellers-item div {
@@ -110,10 +109,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    .item_category, .item_fav.add, .item_fav.added {
-        font-size: 10px;
     }
 
     .a-sellers-item div.item_fav.add, .a-sellers-item div.item_fav.added {

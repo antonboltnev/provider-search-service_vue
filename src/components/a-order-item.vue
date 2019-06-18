@@ -17,20 +17,19 @@
             </div>
             <div class="item_total text-bold text-color1">Total: ${{ order_data.qty * order_data.price}}</div>
         </div>
-        <div class="item_remove" @click="removeItemFromCart">
-            <icon name="trash"></icon>
-        </div>
+        <v-btn flat icon class="item_remove" @click="removeItemFromCart">
+            <v-icon class="item_fav add"
+                    color="#797979"
+            >delete
+            </v-icon>
+        </v-btn>
     </div>
 </template>
 
 <script>
-    import Icon from 'vue-awesome/components/Icon'
 
     export default {
         name: "a-order-item",
-        components: {
-            Icon
-        },
         props: {
             order_data: {
                 type: Object,

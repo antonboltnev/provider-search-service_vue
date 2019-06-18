@@ -85,6 +85,7 @@
 
     import  MaskedInput from 'vue-masked-input'
     import {usersRef} from '../firebaseDB'
+    import {mapActions} from 'vuex'
 
     export default {
         name: "a-login-page",
@@ -110,15 +111,18 @@
            }
         },
         methods: {
+            ...mapActions([
+                'REGISTRATION',
+                'SUCCESS_AUTH'
+            ]),
             registrationTab() {
                 this.loginTab = !this.loginTab;
             },
             confirmLogin() {
                 if ( this.usersDb.length ) {
-                for (let item of  this.usersDb) {
-                    if ( (item.email) && (item.email === this.authLogin.toLocaleLowerCase()) && (item.pass === this.authPass)) {
-                        let vm = this;
-                        vm.$store.dispatch('SUCCESS_AUTH', item);
+                for (let user of  this.usersDb) {
+                    if ( (user.email) && (user.email === this.authLogin.toLocaleLowerCase()) && (user.pass === this.authPass)) {
+                        this.SUCCESS_AUTH(user);
                         this.showError = false;
                         break;
                     } else {
@@ -132,7 +136,7 @@
               },
 
             confirmRegistration() {
-                let payload = {
+                let regData = {
                     name: this.nameField,
                     email: this.emailField,
                     phone: this.phoneField,
@@ -148,8 +152,8 @@
                 }
                     this.passwordsOk = true;
                     this.emptyFieldError = false;
-                    this.$store.dispatch('REGISTRATION', payload);
-                    usersRef.push(payload).then(() => {
+                    this.REGISTRATION(regData);
+                    usersRef.push(regData).then(() => {
                         this.$store.dispatch('SUCCESS_REGISTRATION');
                     });
             },

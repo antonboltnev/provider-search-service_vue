@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import {store} from '../store/store.js'
+import store from '../store/store.js'
 
 import aLoginPage from '@/components/a-login-page'
 import aMainPage from '@/components/a-main-page'
@@ -14,7 +14,7 @@ import aProfilePage from '@/components/a-profile-page'
 
 Vue.use(Router);
 
-export const router = new Router ({
+let router = new Router ({
         mode: 'history',
         routes: [
             {
@@ -73,3 +73,5 @@ router.beforeEach((to, from, next) => {
     }
     next();
 });
+
+export default router;

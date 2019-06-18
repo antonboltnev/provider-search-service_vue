@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
     export default {
         name: "a-header",
         data() {
@@ -12,6 +13,10 @@
             }
         },
         computed: {
+            ...mapActions([
+                'HIDE_HEADER',
+                'SHOW_HEADER'
+            ]),
             pageTitle() {
                 return this.$store.state.pageName;
             },
@@ -21,21 +26,22 @@
             }
         },
 
+
         watch: {
             $route() {
                 if ( this.$route.path === '/login' ) {
-                    this.$store.dispatch('HIDE_HEADER');
+                    this.HIDE_HEADER;
                 } else {
-                    this.$store.dispatch('SHOW_HEADER');
+                    this.SHOW_HEADER;
                 }
             },
         },
 
         created() {
             if ( this.$route.path === '/login' ) {
-                this.$store.dispatch('HIDE_HEADER');
+                this.HIDE_HEADER;
             } else {
-                this.$store.dispatch('SHOW_HEADER');
+                this.SHOW_HEADER;
             }
         }
     }

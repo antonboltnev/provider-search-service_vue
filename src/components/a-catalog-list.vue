@@ -9,17 +9,19 @@
         <div class="a-catalog-list_price">
             ${{ product_data.price }} / {{ product_data.value }}
         </div>
-        <button class="a-catalog-list_add-to-cart btn bg-color"
+        <v-btn class="a-catalog-list_add-to-cart"
              v-if="!this.product_data.ordered"
             @click="addToCart"
+               color="#4e70b1"
+               dark
         >{{ addToCartText }}
-        </button>
+        </v-btn>
         <transition name="bounce">
-            <button class="a-catalog-list_add-to-cart btn bg-color2"
+            <v-btn class="a-catalog-list_add-to-cart btn bg-color2"
                     v-if="this.product_data.ordered"
                     :disabled="this.product_data.ordered"
             >{{ addedToCart }}<icon name="check"></icon>
-            </button>
+            </v-btn>
         </transition>
     </div>
 </template>
@@ -91,7 +93,7 @@
 
     .a-catalog-list_add-to-cart svg {
         position: relative;
-        top: 2px;
+        top: -2px;
         left: 10px;
     }
 

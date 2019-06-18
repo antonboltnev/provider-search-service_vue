@@ -13,12 +13,12 @@
                 <div>Total:</div>
                 <span>${{ totalSum }}</span>
             </div>
-            <p class="total-sum_confirm btn" @click="checkout">Checkout</p>
+            <v-btn class="total-sum_confirm" @click="checkout">Checkout</v-btn>
         </div>
         <div class="empty-order-list" v-if="orders.length < 1">
             <p class="empty-order-list-p">You do not have active orders</p>
             <router-link to="/sellers-list">
-                <p class="btn bg-color" @click="sellersPageClick">Add</p>
+                <v-btn dark color="#4e70b1" @click="sellersPageClick">Add</v-btn>
             </router-link>
         </div>
         <transition name="bounce">
@@ -29,7 +29,7 @@
             <br>
             <br>
             <br>
-                <div class="ok btn bg-color" @click="closePopup">OK</div>
+                <v-btn class="ok" dark color="#4e70b1" @click="closePopup">OK</v-btn>
         </div>
         </transition>
     </div>
@@ -37,6 +37,7 @@
 
 <script>
     import aOrderItem from '@/components/a-order-item'
+    import {mapActions} from 'vuex'
 
     export default {
         name: "a-order-list",
@@ -62,13 +63,20 @@
             }
         },
         methods: {
+            ...mapActions([
+                    'SET_HEADER_TEXT',
+                    'CHECKOUT',
+                    'REMOVE_FROM_CART',
+                    'INCREMENT_PRODUCT_QTY',
+                    'DECREMENT_PRODUCT_QTY'
+            ]),
             sellersPageClick() {
-                this.$store.dispatch('SET_HEADER_TEXT', 'Providers');
+                this.SET_HEADER_TEXT('Providers');
             },
 
             checkout() {
                this.orderChecked = true;
-               this.$store.dispatch('CHECKOUT', this.orders);
+               this.CHECKOUT(this.orders);
             },
 
             closePopup() {
@@ -76,15 +84,15 @@
             },
 
             removeFromCart(index) {
-                this.$store.dispatch('REMOVE_FROM_CART', index);
+                this.REMOVE_FROM_CART(index);
             },
 
             plusQty(index) {
-                this.$store.dispatch('INCREMENT_PRODUCT_QTY', index);
+                this.INCREMENT_PRODUCT_QTY(index);
             },
 
             minusQty(index) {
-                this.$store.dispatch('DECREMENT_PRODUCT_QTY', index);
+                this.DECREMENT_PRODUCT_QTY(index);
             }
         },
         created() {
@@ -92,7 +100,7 @@
         },
 
         mounted() {
-            this.$store.dispatch('SET_HEADER_TEXT', 'My orders');
+            this.SET_HEADER_TEXT('My orders');
         },
     }
 </script>
