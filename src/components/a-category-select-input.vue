@@ -29,11 +29,6 @@
 </script>
 
 <style>
-    .a-category-select-input__wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
 
     .a-category-select-input__wrapper input {
         width: 95%;

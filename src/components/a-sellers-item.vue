@@ -1,32 +1,36 @@
 <template>
-    <div class="a-sellers-item shadow-border">
-        <router-link to="/seller-catalog">
-            <div class="item_logo" @click="setSellerIndex">
-                <img :src="sellerImage" alt="">
-            </div>
-            <div class="item_title" @click="setSellerIndex">
-                <router-link to="/seller-catalog">{{ sellers_data.name }}</router-link>
-            </div>
-        </router-link>
-        <div class="item_category">{{ sellers_data.category }}</div>
-        <v-btn flat icon v-if="!sellers_data.favorite">
-            <v-icon class="item_fav add"
-                    @click="addToFavorite"
-                    color="#797979"
-            >favorite
-            </v-icon>
-        </v-btn>
-        <v-btn flat icon v-if="sellers_data.favorite">
-            <v-icon class="item_fav added"
-                    @click="addToFavorite"
-                    color="#4e70b1"
-            >favorite
-            </v-icon>
-        </v-btn>
-        <v-btn class="item_go-ro-catalog" @click="setSellerIndex" dark color="#4e70b1" to="/seller-catalog">
-            Catalogue
-        </v-btn>
-    </div>
+    <v-layout class="a-sellers-item elevation-1 justify-space-between">
+        <v-flex>
+            <router-link :to="{name: 'catalog'}">
+                <div class="item_logo" @click="setSellerIndex">
+                    <img :src="sellerImage" alt="">
+                </div>
+                <div class="item_title" @click="setSellerIndex">
+                    <router-link :to="{name: 'catalog'}">{{ sellers_data.name }}</router-link>
+                </div>
+            </router-link>
+        </v-flex>
+        <v-flex class="item_category">{{ sellers_data.category }}</v-flex>
+        <v-flex>
+            <v-btn flat icon v-if="!sellers_data.favorite">
+                <v-icon class="item_fav add"
+                        @click="addToFavorite"
+                        color="#797979"
+                >favorite
+                </v-icon>
+            </v-btn>
+            <v-btn flat icon v-if="sellers_data.favorite">
+                <v-icon class="item_fav added"
+                        @click="addToFavorite"
+                        color="#4e70b1"
+                >favorite
+                </v-icon>
+            </v-btn>
+        </v-flex>
+        <v-flex @click="setSellerIndex">
+            <v-btn class="item_go-ro-catalog bg-color2" dark :to="{name: 'catalog'}">Catalogue</v-btn>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
@@ -67,7 +71,8 @@
 
             setSellerIndex() {
                 let index = this.sellers_data.id - 1;
-                this.SET_SELLER_INDEX(index);
+                this.$store.dispatch('SET_SELLER_INDEX', index);
+                console.log(index);
                 this.SET_HEADER_TEXT('Providers catalogue');
             },
         },
@@ -78,12 +83,12 @@
     .a-sellers-item {
         justify-content: space-around;
         align-items: center;
-        display: flex;
         margin: 10px auto 20px auto;
+        padding: 10px 0;
     }
 
     .item_logo img {
-        max-width: 70px;
+        max-width: 50px;
     }
 
     .v-icon.item_fav {
@@ -91,12 +96,11 @@
     }
 
     .a-sellers-item div {
-        flex: 0 2 10%;
+        flex: 0 2 100%;
     }
 
     .a-sellers-item a {
         border: 0;
-        max-width: 80px;
     }
 
     .item_title {

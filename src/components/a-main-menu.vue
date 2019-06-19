@@ -1,8 +1,8 @@
 <template>
     <nav>
-        <ul class="a-main-menu shadow-border bg-color fixed-bottom" v-if="toggleHeaderVisibility">
+        <ul class="a-main-menu elevation-2 bg-color fixed-bottom" v-if="toggleHeaderVisibility">
             <li>
-                <router-link to="/home">
+                <router-link :to="{name: 'Home'}">
                     <div class="menu_a" @click="mainPageClick">
                         <icon name="home"></icon>
                         <span>Home</span>
@@ -10,7 +10,15 @@
                 </router-link>
             </li>
             <li>
-                <router-link to="/customer-cabinet">
+                <router-link :to="{name: 'sellersList'}">
+                    <div class="menu_a" @click="catalogPageClick">
+                        <icon name="cubes"></icon>
+                        <span>Providers</span>
+                    </div>
+                </router-link>
+            </li>
+            <li>
+                <router-link :to="{name: 'CustomerCabinet'}">
                     <div class="menu_a" @click="favoritePageClick">
                         <icon name="heart"></icon>
                         <span>Favorites</span>
@@ -18,18 +26,18 @@
                 </router-link>
             </li>
             <li>
-                <router-link to="/customer-order-list">
+                <router-link :to="{name: 'CustomerOrderList'}">
                     <div class="menu_a" @click="cartPageClick">
                         <icon name="cart-arrow-down"></icon>
                         <span>Orders</span>
-                        <span class="order_counter bg-color"
+                        <span class="order_counter"
                               v-if="this.$store.state.cart.length"
                         >{{ orderCounter }}</span>
                     </div>
                 </router-link>
             </li>
             <li>
-                <router-link to="/profile">
+                <router-link :to="{name: 'Profile'}">
                     <div class="menu_a" @click="aboutPageClick">
                         <icon name="user"></icon>
                         <span class="no-wrap">Profile</span>
@@ -37,7 +45,7 @@
                 </router-link>
             </li>
             <li>
-                <router-link to="/settings">
+                <router-link :to="{name: 'Settings'}">
                     <div class="menu_a" @click="settingsPageClick">
                         <icon name="cog"></icon>
                         <span>Preferences</span>
@@ -73,6 +81,9 @@ import {mapActions} from 'vuex'
             ]),
             mainPageClick() {
                 this.SET_HEADER_TEXT('Home');
+            },
+            catalogPageClick() {
+                this.SET_HEADER_TEXT('Providers');
             },
             favoritePageClick() {
                 this.SET_HEADER_TEXT('My favorite providers');
@@ -112,14 +123,14 @@ import {mapActions} from 'vuex'
     .a-main-menu {
         display: flex;
         justify-content: space-around;
-        padding: 0 5px 3px 5px;
+        padding: 0 5px;
         z-index: 1;
     }
 
     .a-main-menu li {
         position: relative;
         list-style: none;
-        padding: 10px 10px;
+        padding: 10px 0;
         border-radius: 3px;
         transition: .2s;
         cursor: pointer;

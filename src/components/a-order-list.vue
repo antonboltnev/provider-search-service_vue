@@ -17,8 +17,8 @@
         </div>
         <div class="empty-order-list" v-if="orders.length < 1">
             <p class="empty-order-list-p">You do not have active orders</p>
-            <router-link to="/sellers-list">
-                <v-btn dark color="#4e70b1" @click="sellersPageClick">Add</v-btn>
+            <router-link :to="{name: 'sellersList'}">
+                <v-btn dark class="bg-color2" @click="sellersPageClick">Add</v-btn>
             </router-link>
         </div>
         <transition name="bounce">
@@ -29,7 +29,7 @@
             <br>
             <br>
             <br>
-                <v-btn class="ok" dark color="#4e70b1" @click="closePopup">OK</v-btn>
+                <v-btn class="ok bg-color2" dark  @click="closePopup">OK</v-btn>
         </div>
         </transition>
     </div>

@@ -26,8 +26,8 @@
                         placeholder="Phone"
                 />
             </div>
-            <v-btn color="#4e70b1" dark class="edit-profile-info" v-if="editProfileInfo" @click="editInfo">Edit</v-btn>
-            <v-btn color="#4e70b1" dark class="edit-profile-info" v-if="!editProfileInfo" @click="saveInfo">Save</v-btn>
+            <v-btn dark class="edit-profile-info bg-color2" v-if="editProfileInfo" @click="editInfo">Edit</v-btn>
+            <v-btn dark class="edit-profile-info bg-color2" v-if="!editProfileInfo" @click="saveInfo">Save</v-btn>
         </form>
     </div>
 </template>

@@ -1,72 +1,83 @@
 <template>
-    <div class='a-login-page'>
+    <v-container class='a-login-page'>
         <h1 class="main-title" v-if="!this.isRegistered && !this.auth">Easy way to find <span class="underlined">reliable</span> providers</h1>
         <div class="a-login-page-input_wrapper" v-if="!this.auth && this.loginTab">
             <h1 v-if="!this.auth">Sign In</h1>
-            <form id="auth-form" action="#">
+            <v-form id="auth-form" action="#">
                 <p class="input_error_msg" v-if="showError">{{ this.$store.state.errorMessages.authError }}</p>
-                <input type="email"
+                <v-text-field
                        v-model="authLogin"
-                       placeholder="Email"
+                       label="Email"
                        required
-                >
-                <input type="password"
+                       dark
+                       color="#fff"
+                ></v-text-field>
+                <v-text-field
+                        type="password"
                        v-model="authPass"
-                       placeholder="Password"
+                       label="Password"
                        required
-                >
+                       dark
+                       color="#fff"
+                ></v-text-field>
                 <div class="a-login-page_confirm">
-                    <button class="login-confirm-btn btn btn-big bg-color2" @click="confirmLogin">Confirm</button>
+                    <v-btn class="login-confirm-btn bg-color2" dark @click="confirmLogin">Confirm</v-btn>
                     <br>
                     <span>or <span class="switch-tabs" @click="registrationTab">Sign Up</span></span>
                 </div>
-            </form>
+            </v-form>
         </div>
-        <div class="a-registation-tab" v-if="!this.isRegistered && !this.loginTab">
+        <div class="a-login-page-input_wrapper" v-if="!this.isRegistered && !this.loginTab">
                 <h1 v-if="!this.auth">Sign Up</h1>
-                <form id="reg-form" action="#">
-                    <div class="a-login-page-input_wrapper">
+                <v-form id="reg-form" action="#">
                         <p class="password-error" v-if="emptyFieldError">{{ this.$store.state.errorMessages.emptyFields }}</p>
-                        <input type="text"
-                               v-model="nameField"
-                               required
-                               placeholder="First Name*"
-                               @keyup="clearErrorName"
-                        >
-                        <input type="email"
+                        <v-text-field
+                                label="First name"
+                                v-model="nameField"
+                                required
+                                @keyup="clearErrorName"
+                                dark
+                                color="#fff"
+                        ></v-text-field>
+                        <v-text-field
                                v-model="emailField"
                                required
-                               placeholder="Email*"
+                               label="Email*"
                                @keyup="clearErrorName"
-                        >
-                        <masked-input
-                                type="tel"
+                               dark
+                               color="#fff"
+                        ></v-text-field>
+                        <v-text-field
                                 v-model="phoneField"
-                                mask="\+\7 (111) 111-11-11"
-                                @input="rawVal = arguments[1]"
-                                placeholder="Phone"
-                        />
+                                mask="(###) ### - ##-##"
+                                label="Phone"
+                                dark
+                                color="#fff"
+                        ></v-text-field>
                         <span class="password-error" v-if="!passwordsOk">{{ this.$store.state.errorMessages.registerPassConfirm }}</span>
-                        <input type="password"
+                        <v-text-field
                                v-model="passwordField"
                                required
-                               placeholder="Password*"
+                               label="Password*"
                                @keyup="clearErrorPass"
                                @keydown="clearErrorName"
-                        >
-                        <input type="password"
+                               dark
+                               color="#fff"
+                        ></v-text-field>
+                        <v-text-field
                                v-model="confirmPasswordField"
                                required
-                               placeholder="Confirm password*"
+                               label="Confirm password*"
                                @keyup="clearErrorPass"
-                        >
+                               dark
+                               color="#fff"
+                        ></v-text-field>
                         <div class="a-login-page_confirm">
-                            <button class="login-confirm-btn btn btn-big bg-color2" @click="confirmRegistration">Confirm</button>
+                            <v-btn class="login-confirm-btn bg-color2" dark @click="confirmRegistration">Confirm</v-btn>
                             <br>
                             <span>or <span class="switch-tabs" @click="registrationTab">Sign In</span></span>
                         </div>
-                    </div>
-                </form>
+                </v-form>
             </div>
         <transition name="bounce">
             <div v-if="this.auth" class="a-succes_auth-wrapper">
@@ -78,7 +89,7 @@
                 <h2>Success!</h2>
             </div>
         </transition>
-    </div>
+    </v-container>
 </template>
 
 <script>
@@ -191,6 +202,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         height: 100%;
     }
 
@@ -221,26 +233,11 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        max-width: 400px;
     }
 
     .a-login-page_confirm {
-        width: 100%;
         padding-bottom: 20px;
-    }
-
-    .a-login-page input {
-        width: 70%;
-        margin: 5px 0 10px 0;
-        padding: 15px 0 15px 10px;
-        border: 0;
-        -webkit-appearance: none;
-        border-bottom: solid 1px #fff;
-        background: transparent;
-        color: #fff;
-    }
-
-    .a-login-page input::placeholder {
-        color: #fff;
     }
 
     .a-login-page_confirm span {
@@ -269,10 +266,20 @@
         color: #ff5555;
     }
 
+    .v-input {
+      width: 300px;
+    }
+
+    .a-login-page .theme--dark.v-label {
+      color: #fff;
+    }
+
     .login-confirm-btn {
+        width: 70%;
         -webkit-appearance: none;
         border: 0;
         margin-bottom: 30px;
         box-shadow: none !important;
     }
+
 </style>

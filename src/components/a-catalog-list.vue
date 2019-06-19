@@ -9,10 +9,9 @@
         <div class="a-catalog-list_price">
             ${{ product_data.price }} / {{ product_data.value }}
         </div>
-        <v-btn class="a-catalog-list_add-to-cart"
+        <v-btn class="a-catalog-list_add-to-cart bg-color2"
              v-if="!this.product_data.ordered"
             @click="addToCart"
-               color="#4e70b1"
                dark
         >{{ addToCartText }}
         </v-btn>

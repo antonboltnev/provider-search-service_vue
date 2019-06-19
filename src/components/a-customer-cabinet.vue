@@ -11,7 +11,7 @@
            v-if="sellers.length < 1"
       >
         <p class="no-favorite">You do not have favorite providers</p>
-          <v-btn :to="{ name: 'sellersList' }" class="add-fav" dark color="#4e70b1" @click="sellersPageClick">Add</v-btn>
+          <v-btn :to="{ name: 'sellersList' }" class="add-fav bg-color2" dark @click="sellersPageClick">Add</v-btn>
       </div>
     </div>
   </div>

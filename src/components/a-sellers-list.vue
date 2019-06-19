@@ -1,20 +1,15 @@
 <template>
     <div>
         <div class="a-seller__list-header">
-            <div class="a-category-select-input__wrapper">
-                <label for="category-select">
-                    <select name="" id="category-select" v-model="selectedCategory">
-                        <a-seller-catalog-select-option
-                                v-for="item in showProductCategories"
-                                :key="item.id"
-                                :category_data="item"
-                        />
-                    </select>
-                    <icon name="chevron-down"></icon>
-                </label>
-            </div>
+            <v-flex class="a-category-select-input__wrapper" sm12 d-flex>
+                <v-select name="" id="category-select" v-model="selectedCategory"
+                          :items="showProductCategories"
+                          solo
+                >
+                </v-select>
+            </v-flex>
         </div>
-        <div class="a-sellers__list">
+        <v-flex class="a-sellers__list">
             <a-sellers-item
                     v-for="item in sellers"
                     :key="item.id"
@@ -24,22 +19,18 @@
             <div class="a-sellers__list__empty" v-if="emptyFilterResults">
                 <span>Oops, we're afraid, but we could not find anything...</span>
             </div>
-        </div>
+        </v-flex>
     </div>
 </template>
 
 <script>
     import aSellersItem from '@/components/a-sellers-item'
-    import aSellerCatalogSelectOption from '@/components/a-seller-catalog-select-option'
-    import Icon from 'vue-awesome/components/Icon'
     import {mapActions} from 'vuex'
 
     export default {
         name: "a-sellers-list",
         components: {
             aSellersItem,
-            aSellerCatalogSelectOption,
-            Icon
         },
         data() {
             return {
@@ -97,6 +88,10 @@
 </script>
 
 <style>
+
+    .a-category-select-input__wrapper .v-input__slot {
+        margin-top: 10px;
+    }
 
     .a-seller__list-header {
         z-index: 1;

@@ -1,38 +1,38 @@
 <template>
     <div class="a-main-page">
         <div class="a-main-page-nav-blocks">
-            <router-link to="/sellers-list" class="text-color1 bg-color-fff">
+            <router-link  class="text-color1 bg-color-fff" :to="{name: 'sellersList'}">
                 <div @click="sellersPageClick">
                     <icon name="cubes"></icon>
                     <div class="nav-block">Providers catalogue</div>
                 </div>
             </router-link>
-            <router-link to="/customer-cabinet" class="bg-color2 text-color3">
+            <router-link :to="{name: 'CustomerCabinet'}" class="text-color3">
                 <icon name="heart"></icon>
                 <div class="nav-block">Favorites</div>
             </router-link>
-            <router-link to="/customer-order-list" class="bg-color2 text-color3">
+            <router-link :to="{name: 'CustomerOrderList'}" class="text-color3">
                 <div class="svg_wrapper">
                     <icon name="cart-arrow-down"></icon>
                     <div class="nav-block">My orders
-                        <span class="order_counter bg-color"
+                        <span class="order_counter"
                               v-if="this.$store.state.cart.length"
                         >{{ orderCounter }}
                     </span>
                     </div>
                 </div>
             </router-link>
-            <router-link to="/profile" class="text-color1 bg-color-fff">
+            <router-link :to="{name: 'Profile'}" class="text-color1 bg-color-fff">
                 <icon name="user"></icon>
                 <div class="nav-block">Profile</div>
             </router-link>
-            <router-link to="/settings" class="text-color1 bg-color-fff">
+            <router-link :to="{name: 'Settings'}" class="text-color1 bg-color-fff">
                 <div @click="settingsPageClick">
                     <icon name="cogs"></icon>
                     <div class="nav-block">Preferences</div>
                 </div>
             </router-link>
-            <router-link to="/about" class="bg-color2 text-color3">
+            <router-link :to="{name: 'About'}" class="text-color3">
                 <div @click="aboutPageClick">
                     <icon name="info-circle"></icon>
                     <div class="nav-block">About</div>
@@ -75,6 +75,12 @@
     }
 </script>
 
+<style scoped>
+    .order_counter {
+        right: -6px;
+        top: -7px;
+    }
+</style>
 <style>
     .a-main-page {
         height: 100%;
@@ -122,11 +128,6 @@
 
     .a-main-page-nav-blocks a:nth-child(1) svg, .a-main-page-nav-blocks a:nth-child(4) svg, .a-main-page-nav-blocks a:nth-child(5) svg {
         fill: #8190b0;
-    }
-
-    .order_counter {
-        right: 5%;
-        top: -5px;
     }
 
     @media (min-width: 769px) {

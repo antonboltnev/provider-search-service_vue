@@ -1,5 +1,5 @@
 <template>
-    <div class="a-order-item shadow-border">
+    <div class="a-order-item elevation-1">
         <div class="item_img">
             <img :src="orderImg" alt="">
         </div>
@@ -62,7 +62,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-radius: 6px;
         margin-bottom: 20px;
         padding: 10px;
     }

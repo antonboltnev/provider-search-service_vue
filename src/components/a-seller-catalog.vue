@@ -1,12 +1,16 @@
 <template>
-    <div class="a-seller-catalog">
-        <div class="a-seller-info">
-            <v-btn class="a-seller-cert" dark color="#4e70b1" @click="showAdvancedInfo">
-                <p class="cert-title">Certificates</p>
-            </v-btn>
-            <v-btn class="a-seller-about btn bg-color" dark color="#4e70b1" @click="showAboutText">Information</v-btn>
-            <v-btn class="a-seller-chat btn bg-color" dark color="#4e70b1">Message</v-btn>
-        </div>
+    <v-container class="a-seller-catalog">
+        <v-layout class="a-seller-info justify-space-between wrap"  v-if="products">
+            <v-flex xs12 sm3>
+                <v-btn class="a-seller-cert bg-color2" dark @click="showAdvancedInfo">Certificates</v-btn>
+            </v-flex>
+            <v-flex xs12 sm3>
+                <v-btn class="a-seller-about btn bg-color2" dark @click="showAboutText">Information</v-btn>
+            </v-flex>
+            <v-flex xs12 sm3>
+                <v-btn class="a-seller-chat btn bg-color2" dark >Message</v-btn>
+            </v-flex>
+        </v-layout>
         <transition name="fade">
             <div class="a-seller-advanced-info certs" v-if="isAdvancesInfoVisible">
                 <div class="cert-docs">
@@ -25,20 +29,14 @@
                 <p>Contact phone: {{ sellers_data.phone }}</p>
             </div>
         </transition>
-        <div class="a-category-select-input__wrapper " v-if="products">
-            <label for="category-select">
-                <select name="" id="category-select" v-model="selectedCategory">
-                    <option value="ALL">ALL</option>
-                    <a-seller-catalog-select-option
-                            v-for="item in showProductCategories"
-                            :key="item.id"
-                            :category_data="item"
-                    />
-                </select>
-                <icon name="chevron-down"></icon>
-            </label>
-        </div>
-        <div class="a-seller-catalog-wrapper">
+        <v-flex class="a-category-select-input__wrapper" sm12 d-flex v-if="products">
+                <v-select name="" id="category-select" v-model="selectedCategory"
+                          :items="showProductCategories"
+                          solo
+                >
+                </v-select>
+        </v-flex>
+        <v-layout class="a-seller-catalog-wrapper wrap">
             <a-catalog-list
                     v-for="(item, index) in products"
                     :key="item.id"
@@ -46,29 +44,23 @@
                     :sellers_data="sellers_data"
                     @add-to-cart="addToCart(index)"
             />
-            <div class="a-seller-empty-catalog" v-if="!products">Provider did not add any products to catalogue...
+            <v-flex class="a-seller-empty-catalog" v-if="!products">Provider did not add any products to catalogue...
                 <div class="back-to-main">
-                    <router-link to="/sellers-list">
-                        <div class="btn bg-color">To providers list</div>
-                    </router-link>
+                        <v-btn dark class="btn bg-color2" :to="{name: 'sellersList'}">To providers list</v-btn>
                 </div>
-            </div>
-        </div>
-    </div>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
     import aCatalogList from '@/components/a-catalog-list'
-    import aSellerCatalogSelectOption from '@/components/a-seller-catalog-select-option'
-    import Icon from 'vue-awesome/components/Icon'
     import {mapGetters, mapActions} from 'vuex'
 
     export default {
         name: "a-seller-catalog",
         components: {
             aCatalogList,
-            Icon,
-            aSellerCatalogSelectOption
         },
         props: {
             sellerIndex: {
@@ -88,46 +80,46 @@
             ...mapGetters([
                 'SELLERS'
             ]),
-            showProductCategories(e) {
+            showProductCategories() {
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
-                e = this.sellerSelectedIndex;
-                let categoryArr = [];
-                for ( let item of this.SELLERS[e].products) {
+                let index = this.sellerSelectedIndex;
+                let categoryArr = ['ALL'];
+                for ( let item of this.SELLERS[index].products) {
                     categoryArr.push(item.category);
                 }
                 return Object.values(categoryArr.reduce((acc, cur) =>
                         Object.assign(acc,{[cur]:cur}),{} ));
             },
 
-            products(e) {
+            products() {
                 let vm = this;
                 let selectFiilter = this.selectedCategory;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
-                e = this.sellerSelectedIndex;
+                let index = this.sellerSelectedIndex;
 
                 if ( selectFiilter === 'ALL' ) {
-                    return this.SELLERS[e].products;
+                    return this.SELLERS[index].products;
                 } else {
-                    return this.SELLERS[e].products.filter(function (item) {
+                    return this.SELLERS[index].products.filter(function (item) {
                         vm.emptyFilterResults = false;
                         return item.category.match(selectFiilter);
                     });
                 }
             },
 
-            sellerDocuments(e) {
+            sellerDocuments() {
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
-                e = this.sellerSelectedIndex;
-                return require('../../public/img/' + this.SELLERS[e].docs);
+                let index = this.sellerSelectedIndex;
+                return require('../../public/img/' + this.SELLERS[index].docs);
             },
 
-            sellers_data(e) {
+            sellers_data() {
                 let vm = this;
                 vm.sellerSelectedIndex = this.$store.state.selectedSeller;
-                e = this.sellerSelectedIndex;
-                return this.SELLERS[e];
+                let index = this.sellerSelectedIndex;
+                return this.SELLERS[index];
             }
         },
 
@@ -165,11 +157,7 @@
 
 <style>
     .a-seller-catalog {
-        margin: 38px auto 50px auto;
-    }
-
-    .a-category-select-input__wrapper {
-        margin: 0;
+        margin: 20px auto 50px auto !important;
     }
 
     .a-seller-catalog-wrapper {
@@ -184,18 +172,17 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 30px;
     }
 
-    .a-seller-cert, .a-seller-about, .a-seller-chat {
-        margin: 0 2px;
-        flex: 0 0 30%;
+    .a-seller-info button {
+        width: 100%;
+        margin: 6px 0;
     }
 
     .a-seller-advanced-info {
         display: flex;
         justify-content: space-around;
-        margin-bottom: 30px;
+        margin: 15px 0;
     }
 
     .cert-docs img {
@@ -206,11 +193,4 @@
         max-width: 300px;
     }
 
-    .a-seller-empty-catalog .back-to-main {
-        max-width: 150px;
-        margin: 20px auto;
-    }
-
-</style>
-<style>
 </style>

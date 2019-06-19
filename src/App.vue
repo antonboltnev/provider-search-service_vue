@@ -1,13 +1,13 @@
 <template>
-    <div id="app" :class="{ 'margin_bottom' : !toggleHeaderVisibility }">
-        <a-header class="fixed-top bg-color2 shadow-border"/>
+    <v-container id="app" :class="{ 'margin_bottom' : !toggleHeaderVisibility }">
+        <a-header class="fixed-top bg-color2 elevation-1"/>
         <a-main-menu/>
         <keep-alive>
             <transition name="fade">
                 <router-view></router-view>
             </transition>
         </keep-alive>
-    </div>
+    </v-container>
 </template>
 
 <script>
