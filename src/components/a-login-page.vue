@@ -94,15 +94,11 @@
 
 <script>
 
-    import  MaskedInput from 'vue-masked-input'
     import {usersRef} from '../firebaseDB'
     import {mapActions} from 'vuex'
 
     export default {
         name: "a-login-page",
-        components: {
-            MaskedInput
-        },
         firebase: {
            usersDb: usersRef
         },

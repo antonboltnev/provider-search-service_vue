@@ -75,7 +75,6 @@ let store = new Vuex.Store({
         },
         SET_INDEX: (state, index) => {
             state.selectedSeller = index;
-            console.log(index);
         },
         SET_FAV: (state, index) => {
             state.sellers[index].favorite = !state.sellers[index].favorite;

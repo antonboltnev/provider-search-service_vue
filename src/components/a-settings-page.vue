@@ -178,6 +178,6 @@
     }
 
     .switch input[type=checkbox]:checked+.checkbox {
-        background: #4e70b1;
+        background: #41b883;
     }
 </style>

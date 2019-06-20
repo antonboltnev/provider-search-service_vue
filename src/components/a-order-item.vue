@@ -1,9 +1,9 @@
 <template>
-    <div class="a-order-item elevation-1">
-        <div class="item_img">
+    <v-layout class="a-order-item elevation-1">
+        <v-flex class="item_img">
             <img :src="orderImg" alt="">
-        </div>
-        <div class="item_info">
+        </v-flex>
+        <v-flex class="item_info">
             <div class="item_title"><span class="text-bold">{{ order_data.title }}</span></div>
             <div class="item_price">Price: <span class="text-bold">${{ order_data.price }} / {{ order_data.value }}</span></div>
             <div class="item_qty_wrapper">
@@ -16,14 +16,14 @@
                 <div class="item_change-qty" @click="plusQty">+</div>
             </div>
             <div class="item_total text-bold text-color1">Total: ${{ order_data.qty * order_data.price}}</div>
-        </div>
+        </v-flex>
         <v-btn flat icon class="item_remove" @click="removeItemFromCart">
             <v-icon class="item_fav add"
                     color="#797979"
             >delete
             </v-icon>
         </v-btn>
-    </div>
+    </v-layout>
 </template>
 
 <script>

@@ -22,7 +22,7 @@
             <v-btn flat icon v-if="sellers_data.favorite">
                 <v-icon class="item_fav added"
                         @click="addToFavorite"
-                        color="#4e70b1"
+                        color="#41b883"
                 >favorite
                 </v-icon>
             </v-btn>
@@ -34,14 +34,10 @@
 </template>
 
 <script>
-    import Icon from 'vue-awesome/components/Icon'
     import {mapActions} from 'vuex'
 
     export default {
         name: "a-sellers-item",
-        components: {
-            Icon
-        },
         props: {
            sellers_data: {
                type: Object,
@@ -72,7 +68,6 @@
             setSellerIndex() {
                 let index = this.sellers_data.id - 1;
                 this.$store.dispatch('SET_SELLER_INDEX', index);
-                console.log(index);
                 this.SET_HEADER_TEXT('Providers catalogue');
             },
         },

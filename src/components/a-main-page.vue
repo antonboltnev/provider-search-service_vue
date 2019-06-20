@@ -1,45 +1,61 @@
 <template>
-    <div class="a-main-page">
-        <div class="a-main-page-nav-blocks">
-            <router-link  class="text-color1 bg-color-fff" :to="{name: 'sellersList'}">
-                <div @click="sellersPageClick">
-                    <icon name="cubes"></icon>
-                    <div class="nav-block">Providers catalogue</div>
-                </div>
-            </router-link>
-            <router-link :to="{name: 'CustomerCabinet'}" class="text-color3">
-                <icon name="heart"></icon>
-                <div class="nav-block">Favorites</div>
-            </router-link>
-            <router-link :to="{name: 'CustomerOrderList'}" class="text-color3">
-                <div class="svg_wrapper">
-                    <icon name="cart-arrow-down"></icon>
-                    <div class="nav-block">My orders
-                        <span class="order_counter"
-                              v-if="this.$store.state.cart.length"
-                        >{{ orderCounter }}
-                    </span>
+    <v-container fluid class="a-main-page">
+        <v-layout class="a-main-page-nav-blocks wrap">
+            <v-flex class="bg-color-fff" md6 xs6>
+                <router-link  class="text-color5 flex align-center column" :to="{name: 'sellersList'}">
+                    <div>
+                        <v-icon>view_module</v-icon>
+                        <div class="nav-block">Providers catalogue</div>
                     </div>
-                </div>
-            </router-link>
-            <router-link :to="{name: 'Profile'}" class="text-color1 bg-color-fff">
-                <icon name="user"></icon>
-                <div class="nav-block">Profile</div>
-            </router-link>
-            <router-link :to="{name: 'Settings'}" class="text-color1 bg-color-fff">
-                <div @click="settingsPageClick">
-                    <icon name="cogs"></icon>
-                    <div class="nav-block">Preferences</div>
-                </div>
-            </router-link>
-            <router-link :to="{name: 'About'}" class="text-color3">
-                <div @click="aboutPageClick">
-                    <icon name="info-circle"></icon>
-                    <div class="nav-block">About</div>
-                </div>
-            </router-link>
-        </div>
-    </div>
+                </router-link>
+            </v-flex>
+            <v-flex md6 xs6>
+                <router-link :to="{name: 'CustomerCabinet'}" class="text-color3 flex align-center column">
+                    <div>
+                        <v-icon color="#fff">favorite</v-icon>
+                        <div class="nav-block">Favorites</div>
+                    </div>
+                </router-link>
+            </v-flex>
+            <v-flex md6 xs6>
+                <router-link :to="{name: 'CustomerOrderList'}" class="text-color3 flex align-center column">
+                    <div class="nav-block">
+                        <v-icon color="#fff">shopping_cart</v-icon>
+                        <div>My orders
+                            <span class="order_counter"
+                                  v-if="this.$store.state.cart.length"
+                            >{{ orderCounter }}
+                            </span>
+                        </div>
+                    </div>
+                </router-link>
+            </v-flex>
+            <v-flex class="bg-color-fff" md6 xs6>
+                <router-link :to="{name: 'Profile'}" class="text-color5 flex align-center column">
+                    <div>
+                        <v-icon>person</v-icon>
+                        <div class="nav-block">Profile</div>
+                    </div>
+                </router-link>
+            </v-flex>
+            <v-flex class="bg-color-fff" md6 xs6>
+                <router-link :to="{name: 'Settings'}" class="text-color5 flex align-center column">
+                    <div @click="settingsPageClick">
+                        <v-icon>settings</v-icon>
+                        <div class="nav-block">Preferences</div>
+                    </div>
+                </router-link>
+            </v-flex>
+            <v-flex md6 xs6>
+                <router-link :to="{name: 'About'}" class="text-color3 flex align-center column">
+                    <div @click="aboutPageClick">
+                        <v-icon color="#fff">info</v-icon>
+                        <div class="nav-block">About</div>
+                    </div>
+                </router-link>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
@@ -82,64 +98,31 @@
     }
 </style>
 <style>
-    .a-main-page {
+    .container.a-main-page {
+        padding: 0;
+    }
+
+    .a-main-page, .a-main-page-nav-blocks {
         height: 100%;
-        display: flex;
-        max-width: 900px;
-        margin: 0 auto;
     }
 
-    .a-main-page-nav-blocks {
+    .a-main-page-nav-blocks .flex {
         display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    .a-main-page-nav-blocks a {
-        width: 50%;
-        height: 33.3%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
+        align-items: center;
     }
 
     .a-main-page-nav-blocks a.bg-color2 {
         background: transparent;
     }
 
-    .svg_wrapper {
+    .nav-block {
         position: relative;
     }
 
-    .a-main-page-nav-blocks a svg {
-        width: 50px;
-        height: 50px;
-        fill: #b3b3b3;
+    .a-main-page-nav-blocks a .v-icon {
+        color: #41b883;
+        font-size: 4em;
         margin-bottom: 20px;
-    }
-
-    .a-main-page-nav-blocks a:nth-child(2) svg, .a-main-page-nav-blocks a:nth-child(3) svg, .a-main-page-nav-blocks a:nth-child(6) svg {
-        fill: #fff;
-    }
-
-    .a-main-page-nav-blocks a:nth-child(1) svg, .a-main-page-nav-blocks a:nth-child(4) svg, .a-main-page-nav-blocks a:nth-child(5) svg {
-        fill: #8190b0;
-    }
-
-    @media (min-width: 769px) {
-        .a-main-page {
-            position: absolute;
-            left: 0;
-            right: 0;
-        }
-
-        .a-main-page-nav-blocks a {
-            width: 30%;
-            border-radius: 5px;
-        }
     }
 </style>

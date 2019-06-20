@@ -127,7 +127,7 @@
     }
 
     .order-total {
-        bottom: 65px;
+        bottom: 59px;
         font-size: 20px;
         padding: 10px 0;
         margin: 0 auto;

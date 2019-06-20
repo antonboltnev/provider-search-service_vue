@@ -42,7 +42,7 @@ button {
 }
 
 .bg-color2 {
-      background: #4e70b1 !important;
+      background: #41b883 !important;
       color: #ffffff !important;
 }
 
@@ -71,6 +71,10 @@ button {
 
 .text-color4 {
       color: #848484;
+}
+
+.text-color5 {
+      color: #41b883;
 }
 
 .btn {
@@ -107,11 +111,16 @@ button {
       left: 0;
 }
 
-.fixed-bottom {
+.v-toolbar.fixed-bottom {
       position: fixed;
       bottom: 0;
       right: 0;
       left: 0;
+      z-index: 1;
+}
+
+.v-toolbar__content {
+      padding: 0 !important;
 }
 
 /*ANIMATION*/
@@ -200,7 +209,7 @@ button {
       right: -10px;
       padding: 4px 8px;
       border-radius: 50%;
-      background: #ff5e5e;
+      background: #41b883;
       color: #fff;
       font-size: 13px;
 }

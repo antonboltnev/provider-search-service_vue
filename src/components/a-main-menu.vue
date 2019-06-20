@@ -1,6 +1,6 @@
 <template>
-    <nav>
-        <ul class="a-main-menu elevation-2 bg-color fixed-bottom" v-if="toggleHeaderVisibility">
+    <v-toolbar class="fixed-bottom" v-if="toggleHeaderVisibility">
+        <ul class="a-main-menu elevation-2 bg-color">
             <li>
                 <router-link :to="{name: 'Home'}">
                     <div class="menu_a" @click="mainPageClick">
@@ -53,7 +53,7 @@
                 </router-link>
             </li>
         </ul>
-    </nav>
+    </v-toolbar>
 </template>
 
 <script>
@@ -124,22 +124,15 @@ import {mapActions} from 'vuex'
         display: flex;
         justify-content: space-around;
         padding: 0 5px;
-        z-index: 1;
+        width: 100%;
     }
 
     .a-main-menu li {
         position: relative;
         list-style: none;
         padding: 10px 0;
-        border-radius: 3px;
-        transition: .2s;
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
-    }
-
-    .a-main-menu li:active {
-        box-shadow: inset 0 1px 15px 2px #4c4c4c;
-        transition: .2s;
     }
 
     .a-main-menu a {
