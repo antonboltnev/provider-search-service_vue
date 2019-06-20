@@ -75,7 +75,7 @@
     .setting-types {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: baseline;
         text-align: left;
         margin-bottom: 20px;
     }

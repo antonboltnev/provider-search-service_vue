@@ -1,5 +1,5 @@
 <template>
-    <v-layout class="a-sellers-item elevation-1 justify-space-between">
+    <v-layout class="a-sellers-item elevation-3 justify-space-between">
         <v-flex>
             <router-link :to="{name: 'catalog'}">
                 <div class="item_logo" @click="setSellerIndex">
@@ -12,14 +12,14 @@
         </v-flex>
         <v-flex class="item_category">{{ sellers_data.category }}</v-flex>
         <v-flex>
-            <v-btn flat icon v-if="!sellers_data.favorite">
+            <v-btn icon v-if="!sellers_data.favorite">
                 <v-icon class="item_fav add"
                         @click="addToFavorite"
                         color="#797979"
                 >favorite
                 </v-icon>
             </v-btn>
-            <v-btn flat icon v-if="sellers_data.favorite">
+            <v-btn icon v-if="sellers_data.favorite">
                 <v-icon class="item_fav added"
                         @click="addToFavorite"
                         color="#41b883"

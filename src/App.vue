@@ -1,6 +1,6 @@
 <template>
     <v-container id="app" :class="{ 'margin_bottom' : !toggleHeaderVisibility }">
-        <a-header class="fixed-top bg-color2 elevation-1"/>
+        <a-header class="fixed-top bg-color2 elevation-2"/>
         <a-main-menu/>
         <keep-alive>
             <transition name="fade">

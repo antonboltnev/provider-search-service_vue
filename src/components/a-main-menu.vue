@@ -4,7 +4,7 @@
             <li>
                 <router-link :to="{name: 'Home'}">
                     <div class="menu_a" @click="mainPageClick">
-                        <icon name="home"></icon>
+                        <v-icon>home</v-icon>
                         <span>Home</span>
                     </div>
                 </router-link>
@@ -12,7 +12,7 @@
             <li>
                 <router-link :to="{name: 'sellersList'}">
                     <div class="menu_a" @click="catalogPageClick">
-                        <icon name="cubes"></icon>
+                        <v-icon>view_module</v-icon>
                         <span>Providers</span>
                     </div>
                 </router-link>
@@ -20,7 +20,7 @@
             <li>
                 <router-link :to="{name: 'CustomerCabinet'}">
                     <div class="menu_a" @click="favoritePageClick">
-                        <icon name="heart"></icon>
+                        <v-icon>favorite</v-icon>
                         <span>Favorites</span>
                     </div>
                 </router-link>
@@ -28,7 +28,7 @@
             <li>
                 <router-link :to="{name: 'CustomerOrderList'}">
                     <div class="menu_a" @click="cartPageClick">
-                        <icon name="cart-arrow-down"></icon>
+                        <v-icon>shopping_cart</v-icon>
                         <span>Orders</span>
                         <span class="order_counter"
                               v-if="this.$store.state.cart.length"
@@ -39,7 +39,7 @@
             <li>
                 <router-link :to="{name: 'Profile'}">
                     <div class="menu_a" @click="aboutPageClick">
-                        <icon name="user"></icon>
+                        <v-icon>person</v-icon>
                         <span class="no-wrap">Profile</span>
                     </div>
                 </router-link>
@@ -47,7 +47,7 @@
             <li>
                 <router-link :to="{name: 'Settings'}">
                     <div class="menu_a" @click="settingsPageClick">
-                        <icon name="cog"></icon>
+                        <v-icon>settings</v-icon>
                         <span>Preferences</span>
                     </div>
                 </router-link>

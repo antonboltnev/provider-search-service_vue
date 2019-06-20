@@ -8,13 +8,13 @@
             @plus_qty="plusQty(index)"
             @minus_qty="minusQty(index)"
         />
-        <div class="order-total bg-color2 fixed-bottom" v-if="orders.length > 0">
-            <div class="total-sum">
+        <v-layout class="order-total bg-color2 fixed-bottom elevation-3 justify-center" v-if="orders.length > 0">
+            <v-flex class="total-sum" md2 xs6>
                 <div>Total:</div>
                 <span>${{ totalSum }}</span>
-            </div>
+            </v-flex>
             <v-btn class="total-sum_confirm" @click="checkout">Checkout</v-btn>
-        </div>
+        </v-layout>
         <div class="empty-order-list" v-if="orders.length < 1">
             <p class="empty-order-list-p">You do not have active orders</p>
             <router-link :to="{name: 'sellersList'}">
@@ -111,12 +111,6 @@
         margin: 50px auto 120px auto;
     }
 
-    .list_title {
-        margin: 0 -10px 30px -10px;
-        padding: 10px 0;
-        font-size: 25px;
-    }
-
     .empty-order-list-p {
         margin-bottom: 10px;
     }
@@ -132,10 +126,8 @@
         padding: 10px 0;
         margin: 0 auto;
         font-weight: bold;
-        display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: solid 1px #fff;
     }
 
     .total-sum {

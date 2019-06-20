@@ -1,8 +1,8 @@
 <template>
-    <v-layout class="a-order-item elevation-1">
-        <v-flex class="item_img">
+    <v-layout class="a-order-item elevation-3">
+        <div class="item_img">
             <img :src="orderImg" alt="">
-        </v-flex>
+        </div>
         <v-flex class="item_info">
             <div class="item_title"><span class="text-bold">{{ order_data.title }}</span></div>
             <div class="item_price">Price: <span class="text-bold">${{ order_data.price }} / {{ order_data.value }}</span></div>
