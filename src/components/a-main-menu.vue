@@ -13,7 +13,7 @@
                 <router-link :to="{name: 'sellersList'}">
                     <div class="menu_a" @click="catalogPageClick">
                         <v-icon>view_module</v-icon>
-                        <span>Providers</span>
+                        <span>Suppliers</span>
                     </div>
                 </router-link>
             </li>
@@ -83,10 +83,10 @@ import {mapActions} from 'vuex'
                 this.SET_HEADER_TEXT('Home');
             },
             catalogPageClick() {
-                this.SET_HEADER_TEXT('Providers');
+                this.SET_HEADER_TEXT('Suppliers');
             },
             favoritePageClick() {
-                this.SET_HEADER_TEXT('My favorite providers');
+                this.SET_HEADER_TEXT('My favorite Suppliers');
             },
             cartPageClick() {
                 this.SET_HEADER_TEXT('My orders');

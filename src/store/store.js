@@ -7,7 +7,7 @@ let store = new Vuex.Store({
         pageName: '',
         isHeaderVisible: true,
         sellers: [
-            { name: 'Miratorg', about: 'Provider 1 Info', logo: 'miratorg.jpg', docs: 'cert1.jpg', id: 1, category: 'Meat', phone: '8-800-111-11-11', favorite: false, products: [
+            { name: 'Miratorg', about: 'Supplier 1 Info', logo: 'miratorg.jpg', docs: 'cert1.jpg', id: 1, category: 'Meat', phone: '8-800-111-11-11', favorite: false, products: [
                     { title: 'Meat Type 1', img: 'meat.png', price: '1000', value: 'kg', ordered: false, qty: 1, total: 1000, category: 'Meat' },
                     { title: 'Meat Type 2', img: 'meat.png', price: '800', value: 'kg', ordered: false, qty: 1, total: 800, category: 'Meat' },
                     { title: 'Sausages Type 1', img: 'sosiska.jpg', price: '400', value: 'kg', ordered: false, qty: 1, total: 400, category: 'Sausages' },
@@ -15,7 +15,7 @@ let store = new Vuex.Store({
                     { title: 'Beef Type 1', img: 'kolbasa.jpg', price: '1000', value: 'kg', ordered: false, qty: 1, total: 1000, category: 'Beef' },
                     { title: 'Beef Type 2', img: 'kolbasa.jpg', price: '700', value: 'kg', ordered: false, qty: 1, total: 700, category: 'Beef' },
                 ] },
-            { name: 'Grocery', about: 'Provider 2 Info', logo: '2hleb.jpg', docs: 'cert2.jpg', id: 2, category: 'Grocery', phone: '8-800-222-22-22', favorite: false, products: [
+            { name: 'Grocery', about: 'Supplier 2 Info', logo: '2hleb.jpg', docs: 'cert2.jpg', id: 2, category: 'Grocery', phone: '8-800-222-22-22', favorite: false, products: [
                     { title: 'White Bread', img: 'bread.jpg', price: '60', value: 'piece', ordered: false, qty: 1, total: 60, category: 'Bread'  },
                     { title: 'Black Bread', img: 'bread.jpg', price: '50', value: 'piece', ordered: false, qty: 1, total: 50, category: 'Bread'  },
                     { title: 'Biscuit 1', img: 'bulochka.jpg', price: '70', value: 'piece', ordered: false, qty: 1, total: 70, category: 'Biscuit'  },
@@ -23,15 +23,15 @@ let store = new Vuex.Store({
                     { title: 'Honey-cake 1', img: 'pryanik.jpg', price: '100', value: 'piece', ordered: false, qty: 1, total: 100, category: 'Honey-cake'  },
                     { title: 'Honey-cake 2', img: 'pryanik.jpg', price: '110', value: 'piece', ordered: false, qty: 1, total: 110, category: 'Honey-cake'  },
                 ] },
-            { name: 'Milk products', about: 'Provider 3 Info', logo: 'domik.jpg', id: 3, category: 'Milk', phone: '8-800-333-33-33', favorite: false, },
-            { name: 'Meat Products', about: 'Provider 4 Info', logo: 'myasnitskiy.jpg', id: 4, category: 'Meat', phone: '8-800-444-44-44', favorite: false, },
-            { name: 'Bread Products', about: 'Provider 5 Info', logo: 'face-logo.png', id: 5, category: 'Bread', phone: '8-800-555-55-55', favorite: false, },
-            { name: 'Cookies', about: 'Provider 6 Info', logo: 'face-logo.png', id: 6, category: 'Milk', phone: '8-800-666-66-66', favorite: false, },
-            { name: 'Another Meat Products', about: 'Provider 7 Info', logo: 'face-logo.png', id: 7, category: 'Meat', phone: '8-800-777-77-77', favorite: false, },
-            { name: 'Another Bread Products', about: 'Provider 8 Info', logo: 'face-logo.png', id: 8, category: 'Bread', phone: '8-800-888-88-88', favorite: false, },
-            { name: 'Another Meat Products 2', about: 'Provider 9 Info', logo: 'face-logo.png', id: 9, category: 'Meat', phone: '8-800-100-10-10', favorite: false, },
-            { name: 'Another Bread Products 2', about: 'Provider 10 Info', logo: 'face-logo.png', id: 10, category: 'Bread', phone: '8-800-101-01-01', favorite: false, },
-            { name: 'Milk products 2', about: 'Provider 11 Info', logo: 'face-logo.png', id: 11, category: 'Milk', phone: '8-800-334-55-22', favorite: false, },
+            { name: 'Milk products', about: 'Supplier 3 Info', logo: 'domik.jpg', id: 3, category: 'Milk', phone: '8-800-333-33-33', favorite: false, },
+            { name: 'Meat Products', about: 'Supplier 4 Info', logo: 'myasnitskiy.jpg', id: 4, category: 'Meat', phone: '8-800-444-44-44', favorite: false, },
+            { name: 'Bread Products', about: 'Supplier 5 Info', logo: 'face-logo.png', id: 5, category: 'Bread', phone: '8-800-555-55-55', favorite: false, },
+            { name: 'Cookies', about: 'Supplier 6 Info', logo: 'face-logo.png', id: 6, category: 'Milk', phone: '8-800-666-66-66', favorite: false, },
+            { name: 'Another Meat Products', about: 'Supplier 7 Info', logo: 'face-logo.png', id: 7, category: 'Meat', phone: '8-800-777-77-77', favorite: false, },
+            { name: 'Another Bread Products', about: 'Supplier 8 Info', logo: 'face-logo.png', id: 8, category: 'Bread', phone: '8-800-888-88-88', favorite: false, },
+            { name: 'Another Meat Products 2', about: 'Supplier 9 Info', logo: 'face-logo.png', id: 9, category: 'Meat', phone: '8-800-100-10-10', favorite: false, },
+            { name: 'Another Bread Products 2', about: 'Supplier 10 Info', logo: 'face-logo.png', id: 10, category: 'Bread', phone: '8-800-101-01-01', favorite: false, },
+            { name: 'Milk products 2', about: 'Supplier 11 Info', logo: 'face-logo.png', id: 11, category: 'Milk', phone: '8-800-334-55-22', favorite: false, },
         ],
         productCategories: [
             {name: 'ALL'},

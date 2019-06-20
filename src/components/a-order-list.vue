@@ -25,7 +25,7 @@
             <div class="thankyou-popup" v-if="orderChecked">
             <p>Checkout Success!</p>
             <br>
-            <span>Provider's representative will contact you soon</span>
+            <span>Supplier's representative will contact you soon</span>
             <br>
             <br>
             <br>
@@ -71,7 +71,7 @@
                     'DECREMENT_PRODUCT_QTY'
             ]),
             sellersPageClick() {
-                this.SET_HEADER_TEXT('Providers');
+                this.SET_HEADER_TEXT('Suppliers');
             },
 
             checkout() {

@@ -15,7 +15,7 @@
             <v-btn icon v-if="!sellers_data.favorite">
                 <v-icon class="item_fav add"
                         @click="addToFavorite"
-                        color="#797979"
+                        color="#cecece"
                 >favorite
                 </v-icon>
             </v-btn>
@@ -68,7 +68,7 @@
             setSellerIndex() {
                 let index = this.sellers_data.id - 1;
                 this.$store.dispatch('SET_SELLER_INDEX', index);
-                this.SET_HEADER_TEXT('Providers catalogue');
+                this.SET_HEADER_TEXT('Suppliers catalogue');
             },
         },
     }

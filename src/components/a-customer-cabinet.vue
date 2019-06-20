@@ -10,7 +10,7 @@
       <div class="asd"
            v-if="sellers.length < 1"
       >
-        <p class="no-favorite">You do not have favorite providers</p>
+        <p class="no-favorite">You do not have favorite suppliers</p>
           <v-btn :to="{ name: 'sellersList' }" class="add-fav bg-color2" dark @click="sellersPageClick">Add</v-btn>
       </div>
     </div>
@@ -47,12 +47,12 @@ export default {
       },
 
       sellersPageClick() {
-          this.SET_HEADER_TEXT('Providers');
+          this.SET_HEADER_TEXT('Suppliers');
       },
   },
 
   mounted() {
-      this.SET_HEADER_TEXT('My favorite providers');
+      this.SET_HEADER_TEXT('My favorite suppliers');
   },
 }
 

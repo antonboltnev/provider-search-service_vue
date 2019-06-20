@@ -64,7 +64,7 @@
         },
 
         mounted() {
-            this.$store.dispatch('SET_HEADER_TEXT', 'Providers catalogue');
+            this.$store.dispatch('SET_HEADER_TEXT', 'Suppliers catalogue');
         },
     }
 </script>

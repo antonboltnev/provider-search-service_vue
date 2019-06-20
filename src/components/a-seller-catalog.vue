@@ -44,9 +44,9 @@
                     :sellers_data="sellers_data"
                     @add-to-cart="addToCart(index)"
             />
-            <v-flex class="a-seller-empty-catalog" v-if="!products">Provider did not add any products to catalogue...
+            <v-flex class="a-seller-empty-catalog" v-if="!products">Supplier did not add any products to catalogue...
                 <div class="back-to-main">
-                        <v-btn dark class="btn bg-color2" :to="{name: 'sellersList'}">To providers list</v-btn>
+                        <v-btn dark class="btn bg-color2" :to="{name: 'sellersList'}">To suppliers list</v-btn>
                 </div>
             </v-flex>
         </v-layout>

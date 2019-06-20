@@ -5,7 +5,7 @@
                 <router-link  class="text-color5 flex align-center column" :to="{name: 'sellersList'}">
                     <div>
                         <v-icon>view_module</v-icon>
-                        <div class="nav-block">Providers catalogue</div>
+                        <div class="nav-block">Suppliers catalogue</div>
                     </div>
                 </router-link>
             </v-flex>
@@ -79,7 +79,7 @@
                 'SET_HEADER_TEXT'
             ]),
             sellersPageClick() {
-                this.SET_HEADER_TEXT('Providers');
+                this.SET_HEADER_TEXT('Suppliers');
             },
             aboutPageClick() {
                 this.SET_HEADER_TEXT('About');

@@ -1,7 +1,7 @@
 <template>
     <div class="a-settings-page">
         <div class="setting-types">
-            <p>Show my profile data to providers</p>
+            <p>Show my profile data to suppliers</p>
             <div class="type-checkbox">
                 <label class="switch">
                     <input id="profile-data" type="checkbox" :checked="isProfileChecked" @click="clickInput">
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="setting-types">
-            <p>Track the updates in provider's catalogues</p>
+            <p>Track the updates in supplier's catalogues</p>
             <div class="type-checkbox">
                 <label class="switch">
                     <input id="updates" type="checkbox" :checked="isUpdatesChecked" @click="clickInput">

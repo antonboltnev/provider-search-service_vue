@@ -82,7 +82,7 @@
         },
 
         mounted() {
-           this.SET_HEADER_TEXT('Providers');
+           this.SET_HEADER_TEXT('Suppliers');
         },
     }
 </script>
