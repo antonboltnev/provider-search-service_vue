@@ -37,7 +37,7 @@
                 </v-select>
         </v-flex>
         <v-layout class="a-seller-catalog-wrapper wrap">
-            <a-catalog-list
+            <a-catalog-list-item
                     v-for="(item, index) in products"
                     :key="item.id"
                     :product_data="item"
@@ -54,13 +54,13 @@
 </template>
 
 <script>
-    import aCatalogList from '@/components/a-catalog-list'
+    import aCatalogListItem from '@/components/a-catalog-list-item'
     import {mapGetters, mapActions} from 'vuex'
 
     export default {
         name: "a-seller-catalog",
         components: {
-            aCatalogList,
+            aCatalogListItem,
         },
         props: {
             sellerIndex: {

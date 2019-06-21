@@ -96,7 +96,7 @@
     .a-seller__list-header {
         z-index: 1;
         position: sticky;
-        top: 38px;
+        top: 53px;
         background: #fff;
     }
 
