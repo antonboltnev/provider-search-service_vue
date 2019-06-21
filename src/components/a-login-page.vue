@@ -6,6 +6,7 @@
             <v-form id="auth-form" action="#">
                 <p class="input_error_msg" v-if="showError">{{ this.$store.state.errorMessages.authError }}</p>
                 <v-text-field
+                       type="email"
                        v-model="authLogin"
                        label="Email"
                        required
