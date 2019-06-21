@@ -129,8 +129,9 @@ import {mapActions} from 'vuex'
 
     .a-main-menu li {
         position: relative;
+        bottom: 5px;
         list-style: none;
-        padding: 10px 0;
+        padding: 20px 0;
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
     }
