@@ -30,7 +30,7 @@
             </div>
         </transition>
         <v-flex class="a-category-select-input__wrapper" sm12 d-flex v-if="products">
-                <v-select name="" id="category-select" v-model="selectedCategory"
+                <v-select id="category-select" v-model="selectedCategory"
                           :items="showProductCategories"
                           solo
                 >
@@ -166,6 +166,12 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+    }
+
+    .a-category-select-input__wrapper {
+        position: sticky;
+        top: 33px;
+        z-index: 1;
     }
 
     .a-seller-info {

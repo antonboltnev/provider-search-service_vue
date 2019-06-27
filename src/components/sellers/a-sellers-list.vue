@@ -96,8 +96,8 @@
     .a-seller__list-header {
         z-index: 1;
         position: sticky;
-        top: 53px;
-        background: #fff;
+        top: 33px;
+        margin: 0 -9px;
     }
 
     .a-sellers__list {
@@ -106,5 +106,13 @@
 
     .a-sellers__list__empty {
         padding-top: 150px;
+    }
+
+    @media screen and (min-width: 767px) {
+        .a-seller__list-header {
+
+            top: 53px;
+            margin: 0;
+        }
     }
 </style>
