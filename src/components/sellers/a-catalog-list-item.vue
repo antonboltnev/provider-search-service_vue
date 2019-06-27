@@ -9,14 +9,12 @@
         <div class="a-catalog-list_price">
             ${{ product_data.price }} / {{ product_data.value }}
         </div>
-        <v-layout row justify-center>
             <v-btn
                     color="#fff"
                     @click.stop="dialog = true"
             >
                 Information
             </v-btn>
-
             <v-dialog
                     v-model="dialog"
                     max-width="290"
@@ -72,7 +70,6 @@
                     </v-card-actions>
                 </v-card>
             </v-dialog>
-        </v-layout>
         <v-btn class="a-catalog-list_add-to-cart bg-color2"
              v-if="!this.product_data.ordered"
             @click="addToCart"
