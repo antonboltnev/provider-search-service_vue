@@ -22,7 +22,7 @@
                     max-width="290"
             >
                 <v-card>
-                    <v-card-title class="headline">Product information</v-card-title>
+                    <v-card-title class="headline">{{product_data.title}}</v-card-title>
 
                     <v-card-text>
                         <ul class="product-info">

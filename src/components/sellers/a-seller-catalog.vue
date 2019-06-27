@@ -5,10 +5,10 @@
                 <v-btn class="a-seller-cert bg-color2" dark @click="showAdvancedInfo">Certificates</v-btn>
             </v-flex>
             <v-flex xs12 sm3>
-                <v-btn class="a-seller-about btn bg-color2" dark @click="showAboutText">Information</v-btn>
+                <v-btn class="a-seller-about bg-color2" dark @click="showAboutText">Information</v-btn>
             </v-flex>
             <v-flex xs12 sm3>
-                <v-btn class="a-seller-chat btn bg-color2" dark >Message</v-btn>
+                <v-btn class="a-seller-chat bg-color2" dark >Message</v-btn>
             </v-flex>
         </v-layout>
         <transition name="fade">
