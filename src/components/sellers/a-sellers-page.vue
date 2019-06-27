@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import aSellersList from '@/components/a-sellers-list'
+    import aSellersList from '@/components/sellers/a-sellers-list'
 
     export default {
         name: "a-sellers-page",

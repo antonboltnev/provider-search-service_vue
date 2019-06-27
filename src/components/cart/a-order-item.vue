@@ -38,7 +38,7 @@
         },
         computed: {
             orderImg() {
-                return require('../../public/img/' + this.order_data.img);
+                return require('../../../public/img/' + this.order_data.img);
             }
         },
         methods: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="a-customer-cabinet">
+  <div class="a-customer-favorites">
     <div class="cabinet__favorites">
       <a-sellers-item
           v-for="item in sellers"
@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import aSellersItem from '@/components/a-sellers-item'
+import aSellersItem from '@/components/sellers/a-sellers-item'
 import {mapGetters, mapActions} from 'vuex'
 
 export default {
-  name: 'a-customer-cabinet',
+  name: 'a-customer-favorites',
   components: {
       aSellersItem
   },

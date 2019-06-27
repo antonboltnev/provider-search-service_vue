@@ -4,13 +4,13 @@ import store from '../store/store.js'
 
 import aLoginPage from '@/components/a-login-page'
 import aMainPage from '@/components/a-main-page'
-import aSellersPage from '@/components/a-sellers-page'
-import aSellerCatalog from '@/components/a-seller-catalog'
-import aCustomerCabinet from '@/components/a-customer-cabinet'
-import aOrderList from '@/components/a-order-list'
+import aSellersPage from '@/components/sellers/a-sellers-page'
+import aSellerCatalog from '@/components/sellers/a-seller-catalog'
+import aCustomerFavorites from '@/components/sellers/a-customer-favorites'
+import aOrderList from '@/components/cart/a-order-list'
 import aAboutPage from '@/components/a-about-page'
-import aSettingsPage from '@/components/a-settings-page'
-import aProfilePage from '@/components/a-profile-page'
+import aSettingsPage from '@/components/settings/a-settings-page'
+import aProfilePage from '@/components/profile/a-profile-page'
 
 Vue.use(Router);
 
@@ -45,7 +45,7 @@ let router = new Router ({
             {
                 path: '/customer-cabinet',
                 name: 'CustomerCabinet',
-                component: aCustomerCabinet
+                component: aCustomerFavorites
             },
             {
                 path: '/customer-order-list',

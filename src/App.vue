@@ -15,8 +15,8 @@
     import router from './router/router.js'
     import 'vue-awesome/icons'
 
-    import aHeader from '@/components/a-header'
-    import aMainMenu from '@/components/a-main-menu'
+    import aHeader from './components/a-header'
+    import aMainMenu from './components/menu/a-main-menu'
 
 
 

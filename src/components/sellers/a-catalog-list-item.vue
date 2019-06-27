@@ -53,7 +53,7 @@
 
         computed: {
           productImage() {
-              return require('../../public/img/' + this.product_data.img);
+              return require('../../../public/img/' + this.product_data.img);
           }
         },
 

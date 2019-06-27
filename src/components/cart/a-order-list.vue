@@ -36,7 +36,7 @@
 </template>
 
 <script>
-    import aOrderItem from '@/components/a-order-item'
+    import aOrderItem from '@/components/cart/a-order-item'
     import {mapActions} from 'vuex'
 
     export default {

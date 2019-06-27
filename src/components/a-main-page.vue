@@ -10,7 +10,7 @@
                 </router-link>
             </v-flex>
             <v-flex md6 xs6>
-                <router-link :to="{name: 'CustomerCabinet'}" class="text-color3 flex align-center column">
+                <router-link :to="{name: 'CustomerFavorites'}" class="text-color3 flex align-center column">
                     <div>
                         <v-icon color="#fff">favorite</v-icon>
                         <div class="nav-block">Favorites</div>
