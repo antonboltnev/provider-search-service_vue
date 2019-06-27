@@ -44,7 +44,7 @@ let router = new Router ({
             },
             {
                 path: '/customer-cabinet',
-                name: 'CustomerCabinet',
+                name: 'CustomerFavorites',
                 component: aCustomerFavorites
             },
             {
