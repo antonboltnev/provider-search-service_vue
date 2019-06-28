@@ -236,7 +236,7 @@
     }
 
     .a-login-page_confirm {
-        padding-bottom: 40px;
+        /*padding-bottom: 40px;*/
     }
 
     .a-login-page_confirm span {
