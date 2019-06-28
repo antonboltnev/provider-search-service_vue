@@ -235,6 +235,10 @@
         max-width: 400px;
     }
 
+    .a-login-page-input_wrapper .v-text-field__slot label, .a-login-page-input_wrapper .v-text-field__slot input {
+      padding-left: 10px;
+    }
+
     .a-login-page_confirm {
         /*padding-bottom: 40px;*/
     }
