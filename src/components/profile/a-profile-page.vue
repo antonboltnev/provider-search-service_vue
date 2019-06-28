@@ -111,7 +111,7 @@
 
     .profile-input-wrapper input:disabled {
         background: #e6e6e6;
-        color: #aeaeae;
+        color: #aeaeae !important;
     }
 
     .edit-profile-info {
