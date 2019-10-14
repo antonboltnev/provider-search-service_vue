@@ -1,7 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import router from '../router/router.js'
+import common_actions from './actions/common_actions.js'
+import api_requests from './actions/common_actions.js'
+import mutations from './mutations/mutations.js'
+import getters from './getters/getters'
+
+
 Vue.use(Vuex);
+
+const actions = Object.assign({}, api_requests, common_actions);
+
 let store = new Vuex.Store({
     state: {
         pageName: '',
@@ -59,178 +67,9 @@ let store = new Vuex.Store({
             {id: 'news', value: true}
         ]
     },
-    getters: {
-        SELLERS: state => {
-            return state.sellers;
-        },
-    },
-    mutations: {
-        SET_HEADER: (state, text) => {
-            state.pageName = text;
-        },
-        FILTER: (state, category) => {
-            state.sellers = state.sellers.filter(function (i) {
-                return i.category.match(category);
-            });
-        },
-        SET_INDEX: (state, index) => {
-            state.selectedSeller = index;
-        },
-        SET_FAV: (state, index) => {
-            state.sellers[index].favorite = !state.sellers[index].favorite;
-        },
-        ADD_TO_CART: (state, products) => {
-            if (state.cart.includes(products)) {
-                return false;
-            } else {
-                state.cart.push(products);
-            }
-        },
-        SET_ORDER_LIST: (state, {product_index, sellerIndex}) => {
-            state.sellers[sellerIndex].products[product_index].ordered = true;
-        },
-        REMOVE_ITEM: (state, index) => {
-            for ( let seller of state.sellers) {
-                if  ( seller.products !== undefined ) {
-                    for ( let product of  seller.products) {
-                        if (product.title === state.cart[index].title) {
-                            product.ordered = false;
-                        }
-                    }
-                }
-            }
-            state.cart[index].qty = 1;
-            state.cart.splice(index, 1);
-        },
-        PLUS_QTY: (state, index) => {
-            state.cart[index].qty++;
-            state.cart[index].total = state.cart[index].qty * state.cart[index].price;
-        },
-        MINUS_QTY: (state, index) => {
-            if (state.cart[index].qty > 1) {
-                state.cart[index].qty--;
-                state.cart[index].total -= state.cart[index].price;
-            } else {
-                return false;
-            }
-        },
-        CART_CHECKOUT: (state) => {
-            state.cart.splice(0, state.cart.length);
-            for (let i = 0; i < state.sellers.length; i++) {
-                if  (state.sellers[i].products !== undefined) {
-                    for (let j = 0; j <  state.sellers[i].products.length; j++) {
-                        state.sellers[i].products[j].ordered = false;
-                        state.sellers[i].products[j].qty = 1;
-                    }
-                }
-            }
-        },
-        HIDE_HEAD: (state) => {
-            state.isHeaderVisible = false;
-        },
-        SHOW_HEAD: (state) => {
-            state.isHeaderVisible = true;
-        },
-        SET_USER: (state, payload) => {
-            state.users.push(payload);
-        },
-        AUTH: (state, user) => {
-            let promise = new Promise(function (resolve) {
-                    state.isAuth = true;
-                    state.users.push(user);
-                    return resolve();
-            });
-            promise.then(() => {
-                setTimeout(function () {
-                    router.push('/home');
-                }, 1500);
-            })
-        },
-        REGISTER: (state, regData) => {
-            let promise = new Promise(function (resolve) {
-                state.users.slice(0, state.users.length);
-                resolve();
-            });
-            promise.then(() => {
-                state.users.push(regData);
-            });
-        },
-        SUCCESS_REGISTRATION: (state) => {
-            let promise = new Promise(function (resolve) {
-                state.isRegistered = true;
-
-                resolve();
-            });
-            promise.then(() =>{
-                setTimeout(function () {
-                    router.push('/home');
-                }, 1500);
-            });
-        },
-        EDIT_PROFILE_INFO: (state, userData) => {
-            Object.assign(state.users, userData);
-        },
-        SET_CHECKBOX: (state, index) => {
-            for (let item of state.preferencesCheckboxes) {
-                if (item.id === index) {
-                    item.value = !item.value;
-                }
-            }
-        }
-    },
-    actions: {
-        SET_HEADER_TEXT ({commit}, text) {
-            commit('SET_HEADER', text);
-        },
-        FILTER_SELLERS ({commit}, category) {
-            commit('FILTER', category);
-        },
-        SET_SELLER_INDEX ({commit}, index) {
-            commit('SET_INDEX', index);
-        },
-        SET_SELLER_TO_FAV ({commit}, index)  {
-            commit('SET_FAV', index);
-        },
-        ADD_TO_CART ({commit}, products) {
-            commit('ADD_TO_CART', products);
-        },
-        SET_ORDER_LIST ({commit}, {product_index, sellerIndex}) {
-            commit('SET_ORDER_LIST', {product_index, sellerIndex});
-        },
-        REMOVE_FROM_CART ({commit}, index) {
-            commit('REMOVE_ITEM', index);
-        },
-        INCREMENT_PRODUCT_QTY ({commit}, index) {
-            commit('PLUS_QTY', index);
-        },
-        DECREMENT_PRODUCT_QTY ({commit}, index) {
-            commit('MINUS_QTY', index);
-        },
-        CHECKOUT ({commit}) {
-            commit('CART_CHECKOUT');
-        },
-        HIDE_HEADER ({commit}) {
-            commit('HIDE_HEAD');
-        },
-        SHOW_HEADER ({commit}) {
-            commit('SHOW_HEAD');
-        },
-        SUCCESS_AUTH ({commit}, user) {
-            commit('AUTH', user);
-        },
-        SUCCESS_REGISTRATION ({commit}) {
-            commit('SUCCESS_REGISTRATION');
-        },
-        REGISTRATION ({commit}, regData) {
-            commit('REGISTER', regData);
-        },
-        EDIT_PROFILE ({commit}, userData) {
-            commit('EDIT_PROFILE_INFO', userData);
-        },
-        SET_PREFERENCES_CHECKBOXES ({commit}, index) {
-            commit('SET_CHECKBOX', index);
-        },
-    }
+    getters,
+    mutations,
+    actions
 });
 
 export  default store;
