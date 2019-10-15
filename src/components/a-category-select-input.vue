@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+
     export default {
         name: "a-category-select-input",
         data() {
@@ -21,8 +23,11 @@
            }
         },
         methods: {
+            ...mapActions([
+                "FILTER_SELLERS"
+            ]),
             filterSellers() {
-              this.$store.dispatch('FILTER_SELLERS', this.category);
+              this.FILTER_SELLERS(this.category);
             },
         },
     }

@@ -23,7 +23,7 @@
                         <v-icon color="#fff">shopping_cart</v-icon>
                         <div>My orders
                             <span class="order_counter"
-                                  v-if="this.$store.state.cart.length"
+                                  v-if="CART.length"
                             >{{ orderCounter }}
                             </span>
                         </div>
@@ -60,7 +60,7 @@
 
 <script>
     import Icon from 'vue-awesome/components/Icon'
-    import {mapActions} from 'vuex'
+    import {mapActions,mapGetters} from 'vuex'
 
     export default {
         name: "a-main-page",
@@ -69,8 +69,11 @@
         },
 
         computed: {
+            ...mapGetters([
+                "CART"
+            ]),
             orderCounter() {
-                return this.$store.state.cart.length;
+                return this.CART.length;
             },
         },
 

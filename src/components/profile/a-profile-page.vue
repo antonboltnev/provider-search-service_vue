@@ -6,7 +6,7 @@
                 <input
                         type="text"
                         v-model="getUserData.name"
-                        :disabled="this.editProfileInfo">
+                        :disabled="canEditProfileInfo">
             </div>
             <div class="profile-input-wrapper">
                 <p class="input-title">Email:</p>
@@ -20,14 +20,14 @@
                 <masked-input
                         type="tel"
                         v-model="getUserData.phone"
-                        :disabled="this.editProfileInfo"
+                        :disabled="canEditProfileInfo"
                         mask="\+\7 (111) 111-11-11"
                         @input="rawVal = arguments[1]"
                         placeholder="Phone"
                 />
             </div>
-            <v-btn dark class="edit-profile-info bg-color2" v-if="editProfileInfo" @click="editInfo">Edit</v-btn>
-            <v-btn dark class="edit-profile-info bg-color2" v-if="!editProfileInfo" @click="saveInfo">Save</v-btn>
+            <v-btn dark class="edit-profile-info bg-color2" v-if="canEditProfileInfo" @click="editInfo">Edit</v-btn>
+            <v-btn dark class="edit-profile-info bg-color2" v-if="!canEditProfileInfo" @click="saveInfo">Save</v-btn>
         </form>
     </div>
 </template>
@@ -35,7 +35,7 @@
 <script>
     import  MaskedInput from 'vue-masked-input'
     import {usersRef} from '../../firebaseDB'
-    import {mapActions} from 'vuex'
+    import {mapActions,mapGetters} from 'vuex'
 
     export default {
         name: "a-profile-page",
@@ -47,12 +47,15 @@
         },
         data() {
             return {
-                editProfileInfo: true,
+                canEditProfileInfo: true,
             }
         },
         computed: {
+            ...mapGetters([
+                'USERS'
+            ]),
            getUserData() {
-               return this.$store.state.users[0]
+               return this.USERS[0]
            }
         },
         methods: {
@@ -61,10 +64,10 @@
                     'SET_HEADER_TEXT'
             ]),
             editInfo() {
-                this.editProfileInfo = !this.editProfileInfo;
+                this.canEditProfileInfo = !this.canEditProfileInfo;
             },
             saveInfo() {
-                this.editProfileInfo = !this.editProfileInfo;
+                this.canEditProfileInfo = !this.canEditProfileInfo;
                 let user;
                 let userIndex;
                 for ( user of this.usersDb ) {

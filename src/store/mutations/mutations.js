@@ -1,12 +1,15 @@
 import router from '../../router/router.js'
 
 export default {
+    GET_SELLERS_LIST_FROM_API: (state, sellers) => {
+        state.sellers = sellers;
+    },
     SET_HEADER: (state, text) => {
         state.pageName = text;
     },
     FILTER: (state, category) => {
-        state.sellers = state.sellers.filter(function (i) {
-            return i.category.match(category);
+        state.sellers = state.sellers.filter(function (e) {
+            return e.category.match(category);
         });
     },
     SET_INDEX: (state, index) => {
@@ -74,7 +77,7 @@ export default {
         return new Promise(function (resolve) {
                 state.isAuth = true;
                 state.users.push(user);
-                return resolve();
+                resolve();
         })
         .then(() => {
             setTimeout(function () {

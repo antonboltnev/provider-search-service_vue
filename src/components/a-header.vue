@@ -1,11 +1,11 @@
 <template>
-    <header class="a-header-title" v-if="toggleHeaderVisibility">
-        <span class="title-text">{{ pageTitle }}</span>
+    <header class="a-header-title" v-if="IS_HEADER_VISIBLE">
+        <span class="title-text">{{ PAGE_TITLE }}</span>
     </header>
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
+    import {mapActions,mapGetters} from 'vuex'
     export default {
         name: "a-header",
         data() {
@@ -13,20 +13,17 @@
             }
         },
         computed: {
+            ...mapGetters([
+                "IS_HEADER_VISIBLE",
+                "PAGE_TITLE"
+            ]),
+        },
+        methods: {
             ...mapActions([
                 'HIDE_HEADER',
                 'SHOW_HEADER'
             ]),
-            pageTitle() {
-                return this.$store.state.pageName;
-            },
-
-            toggleHeaderVisibility() {
-                return this.$store.state.isHeaderVisible
-            }
         },
-
-
         watch: {
             $route() {
                 if ( this.$route.path === '/login' ) {

@@ -4,10 +4,10 @@
             <img :src="productImage" alt="">
         </div>
         <div class="a-catalog-list_title">
-            {{ product_data.title }}
+            {{product_data.title}}
         </div>
         <div class="a-catalog-list_price">
-            ${{ product_data.price }} / {{ product_data.value }}
+            ${{product_data.price}} / {{product_data.value}}
         </div>
             <v-btn
                     color="#fff"
@@ -52,14 +52,10 @@
                                 <p class="info-text text-green">Delivery time</p>
                                 <p class="info-value">{{product_data.delivery}} day</p>
                             </li>
-
                         </ul>
-
                     </v-card-text>
-
                     <v-card-actions>
                         <v-spacer></v-spacer>
-
                         <v-btn
                                 color="green darken-1"
                                 flat="flat"
@@ -71,24 +67,25 @@
                 </v-card>
             </v-dialog>
         <v-btn class="a-catalog-list_add-to-cart bg-color2"
-             v-if="!this.product_data.ordered"
+             v-if="!product_data.ordered"
             @click="addToCart"
                dark
-        >{{ addToCartText }}
+        >{{addToCartText}}
         </v-btn>
         <transition name="bounce">
             <v-btn class="a-catalog-list_add-to-cart btn bg-color2"
-                    v-if="this.product_data.ordered"
-                    :disabled="this.product_data.ordered"
-            >{{ addedToCart }}<icon name="check"></icon>
+                    v-if="product_data.ordered"
+                    :disabled="product_data.ordered"
+            >{{addedToCartText}}<icon name="check"></icon>
             </v-btn>
         </transition>
     </v-layout>
 </template>
 
 <script>
-
     import Icon from 'vue-awesome/components/Icon'
+    import {mapActions} from 'vuex'
+
     export default {
         name: "a-catalog-list-item",
         components: {
@@ -97,36 +94,39 @@
         props: {
             product_data: {
                 type: Object,
-                default() {}
+                default() {
+                    return {}
+                }
             },
             sellers_data: {
                 type: Object,
-                default() {}
+                default() {
+                    return {}
+                }
             }
         },
-
         data() {
            return {
                addToCartText: 'Add to cart',
-               addedToCart: 'In cart',
+               addedToCartText: 'In cart',
                dialog: false
            }
         },
-
         computed: {
           productImage() {
               return require('../../../public/img/' + this.product_data.img);
           }
         },
-
         methods: {
+            ...mapActions([
+                'SET_HEADER_TEXT'
+            ]),
             addToCart() {
                 this.$emit('add-to-cart');
             }
         },
-
         mounted() {
-            this.$store.dispatch('SET_HEADER_TEXT', 'Suppliers catalogue');
+            this.SET_HEADER_TEXT('Suppliers catalogue');
         },
     }
 </script>
