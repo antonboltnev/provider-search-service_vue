@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar class="fixed-bottom" v-if="toggleHeaderVisibility">
+    <v-toolbar class="fixed-bottom" v-if="IS_HEADER_VISIBLE">
         <ul class="a-main-menu elevation-2 bg-color">
             <li>
                 <router-link :to="{name: 'Home'}">
@@ -31,7 +31,7 @@
                         <v-icon>shopping_cart</v-icon>
                         <span>Orders</span>
                         <span class="order_counter"
-                              v-if="this.$store.state.cart.length"
+                              v-if="CART.length"
                         >{{ orderCounter }}</span>
                     </div>
                 </router-link>
@@ -57,23 +57,25 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import {mapActions,mapGetters} from 'vuex'
 
     export default {
         name: "a-main-menu",
         computed: {
+            ...mapGetters([
+                'CART',
+                'IS_HEADER_VISIBLE'
+            ]),
             orderCounter() {
-                    return this.$store.state.cart.length;
+                    return this.CART.length;
             },
-
-            toggleHeaderVisibility() {
-                return this.$store.state.isHeaderVisible
-            }
         },
 
         methods: {
             ...mapActions([
-                    'SET_HEADER_TEXT'
+                    'SET_HEADER_TEXT',
+                    'HIDE_HEADER',
+                    'SHOW_HEADER'
             ]),
             mainPageClick() {
                 this.SET_HEADER_TEXT('Home');
@@ -98,18 +100,18 @@ import {mapActions} from 'vuex'
         watch: {
             $route() {
                 if ( this.$route.path === '/home' ) {
-                    this.$store.dispatch('HIDE_HEADER');
+                    this.HIDE_HEADER();
                 } else {
-                    this.$store.dispatch('SHOW_HEADER');
+                    this.SHOW_HEADER();
                 }
             },
         },
 
         created() {
             if ( this.$route.path === '/home' ) {
-                this.$store.dispatch('HIDE_HEADER');
+                this.HIDE_HEADER();
             } else {
-                this.$store.dispatch('SHOW_HEADER');
+                this.SHOW_HEADER();
             }
         }
     }

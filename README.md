@@ -5,6 +5,16 @@
 npm install
 ```
 
+### install json server (local front api to get data for components
+```
+npm install -g json-server
+```
+
+### start watching json server 
+```
+json-server --watch db.json
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve

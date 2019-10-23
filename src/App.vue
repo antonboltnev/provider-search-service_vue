@@ -14,6 +14,7 @@
     import '../public/styles.css'
     import router from './router/router.js'
     import 'vue-awesome/icons'
+    import {mapActions} from 'vuex'
 
     import aHeader from './components/a-header'
     import aMainMenu from './components/menu/a-main-menu'
@@ -35,6 +36,9 @@
         },
 
         methods: {
+            ...mapActions([
+                'GET_SELLERS_LIST_FROM_API'
+            ]),
            hideHeader() {
                if ( this.$route.path === '/login' ) {
                    this.$store.dispatch('HIDE_HEADER');
@@ -52,9 +56,11 @@
 
         created() {
             this.hideHeader();
+            this.GET_SELLERS_LIST_FROM_API();
         },
         mounted() {
             this.hideHeader();
+            this.GET_SELLERS_LIST_FROM_API();
         }
     }
 </script>

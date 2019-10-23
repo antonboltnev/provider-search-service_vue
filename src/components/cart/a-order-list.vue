@@ -2,20 +2,20 @@
     <div class="a-order-list">
         <a-order-item
             :order_data="item"
-            v-for="(item, index) in orders"
+            v-for="(item, index) in CART"
             :key="item.id"
             @remove_item="removeFromCart(index)"
             @plus_qty="plusQty(index)"
             @minus_qty="minusQty(index)"
         />
-        <v-layout class="order-total bg-color2 fixed-bottom elevation-3 justify-center" v-if="orders.length > 0">
+        <v-layout class="order-total bg-color2 fixed-bottom elevation-3 justify-center" v-if="CART.length > 0">
             <v-flex class="total-sum" md2 xs6>
                 <div>Total:</div>
-                <span>${{ totalSum }}</span>
+                <span>${{totalSum}}</span>
             </v-flex>
             <v-btn class="total-sum_confirm" @click="checkout">Checkout</v-btn>
         </v-layout>
-        <div class="empty-order-list" v-if="orders.length < 1">
+        <div class="empty-order-list" v-if="CART.length < 1">
             <p class="empty-order-list-p">You do not have active orders</p>
             <router-link :to="{name: 'sellersList'}">
                 <v-btn dark class="bg-color2" @click="sellersPageClick">Add</v-btn>
@@ -37,7 +37,7 @@
 
 <script>
     import aOrderItem from '@/components/cart/a-order-item'
-    import {mapActions} from 'vuex'
+    import {mapActions,mapGetters} from 'vuex'
 
     export default {
         name: "a-order-list",
@@ -50,13 +50,13 @@
             }
         },
         computed: {
-            orders() {
-                return this.$store.state.cart;
-            },
+            ...mapGetters([
+                "CART"
+            ]),
 
             totalSum() {
                 let totalSum = 0;
-                for (let item of this.orders) {
+                for (let item of this.CART) {
                     totalSum += parseInt(item.total);
                 }
                 return totalSum;
@@ -76,7 +76,7 @@
 
             checkout() {
                this.orderChecked = true;
-               this.CHECKOUT(this.orders);
+               this.CHECKOUT(this.CART);
             },
 
             closePopup() {
