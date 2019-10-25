@@ -6,7 +6,6 @@ export default {
             method: 'GET'
         })
             .then(sellers => {
-                console.log(sellers);
                 commit('GET_SELLERS_LIST_FROM_API', sellers.data)
         })
     }
