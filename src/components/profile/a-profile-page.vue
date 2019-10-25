@@ -73,8 +73,8 @@
                 for ( user of this.usersDb ) {
                         userIndex = this.usersDb.indexOf(user);
                 }
-                usersRef[userIndex].name = this.getUserData.name;
-                usersRef[userIndex].phone = this.getUserData.phone;
+                this.usersDb[userIndex].name = this.getUserData.name;
+                this.usersDb[userIndex].phone = this.getUserData.phone;
                 this.EDIT_PROFILE(this.getUserData);
             }
         },
