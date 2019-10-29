@@ -1,169 +1,170 @@
 <template>
-    <div class="a-order-list">
-        <a-order-item
+  <div class="a-order-list">
+    <a-order-item
             :order_data="item"
             v-for="(item, index) in CART"
             :key="item.id"
             @remove_item="removeFromCart(index)"
             @plus_qty="plusQty(index)"
             @minus_qty="minusQty(index)"
-        />
-        <v-layout class="order-total bg-color2 fixed-bottom elevation-3 justify-center" v-if="CART.length > 0">
-            <v-flex class="total-sum" md2 xs6>
-                <div>Total:</div>
-                <span>${{totalSum}}</span>
-            </v-flex>
-            <v-btn class="total-sum_confirm" @click="checkout">Checkout</v-btn>
-        </v-layout>
-        <div class="empty-order-list" v-if="CART.length < 1">
-            <p class="empty-order-list-p">You do not have active orders</p>
-            <router-link :to="{name: 'sellersList'}">
-                <v-btn dark class="bg-color2" @click="sellersPageClick">Add</v-btn>
-            </router-link>
-        </div>
-        <transition name="bounce">
-            <div class="thankyou-popup" v-if="orderChecked">
-            <p>Checkout Success!</p>
-            <br>
-            <span>Supplier's representative will contact you soon</span>
-            <br>
-            <br>
-            <br>
-                <v-btn class="ok bg-color2" dark  @click="closePopup">OK</v-btn>
-        </div>
-        </transition>
+    />
+    <v-layout class="order-total bg-color2 fixed-bottom elevation-3 justify-center" v-if="CART.length > 0">
+      <v-flex class="total-sum" md2 xs6>
+        <div>Total:</div>
+        <span>${{totalSum}}</span>
+      </v-flex>
+      <v-btn class="total-sum_confirm" @click="checkout">Checkout</v-btn>
+    </v-layout>
+    <div class="empty-order-list" v-if="CART.length < 1">
+      <p class="empty-order-list-p">You do not have active orders</p>
+      <router-link :to="{name: 'sellersList'}">
+        <v-btn dark class="bg-color2" @click="sellersPageClick">Add</v-btn>
+      </router-link>
     </div>
+    <transition name="bounce">
+      <div class="thankyou-popup" v-if="orderChecked">
+        <p>Checkout Success!</p>
+        <br>
+        <span>Supplier's representative will contact you soon</span>
+        <br>
+        <br>
+        <br>
+        <v-btn class="ok bg-color2" dark @click="closePopup">OK</v-btn>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
-    import aOrderItem from '@/components/cart/a-order-item'
-    import {mapActions,mapGetters} from 'vuex'
+  import aOrderItem from '@/components/cart/a-order-item'
+  import {mapActions, mapGetters} from 'vuex'
 
-    export default {
-        name: "a-order-list",
-        components: {
-            aOrderItem
-        },
-        data() {
-            return {
-                orderChecked: false
-            }
-        },
-        computed: {
-            ...mapGetters([
-                "CART"
-            ]),
+  export default {
+    name: "a-order-list",
+    components: {
+      aOrderItem
+    },
+    data() {
+      return {
+        orderChecked: false
+      }
+    },
+    computed: {
+      ...mapGetters([
+        "CART"
+      ]),
 
-            totalSum() {
-                let totalSum = 0;
-                for (let item of this.CART) {
-                    totalSum += parseInt(item.total);
-                }
-                return totalSum;
-            }
-        },
-        methods: {
-            ...mapActions([
-                    'SET_HEADER_TEXT',
-                    'CHECKOUT',
-                    'REMOVE_FROM_CART',
-                    'INCREMENT_PRODUCT_QTY',
-                    'DECREMENT_PRODUCT_QTY'
-            ]),
-            sellersPageClick() {
-                this.SET_HEADER_TEXT('Suppliers');
-            },
+      totalSum() {
+        let totalSum = 0;
+        for (let item of this.CART) {
+          totalSum += parseInt(item.total);
+        }
+        return totalSum;
+      }
+    },
+    methods: {
+      ...mapActions([
+        'SET_HEADER_TEXT',
+        'CHECKOUT',
+        'REMOVE_FROM_CART',
+        'INCREMENT_PRODUCT_QTY',
+        'DECREMENT_PRODUCT_QTY'
+      ]),
+      sellersPageClick() {
+        this.SET_HEADER_TEXT('Suppliers');
+      },
 
-            checkout() {
-               this.orderChecked = true;
-               this.CHECKOUT(this.CART);
-            },
+      checkout() {
+        this.orderChecked = true;
+        this.CHECKOUT(this.CART);
+      },
 
-            closePopup() {
-                this.orderChecked = false;
-            },
+      closePopup() {
+        this.orderChecked = false;
+      },
 
-            removeFromCart(index) {
-                this.REMOVE_FROM_CART(index);
-            },
+      removeFromCart(index) {
+        this.REMOVE_FROM_CART(index);
+      },
 
-            plusQty(index) {
-                this.INCREMENT_PRODUCT_QTY(index);
-            },
+      plusQty(index) {
+        this.INCREMENT_PRODUCT_QTY(index);
+      },
 
-            minusQty(index) {
-                this.DECREMENT_PRODUCT_QTY(index);
-            }
-        },
-        created() {
-            this.orderChecked = false;
-        },
+      minusQty(index) {
+        this.DECREMENT_PRODUCT_QTY(index);
+      }
+    },
+    created() {
+      this.orderChecked = false;
+    },
 
-        mounted() {
-            this.SET_HEADER_TEXT('My orders');
-        },
-    }
+    mounted() {
+      this.SET_HEADER_TEXT('My orders');
+    },
+  }
 </script>
 
 <style>
-    .a-order-list {
-        max-width: 800px;
-        margin: 50px auto 120px auto;
-    }
+  .a-order-list {
+    max-width: 800px;
+    margin: 50px auto 120px auto;
+  }
 
-    .empty-order-list-p {
-        margin-bottom: 10px;
-    }
+  .empty-order-list-p {
+    margin-bottom: 10px;
+  }
 
-    .empty-order-list a p {
-        max-width: 100px;
-        margin: 0 auto;
-    }
+  .empty-order-list a p {
+    max-width: 100px;
+    margin: 0 auto;
+  }
 
-    .order-total {
-        bottom: 59px;
-        font-size: 20px;
-        padding: 10px 0;
-        margin: 0 auto;
-        font-weight: bold;
-        align-items: center;
-        justify-content: center;
-    }
+  .order-total {
+    bottom: 59px;
+    font-size: 20px;
+    padding: 10px 0;
+    margin: 0 auto;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .total-sum {
-        display: flex;
-    }
+  .total-sum {
+    display: flex;
+  }
 
-    .total-sum_confirm {
-        margin-left: 30px;
-        box-shadow: 0 0 5px 0 #404040;
-    }
-    .total-sum_confirm:active {
-        box-shadow: inset 0 0 5px 0 #50753d;
-    }
+  .total-sum_confirm {
+    margin-left: 30px;
+    box-shadow: 0 0 5px 0 #404040;
+  }
 
-    .order-total span {
-        margin-left: 10px;
-    }
+  .total-sum_confirm:active {
+    box-shadow: inset 0 0 5px 0 #50753d;
+  }
 
-    .empty-order-list {
-        padding-top: 35px;
-    }
+  .order-total span {
+    margin-left: 10px;
+  }
 
-    .thankyou-popup {
-        position: absolute;
-        width: 100%;
-        height: 200px;
-        padding-top: 100px;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        background: #fff;
-        z-index: 2;
-    }
+  .empty-order-list {
+    padding-top: 35px;
+  }
 
-    .ok {
-        max-width: 150px;
-        margin: 0 auto;
-    }
+  .thankyou-popup {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    padding-top: 100px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    z-index: 2;
+  }
+
+  .ok {
+    max-width: 150px;
+    margin: 0 auto;
+  }
 </style>

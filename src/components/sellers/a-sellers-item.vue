@@ -3,7 +3,7 @@
     <v-flex>
       <router-link :to="{name: 'catalog'}">
         <div class="item_logo" @click="setSellerIndex">
-          <img :src="sellerImage" alt />
+          <img :src="sellerImage" alt/>
         </div>
         <div class="item_title" @click="setSellerIndex">
           <router-link :to="{name: 'catalog'}">{{sellers_data.name}}</router-link>
@@ -26,80 +26,81 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+  import {mapActions} from "vuex";
 
-export default {
-  name: "a-sellers-item",
-  props: {
-    sellers_data: {
-      type: Object,
-      default() {}
-    }
-  },
-  data() {
-    return {};
-  },
-
-  computed: {
-    sellerImage() {
-      return require("../../../public/img/" + this.sellers_data.logo);
-    }
-  },
-
-  methods: {
-    ...mapActions(["SET_SELLER_INDEX", "SET_HEADER_TEXT"]),
-    addToFavorite() {
-      let payload = this.sellers_data.id - 1;
-      this.$emit("addToFavorite", payload);
+  export default {
+    name: "a-sellers-item",
+    props: {
+      sellers_data: {
+        type: Object,
+        default() {
+        }
+      }
+    },
+    data() {
+      return {};
     },
 
-    setSellerIndex() {
-      let index = this.sellers_data.id - 1;
-      this.SET_SELLER_INDEX(index);
-      this.SET_HEADER_TEXT("Suppliers catalogue");
+    computed: {
+      sellerImage() {
+        return require("../../../public/img/" + this.sellers_data.logo);
+      }
+    },
+
+    methods: {
+      ...mapActions(["SET_SELLER_INDEX", "SET_HEADER_TEXT"]),
+      addToFavorite() {
+        let payload = this.sellers_data.id - 1;
+        this.$emit("addToFavorite", payload);
+      },
+
+      setSellerIndex() {
+        let index = this.sellers_data.id - 1;
+        this.SET_SELLER_INDEX(index);
+        this.SET_HEADER_TEXT("Suppliers catalogue");
+      }
     }
-  }
-};
+  };
 </script>
 
 <style>
-.a-sellers-item {
-  justify-content: space-around;
-  align-items: center;
-  margin: 10px auto 20px auto;
-  padding: 10px 0;
-}
+  .a-sellers-item {
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px auto 20px auto;
+    padding: 10px 0;
+  }
 
-.item_logo img {
-  max-width: 50px;
-}
+  .item_logo img {
+    max-width: 50px;
+  }
 
-.v-icon.item_fav {
-  font-size: 30px;
-}
+  .v-icon.item_fav {
+    font-size: 30px;
+  }
 
-.a-sellers-item div {
-  flex: 0 2 100%;
-}
+  .a-sellers-item div {
+    flex: 0 2 100%;
+  }
 
-.a-sellers-item a {
-  border: 0;
-}
+  .a-sellers-item a {
+    border: 0;
+  }
 
-.item_title {
-  font-weight: bold;
-  font-size: 14px;
-  color: #757575;
-}
+  .item_title {
+    font-weight: bold;
+    font-size: 14px;
+    color: #757575;
+  }
 
-.item-btns-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .item-btns-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.a-sellers-item div.item_fav.add,
-.a-sellers-item div.item_fav.added {
-  min-width: 20%;
-}
+  .a-sellers-item div.item_fav.add,
+  .a-sellers-item div.item_fav.added {
+    min-width: 20%;
+  }
 </style>

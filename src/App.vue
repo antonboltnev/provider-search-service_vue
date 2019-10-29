@@ -11,7 +11,6 @@
 </template>
 
 <script>
-    import '../public/styles.css'
     import router from './router/router.js'
     import 'vue-awesome/icons'
     import {mapActions} from 'vuex'
