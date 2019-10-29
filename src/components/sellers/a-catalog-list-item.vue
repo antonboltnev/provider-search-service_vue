@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="a-catalog-list-item">
+  <div class="a-catalog-list-item">
     <div class="a-catalog-list_img">
       <img :src="productImage" alt="">
     </div>
@@ -80,7 +80,7 @@
         <icon name="check"></icon>
       </v-btn>
     </transition>
-  </v-layout>
+  </div>
 </template>
 
 <script>
