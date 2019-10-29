@@ -16,6 +16,8 @@
     "concurrently": "^5.0.0",
     "express": "^4.16.4",
     "firebase": "^5.10.1",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
     "vue": "^2.6.6",
     "vue-awesome": "^3.4.0",
     "vue-axios": "^2.1.5",

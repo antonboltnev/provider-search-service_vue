@@ -50,7 +50,7 @@
     font-size: 20px;
     margin: 0 auto;
     padding: 10px 0;
-    color: $text-color-white;
+    color: #fff;
   }
 
   .title-text {
