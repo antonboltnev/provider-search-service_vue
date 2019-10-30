@@ -10,11 +10,6 @@ npm install
 npm install -g json-server
 ```
 
-### start watching json server 
-```
-json-server --watch db.json
-```
-
 ### Compiles and hot-reloads for development
 ```
 npm run dev
