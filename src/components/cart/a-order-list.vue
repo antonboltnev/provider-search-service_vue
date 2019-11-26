@@ -128,6 +128,11 @@
     font-weight: bold;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 65px;
+    z-index: 10;
   }
 
   .total-sum {

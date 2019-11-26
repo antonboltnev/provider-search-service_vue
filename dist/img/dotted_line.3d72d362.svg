@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 1">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #bbb;
+        stroke-linecap: round;
+        stroke-dasharray: 0 5;
+      }
+    </style>
+  </defs>
+  <line id="Shape_2_copy_2" data-name="Shape 2 copy 2" class="cls-1" x2="431" transform="translate(0.5 0.5)"/>
+</svg>
